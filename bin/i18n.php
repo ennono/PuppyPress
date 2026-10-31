@@ -3,9 +3,9 @@
  * Dependency free i18n tooling.
  *
  * Usage:
- *   php bin/i18n.php pot                Extract strings into languages/puppypress.pot
- *   php bin/i18n.php update             Merge the POT into all languages/*.po files
- *   php bin/i18n.php compile            Compile languages/*.po into .mo and .l10n.php
+ *   php bin/i18n.php pot [plugin-dir]   Extract strings into {plugin-dir}/languages/{slug}.pot
+ *   php bin/i18n.php update [plugin-dir]   Merge the POT into all languages/*.po files
+ *   php bin/i18n.php compile [plugin-dir]  Compile languages/*.po into .mo and .l10n.php
  *
  * WP-CLI (`wp i18n make-pot`, `make-mo`, `make-php`) produces equivalent files.
  *
@@ -16,9 +16,21 @@ if ( 'cli' !== PHP_SAPI ) {
 	exit( 1 );
 }
 
-const PP_DOMAIN = 'puppypress';
+/*
+ * Plugin directory (default: repository root). The slug, text domain and main
+ * file name are derived from the directory: {slug}/{slug}.php. The repository
+ * root is the "puppypress" plugin.
+ */
+$root = isset( $argv[2] ) ? realpath( $argv[2] ) : dirname( __DIR__ );
 
-$root = dirname( __DIR__ );
+if ( ! $root || ! is_dir( $root ) ) {
+	fwrite( STDERR, "Plugin directory not found.\n" );
+	exit( 1 );
+}
+
+$pp_slug = is_file( $root . '/' . basename( $root ) . '.php' ) ? basename( $root ) : 'puppypress';
+
+define( 'PP_DOMAIN', $pp_slug );
 
 /**
  * Translation functions: name => argument roles.
@@ -324,9 +336,12 @@ function pp_write_po( $file, $headers, array $entries, $nplurals = 2 ) {
  * @param array  $functions Function map.
  */
 function pp_make_pot( $root, array $functions ) {
-	$files = array( $root . '/puppypress.php' );
+	$files = array( $root . '/' . PP_DOMAIN . '.php' );
 
 	foreach ( array( 'includes', 'templates' ) as $dir ) {
+		if ( ! is_dir( $root . '/' . $dir ) ) {
+			continue;
+		}
 		$iterator = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $root . '/' . $dir, FilesystemIterator::SKIP_DOTS ) );
 		foreach ( $iterator as $file ) {
 			if ( 'php' === $file->getExtension() ) {
@@ -369,7 +384,7 @@ function pp_make_pot( $root, array $functions ) {
 	}
 
 	// Plugin header strings.
-	$header = file_get_contents( $root . '/puppypress.php' );
+	$header = file_get_contents( $root . '/' . PP_DOMAIN . '.php' );
 	foreach ( array( 'Plugin Name', 'Description', 'Author' ) as $field ) {
 		if ( preg_match( '/^\s*\*\s*' . preg_quote( $field, '/' ) . ':\s*(.+)$/m', $header, $m ) ) {
 			$entry = array(
@@ -377,7 +392,7 @@ function pp_make_pot( $root, array $functions ) {
 				'msgid'      => trim( $m[1] ),
 				'plural'     => null,
 				'msgstr'     => array(),
-				'references' => array( 'puppypress.php' ),
+				'references' => array( PP_DOMAIN . '.php' ),
 				'comments'   => array( $field . ' of the plugin' ),
 			);
 
@@ -390,7 +405,7 @@ function pp_make_pot( $root, array $functions ) {
 	$headers = implode(
 		"\n",
 		array(
-			'Project-Id-Version: PuppyPress ' . trim( $version[1] ),
+			'Project-Id-Version: ' . ( preg_match( '/^\s*\*\s*Plugin Name:\s*(.+)$/m', $header, $name ) ? trim( $name[1] ) : PP_DOMAIN ) . ' ' . trim( $version[1] ),
 			'Report-Msgid-Bugs-To: ',
 			'POT-Creation-Date: ' . gmdate( 'Y-m-d H:i+0000' ),
 			'MIME-Version: 1.0',
@@ -401,9 +416,9 @@ function pp_make_pot( $root, array $functions ) {
 		)
 	);
 
-	pp_write_po( $root . '/languages/puppypress.pot', $headers, $entries );
+	pp_write_po( $root . '/languages/' . PP_DOMAIN . '.pot', $headers, $entries );
 
-	fwrite( STDOUT, sprintf( "Wrote languages/puppypress.pot (%d strings)\n", count( $entries ) ) );
+	fwrite( STDOUT, sprintf( "Wrote languages/%s.pot (%d strings)\n", PP_DOMAIN, count( $entries ) ) );
 }
 
 /**
@@ -422,7 +437,7 @@ function pp_nplurals( $headers ) {
  * @param string $root Plugin root.
  */
 function pp_update( $root ) {
-	$pot = pp_parse_po( $root . '/languages/puppypress.pot' );
+	$pot = pp_parse_po( $root . '/languages/' . PP_DOMAIN . '.pot' );
 
 	foreach ( glob( $root . '/languages/*.po' ) as $po_file ) {
 		$po      = pp_parse_po( $po_file );
@@ -535,6 +550,6 @@ switch ( $command ) {
 		pp_compile( $root );
 		break;
 	default:
-		fwrite( STDERR, "Usage: php bin/i18n.php pot|update|compile\n" );
+		fwrite( STDERR, "Usage: php bin/i18n.php pot|update|compile [plugin-dir]\n" );
 		exit( 1 );
 }

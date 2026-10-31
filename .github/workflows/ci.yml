@@ -18,8 +18,10 @@ jobs:
           coverage: none
       - name: Lint
         run: find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
-      - name: Tests
+      - name: Tests (PuppyPress)
         run: php tests/run.php
+      - name: Tests (Migrator)
+        run: php puppypress-migrator/tests/run.php
 
   coding-standards:
     runs-on: ubuntu-latest

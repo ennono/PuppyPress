@@ -5,3 +5,4 @@
 *.swp
 *~
 .phpunit.result.cache
+/dist/

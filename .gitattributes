@@ -11,3 +11,4 @@
 /.gitignore export-ignore
 /composer.json export-ignore
 /phpcs.xml.dist export-ignore
+/puppypress-migrator export-ignore

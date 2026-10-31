@@ -24,7 +24,7 @@ Das Plugin ist aus dem Child-Theme *Extra Child* hervorgegangen und übernimmt d
 
 1. Ordner `puppypress` nach `wp-content/plugins/` kopieren (oder ZIP über *Plugins → Installieren* hochladen).
 2. Plugin aktivieren.
-3. Bei bestehender Website mit dem *Extra Child*-Theme: der [Migrationsanleitung](docs/MIGRATION.md) folgen.
+3. Bei bestehender Website mit dem *Extra Child*-Theme: der [Migrationsanleitung](docs/MIGRATION.md) folgen. Für den Umzug auf eine neue Website gibt es den [PuppyPress Migrator](puppypress-migrator/README.md), der alle Daten samt Medien überträgt und die IDs umschreibt.
 
 Voraussetzungen: WordPress 6.0+, PHP 7.4+. Für das Plugin selbst ist weder Composer noch ein Build-Schritt nötig.
 
@@ -101,6 +101,8 @@ assets/                       CSS und JS (Backend-Mediathek)
 languages/                    POT, de_DE (PO, MO, l10n.php)
 bin/i18n.php                  Übersetzungen extrahieren und kompilieren
 tests/run.php                 Tests ohne Abhängigkeiten
+puppypress-migrator/          Eigenständiges Plugin für den Umzug alte → neue Website
+bin/build.sh                  Baut die ZIPs beider Plugins nach dist/
 ```
 
 Das Feld-Schema in `includes/Content/Fields.php` bestimmt alles Weitere: Meta-Registrierung, Formulare, Sanitizing und REST-Berechtigungen. Ein neues Feld braucht deshalb nur einen Eintrag dort.
