@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       PuppyPress Migrator
- * Plugin URI:        https://github.com/ennono/PuppyPress
+ * Plugin URI:        https://github.com/ennono/puppypress-migrator
  * Description:       Exports all club data (stud dogs, litters, kennels, pedigrees, media, menus, widgets …) from a site running the former "Extra Child" theme and imports it into a site running PuppyPress, including remapping of all IDs.
  * Version:           1.0.0
  * Requires at least: 6.0

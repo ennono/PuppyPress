@@ -1,0 +1,35 @@
+{
+  "name": "fricke-media/puppypress-migrator",
+  "description": "Moves club data from the Extra Child theme to PuppyPress (WordPress plugin).",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Timo Fricke",
+      "homepage": "https://www.fricke-media.de"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.1",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "lint": "phpcs",
+    "lint:fix": "phpcbf",
+    "test": "php tests/run.php",
+    "i18n": [
+      "php bin/i18n.php pot",
+      "php bin/i18n.php update",
+      "php bin/i18n.php compile"
+    ]
+  }
+}

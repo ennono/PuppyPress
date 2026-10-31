@@ -1,6 +1,6 @@
 # PuppyPress Migrator
 
-**Zieht alle Vereinsdaten von der alten Website (Theme „Extra Child“) auf eine neue Website mit [PuppyPress](../README.md) um.**
+**Zieht alle Vereinsdaten von der alten Website (Theme „Extra Child“) auf eine neue Website mit [PuppyPress](https://github.com/ennono/PuppyPress) um.**
 
 Der Standard-Export von WordPress (WXR) reicht dafür nicht: Beim Import bekommen alle Einträge neue IDs, und viele Vereinsdaten verweisen per ID aufeinander. Der Migrator schreibt diese Verweise beim Import um.
 
@@ -29,7 +29,7 @@ Nicht übertragen werden Revisionen, automatische Entwürfe, Plugin- und Theme-E
 
 1. **Alte Website:** Plugin installieren und aktivieren, dann *Werkzeuge → PuppyPress-Migration → Export erstellen*. Das ZIP wird heruntergeladen.
 2. **Neue Website:** PuppyPress **und** den Migrator installieren und aktivieren. Unter *Werkzeuge → PuppyPress-Migration* das ZIP hochladen und *Import starten*.
-3. Danach *Einstellungen → Permalinks* einmal speichern und die Prüfliste in [docs/MIGRATION.md](../docs/MIGRATION.md) durchgehen.
+3. Danach *Einstellungen → Permalinks* einmal speichern und die Prüfliste in der [Migrationsanleitung von PuppyPress](https://github.com/ennono/PuppyPress/blob/main/docs/MIGRATION.md) durchgehen.
 4. Den Migrator auf beiden Websites deaktivieren und löschen.
 
 Große Pakete, die das Upload-Limit überschreiten, per FTP/SFTP nach `wp-content/uploads/puppypress-migrator/incoming/` hochladen; sie erscheinen dann im Importformular.
@@ -68,9 +68,16 @@ Verfügbare Filter: `ppm_club_post_types`, `ppm_club_taxonomies`, `ppm_post_stat
 ## Entwicklung
 
 ```bash
-php puppypress-migrator/tests/run.php                       # Roundtrip-Tests mit simuliertem WordPress
-php bin/i18n.php pot puppypress-migrator                    # Übersetzungen extrahieren
-php bin/i18n.php compile puppypress-migrator                # PO → MO und .l10n.php
+php tests/run.php            # Roundtrip-Tests mit simuliertem WordPress
+php bin/i18n.php pot         # Übersetzungen extrahieren
+php bin/i18n.php update      # POT in die PO-Dateien übernehmen
+php bin/i18n.php compile     # PO → MO und .l10n.php
+bin/build.sh                 # installierbares ZIP nach dist/
+composer install && composer lint   # optional: WordPress Coding Standards
 ```
 
 Die Tests simulieren zwei Websites im Speicher: Sie exportieren eine „alte“ Website mit Deckrüden, Abstammung, Würfen, Zwingern, Menüs, Kommentaren und Widgets und importieren sie in eine „neue“. Danach prüfen sie, ob alle Verweise stimmen, ob sich ein Import wiederholen und fortsetzen lässt und ob manipulierte Pakete abgewiesen werden.
+
+## Lizenz
+
+GPL-2.0-or-later © Timo Fricke
