@@ -1,0 +1,281 @@
+/*
+ * Rudelwerk – front end styles.
+ *
+ * Deliberately light: colors and fonts come from the theme. Customize via
+ * the custom properties below or disable the file with
+ * add_filter( 'rudelwerk_load_styles', '__return_false' );
+ */
+
+.rudelwerk {
+	--rudelwerk-gap: 1.5rem;
+	--rudelwerk-border: rgba(0, 0, 0, 0.12);
+	--rudelwerk-muted: rgba(0, 0, 0, 0.6);
+	--rudelwerk-surface: rgba(0, 0, 0, 0.03);
+	--rudelwerk-radius: 4px;
+}
+
+.rudelwerk + .rudelwerk {
+	margin-top: calc(var(--rudelwerk-gap) * 1.5);
+}
+
+.rudelwerk-icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-right: 0.35em;
+	vertical-align: -0.125em;
+}
+
+.rudelwerk-empty {
+	color: var(--rudelwerk-muted);
+}
+
+.rudelwerk-nowrap {
+	white-space: nowrap;
+}
+
+/* Summary line and data list */
+.rudelwerk-summary {
+	color: var(--rudelwerk-muted);
+}
+
+.rudelwerk-summary__sep {
+	opacity: 0.5;
+}
+
+.rudelwerk-data {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 0.4em 1.5em;
+	margin: 0 0 var(--rudelwerk-gap);
+}
+
+.rudelwerk-data dt {
+	font-weight: 600;
+}
+
+.rudelwerk-data dd {
+	margin: 0;
+}
+
+/* Contacts */
+.rudelwerk-contact {
+	margin: 0 0 1em;
+	padding: 0;
+	list-style: none;
+}
+
+.rudelwerk-contact li {
+	margin: 0 0 0.2em;
+	padding: 0;
+	list-style: none;
+}
+
+.rudelwerk-columns {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	gap: var(--rudelwerk-gap);
+}
+
+/* Pedigree */
+.rudelwerk-pedigree {
+	overflow-x: auto;
+	margin: 0 0 var(--rudelwerk-gap);
+}
+
+.rudelwerk-pedigree__table {
+	width: 100%;
+	min-width: 36rem;
+	border-collapse: collapse;
+}
+
+.rudelwerk-pedigree__table td {
+	width: 33.33%;
+	padding: 0.6em 0.8em;
+	vertical-align: middle;
+	border: 1px solid var(--rudelwerk-border);
+}
+
+.rudelwerk-pedigree__generation-1 {
+	background: var(--rudelwerk-surface);
+}
+
+.rudelwerk-pedigree__role {
+	display: block;
+	margin-bottom: 0.3em;
+	font-size: 0.8em;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--rudelwerk-muted);
+}
+
+.rudelwerk-pedigree__approval {
+	display: inline-block;
+	margin-top: 0.4em;
+	font-size: 0.9em;
+}
+
+/* Cards (stud dogs, litters) */
+.rudelwerk-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: var(--rudelwerk-gap);
+	margin: 0 0 var(--rudelwerk-gap);
+}
+
+.rudelwerk-card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border: 1px solid var(--rudelwerk-border);
+	border-radius: var(--rudelwerk-radius);
+}
+
+.rudelwerk-card__image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.rudelwerk-card__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+.rudelwerk-card__title {
+	margin: 0 0 0.5em;
+	font-size: 1.15em;
+}
+
+.rudelwerk-card__meta {
+	margin: 0 0 1em;
+	color: var(--rudelwerk-muted);
+	font-size: 0.95em;
+}
+
+.rudelwerk-card__meta p {
+	margin: 0 0 0.3em;
+}
+
+.rudelwerk-card__more {
+	margin-top: auto;
+	font-weight: 600;
+}
+
+/* Filter */
+.rudelwerk-filter {
+	margin: 0 0 var(--rudelwerk-gap);
+	padding: 0.8rem 1rem;
+	background: var(--rudelwerk-surface);
+	border: 1px solid var(--rudelwerk-border);
+	border-radius: var(--rudelwerk-radius);
+}
+
+.rudelwerk-filter summary {
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.rudelwerk-filter__fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.rudelwerk-filter__field {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.rudelwerk-filter__field > label,
+.rudelwerk-filter__field legend {
+	display: block;
+	margin-bottom: 0.3em;
+	padding: 0;
+	font-weight: 600;
+}
+
+.rudelwerk-filter__field input[type="text"],
+.rudelwerk-filter__field select {
+	width: 100%;
+}
+
+.rudelwerk-filter__field--multi label {
+	display: block;
+	font-weight: normal;
+}
+
+.rudelwerk-filter__field--checkbox label {
+	font-weight: normal;
+}
+
+.rudelwerk-filter__actions {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	margin: 1rem 0 0;
+}
+
+/* Tables */
+.rudelwerk-table-scroll {
+	overflow-x: auto;
+	margin: 0 0 var(--rudelwerk-gap);
+}
+
+.rudelwerk-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.rudelwerk-table th,
+.rudelwerk-table td {
+	padding: 0.6em 0.8em;
+	text-align: left;
+	vertical-align: top;
+	border-bottom: 1px solid var(--rudelwerk-border);
+}
+
+.rudelwerk-table__wide {
+	width: 40%;
+}
+
+.rudelwerk-table__cover img {
+	max-width: 80px;
+	height: auto;
+}
+
+.rudelwerk-icons a + a {
+	margin-left: 0.6em;
+}
+
+/* Litter details */
+.rudelwerk-gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+	gap: 0.75rem;
+	margin: 0 0 var(--rudelwerk-gap);
+}
+
+.rudelwerk-gallery img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/* Widgets */
+.rudelwerk-recent__type {
+	font-size: 0.85em;
+	opacity: 0.75;
+}
+
+.rudelwerk-recent__more {
+	display: inline-block;
+	margin-top: 0.75em;
+}

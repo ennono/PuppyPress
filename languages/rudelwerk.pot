@@ -1,0 +1,1984 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rudelwerk 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-31 13:10+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: rudelwerk/bin/i18n.php\n"
+"X-Domain: rudelwerk\n"
+
+#: includes/Admin/Assets.php:55
+msgid "Choose or upload photos"
+msgstr ""
+
+#: includes/Admin/Assets.php:56
+msgid "Use these photos"
+msgstr ""
+
+#: includes/Admin/Assets.php:57 includes/Admin/FieldRenderer.php:171
+msgid "Remove"
+msgstr ""
+
+#: includes/Admin/FieldRenderer.php:78 includes/Admin/FieldRenderer.php:94
+msgid "— None —"
+msgstr ""
+
+#: includes/Admin/FieldRenderer.php:178
+msgid "Add photos"
+msgstr ""
+
+#: includes/Admin/LegacyThemeNotice.php:51
+msgid "Rudelwerk:"
+msgstr ""
+
+#: includes/Admin/LegacyThemeNotice.php:52
+msgid "The active theme still registers post types, fields or widgets that are now provided by Rudelwerk. Please remove the files in the theme's \"includes\" folder and their require_once lines from functions.php (see docs/MIGRATION.md)."
+msgstr ""
+
+#: includes/Admin/MetaBoxes.php:131 includes/Content/Fields.php:115 templates/parts/pedigree.php:38 templates/single/stud-dog.php:100
+msgid "Approval"
+msgstr ""
+
+#: includes/Content/Fields.php:85 templates/single/stud-dog.php:132
+msgid "Stud dog data"
+msgstr ""
+
+#: includes/Content/Fields.php:91 templates/single/stud-dog.php:90
+msgid "Date born"
+msgstr ""
+
+#: includes/Content/Fields.php:95 templates/single/stud-dog.php:87
+msgid "Stud book no."
+msgstr ""
+
+#: includes/Content/Fields.php:99 templates/single/stud-dog.php:103
+msgid "Tests and titles"
+msgstr ""
+
+#: includes/Content/Fields.php:104
+msgid "Withers in cm"
+msgstr ""
+
+#: includes/Content/Fields.php:109 templates/single/stud-dog.php:97
+msgid "Breeding license"
+msgstr ""
+
+#: includes/Content/Fields.php:119
+msgid "Show kennel name before the stud dog name"
+msgstr ""
+
+#: includes/Content/Fields.php:124 templates/parts/pedigree.php:22 templates/single/stud-dog.php:178
+msgid "Pedigree"
+msgstr ""
+
+#: includes/Content/Fields.php:134
+msgid "Litter"
+msgstr ""
+
+#: includes/Content/Fields.php:138
+msgid "Expected litter (puppies are not born yet)"
+msgstr ""
+
+#: includes/Content/Fields.php:142 includes/Content/Fields.php:223
+msgid "Date of birth"
+msgstr ""
+
+#: includes/Content/Fields.php:143
+msgid "Free text, e.g. \"12.05.2026\" or \"end of May\"."
+msgstr ""
+
+#: includes/Content/Fields.php:147
+msgid "Number of male puppies"
+msgstr ""
+
+#: includes/Content/Fields.php:151
+msgid "Number of female puppies"
+msgstr ""
+
+#: includes/Content/Fields.php:155
+msgid "Male puppies still available"
+msgstr ""
+
+#: includes/Content/Fields.php:159
+msgid "Female puppies still available"
+msgstr ""
+
+#: includes/Content/Fields.php:163
+msgid "Last update"
+msgstr ""
+
+#: includes/Content/Fields.php:167 includes/Content/Fields.php:290 templates/lists/breeders-board.php:22 templates/lists/directory.php:30 templates/parts/stud-dog-filter.php:45
+msgid "ZIP code"
+msgstr ""
+
+#: includes/Content/Fields.php:171
+msgid "City"
+msgstr ""
+
+#: includes/Content/Fields.php:176 includes/Content/Pedigree.php:59 templates/single/litter.php:35
+msgid "Father"
+msgstr ""
+
+#: includes/Content/Fields.php:180 includes/Content/Fields.php:202 templates/lists/directory.php:32
+msgid "Name"
+msgstr ""
+
+#: includes/Content/Fields.php:184 includes/Content/Fields.php:206
+msgid "Description"
+msgstr ""
+
+#: includes/Content/Fields.php:189
+msgid "Matching stud dog entry"
+msgstr ""
+
+#: includes/Content/Fields.php:193 includes/Content/Fields.php:210
+msgid "Photos"
+msgstr ""
+
+#: includes/Content/Fields.php:198 includes/Content/Pedigree.php:60 templates/single/litter.php:42
+msgid "Mother"
+msgstr ""
+
+#: includes/Content/Fields.php:218 includes/Content/Fields.php:252 templates/lists/directory.php:34
+msgid "Details"
+msgstr ""
+
+#: includes/Content/Fields.php:227
+msgid "Gender"
+msgstr ""
+
+#: includes/Content/Fields.php:236 includes/Content/Fields.php:244
+msgid "Contact"
+msgstr ""
+
+#: includes/Content/Fields.php:257
+msgid "Subtitle"
+msgstr ""
+
+#: includes/Content/Fields.php:261
+msgid "ISBN"
+msgstr ""
+
+#: includes/Content/Fields.php:265 templates/lists/literature.php:30
+msgid "Price"
+msgstr ""
+
+#: includes/Content/Fields.php:294 includes/Content/Fields.php:494 templates/lists/directory.php:75
+msgid "Website"
+msgstr ""
+
+#: includes/Content/Fields.php:300
+msgid "Hidden"
+msgstr ""
+
+#: includes/Content/Fields.php:301
+msgid "Hide this kennel on the website (name, website and breeders' board)."
+msgstr ""
+
+#: includes/Content/Fields.php:308 templates/lists/breeders-board.php:23 templates/single/litter.php:93 templates/single/stud-dog.php:149
+msgid "Kennel"
+msgid_plural "Kennels"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Content/Fields.php:309
+msgid "Connects the breeder with a kennel (used by the breeders' board)."
+msgstr ""
+
+#. translators: %s: ancestor, e.g. "Father".
+#: includes/Content/Fields.php:411
+msgid "Approval (%s)"
+msgstr ""
+
+#: includes/Content/Fields.php:426
+msgid "female"
+msgstr ""
+
+#: includes/Content/Fields.php:427
+msgid "male"
+msgstr ""
+
+#: includes/Content/Fields.php:474
+msgid "Address"
+msgstr ""
+
+#: includes/Content/Fields.php:478 templates/lists/directory.php:72
+msgid "Email"
+msgstr ""
+
+#: includes/Content/Fields.php:482 templates/lists/directory.php:33
+msgid "Phone"
+msgstr ""
+
+#: includes/Content/Fields.php:486
+msgid "Mobile"
+msgstr ""
+
+#: includes/Content/Fields.php:490
+msgid "Fax"
+msgstr ""
+
+#: includes/Content/Fields.php:495
+msgid "Starting with https://"
+msgstr ""
+
+#: includes/Content/Pedigree.php:61
+msgid "Paternal grandfather"
+msgstr ""
+
+#: includes/Content/Pedigree.php:62
+msgid "Paternal grandmother"
+msgstr ""
+
+#: includes/Content/Pedigree.php:63
+msgid "Maternal grandfather"
+msgstr ""
+
+#: includes/Content/Pedigree.php:64
+msgid "Maternal grandmother"
+msgstr ""
+
+#: includes/Content/Pedigree.php:65
+msgid "Great-grandfather 1"
+msgstr ""
+
+#: includes/Content/Pedigree.php:66
+msgid "Great-grandmother 1"
+msgstr ""
+
+#: includes/Content/Pedigree.php:67
+msgid "Great-grandfather 2"
+msgstr ""
+
+#: includes/Content/Pedigree.php:68
+msgid "Great-grandmother 2"
+msgstr ""
+
+#: includes/Content/Pedigree.php:69
+msgid "Great-grandfather 3"
+msgstr ""
+
+#: includes/Content/Pedigree.php:70
+msgid "Great-grandmother 3"
+msgstr ""
+
+#: includes/Content/Pedigree.php:71
+msgid "Great-grandfather 4"
+msgstr ""
+
+#: includes/Content/Pedigree.php:72
+msgid "Great-grandmother 4"
+msgstr ""
+
+#: includes/Content/PostTypes.php:99
+msgid "Add New"
+msgstr ""
+
+#: includes/Content/PostTypes.php:100
+msgid "Not found"
+msgstr ""
+
+#: includes/Content/PostTypes.php:101
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/Content/PostTypes.php:118
+msgctxt "post type general name"
+msgid "Puppies"
+msgstr ""
+
+#: includes/Content/PostTypes.php:119
+msgctxt "post type singular name"
+msgid "Litter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:120 includes/Data/Dogs.php:235
+msgid "Puppies"
+msgstr ""
+
+#: includes/Content/PostTypes.php:121
+msgid "All litters"
+msgstr ""
+
+#: includes/Content/PostTypes.php:122
+msgid "Add new litter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:123
+msgid "Edit litter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:124
+msgid "New litter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:125
+msgid "View litter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:126
+msgid "Search litters"
+msgstr ""
+
+#: includes/Content/PostTypes.php:128
+msgid "Litters of puppies and expected litters."
+msgstr ""
+
+#: includes/Content/PostTypes.php:134
+msgctxt "URL slug"
+msgid "puppies"
+msgstr ""
+
+#: includes/Content/PostTypes.php:141
+msgctxt "post type general name"
+msgid "Dogs to place"
+msgstr ""
+
+#: includes/Content/PostTypes.php:142
+msgctxt "post type singular name"
+msgid "Dog to place"
+msgstr ""
+
+#: includes/Content/PostTypes.php:143
+msgid "Dogs to place"
+msgstr ""
+
+#: includes/Content/PostTypes.php:144
+msgid "All dogs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:145
+msgid "Add new dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:146
+msgid "Edit dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:147
+msgid "New dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:148
+msgid "View dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:149
+msgid "Search dogs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:151
+msgid "Dogs looking for a new home."
+msgstr ""
+
+#: includes/Content/PostTypes.php:157
+msgctxt "URL slug"
+msgid "dogs-to-place"
+msgstr ""
+
+#: includes/Content/PostTypes.php:164
+msgctxt "post type general name"
+msgid "Stud dogs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:165
+msgctxt "post type singular name"
+msgid "Stud dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:166
+msgid "Stud dogs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:167 includes/Frontend/LegacyPageTemplates.php:57
+msgid "All stud dogs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:168
+msgid "Add new stud dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:169
+msgid "Edit stud dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:170
+msgid "New stud dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:171
+msgid "View stud dog"
+msgstr ""
+
+#: includes/Content/PostTypes.php:172
+msgid "Search stud dogs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:174
+msgid "Stud dogs including pedigree."
+msgstr ""
+
+#: includes/Content/PostTypes.php:180
+msgctxt "URL slug"
+msgid "stud-dogs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:187
+msgctxt "post type general name"
+msgid "Approvals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:188
+msgctxt "post type singular name"
+msgid "Approval"
+msgstr ""
+
+#: includes/Content/PostTypes.php:189 includes/Content/PostTypes.php:190
+msgid "Approvals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:191
+msgid "Add new approval"
+msgstr ""
+
+#: includes/Content/PostTypes.php:192
+msgid "Edit approval"
+msgstr ""
+
+#: includes/Content/PostTypes.php:193
+msgid "New approval"
+msgstr ""
+
+#: includes/Content/PostTypes.php:194
+msgid "View approval"
+msgstr ""
+
+#: includes/Content/PostTypes.php:195
+msgid "Search approvals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:197
+msgid "Approval reports of breeding dogs."
+msgstr ""
+
+#: includes/Content/PostTypes.php:201
+msgctxt "URL slug"
+msgid "breeding/approvals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:208
+msgctxt "post type general name"
+msgid "Breeding licenses"
+msgstr ""
+
+#: includes/Content/PostTypes.php:209
+msgctxt "post type singular name"
+msgid "Breeding license"
+msgstr ""
+
+#: includes/Content/PostTypes.php:210 includes/Content/PostTypes.php:211
+msgid "Breeding licenses"
+msgstr ""
+
+#: includes/Content/PostTypes.php:212
+msgid "Add new breeding license"
+msgstr ""
+
+#: includes/Content/PostTypes.php:213
+msgid "Edit breeding license"
+msgstr ""
+
+#: includes/Content/PostTypes.php:214
+msgid "New breeding license"
+msgstr ""
+
+#: includes/Content/PostTypes.php:215
+msgid "View breeding license"
+msgstr ""
+
+#: includes/Content/PostTypes.php:216
+msgid "Search breeding licenses"
+msgstr ""
+
+#: includes/Content/PostTypes.php:218
+msgid "Breeding licenses."
+msgstr ""
+
+#: includes/Content/PostTypes.php:223
+msgctxt "URL slug"
+msgid "breedinglicenses"
+msgstr ""
+
+#: includes/Content/PostTypes.php:230
+msgctxt "post type general name"
+msgid "Results"
+msgstr ""
+
+#: includes/Content/PostTypes.php:231
+msgctxt "post type singular name"
+msgid "Result"
+msgstr ""
+
+#: includes/Content/PostTypes.php:232
+msgid "Results"
+msgstr ""
+
+#: includes/Content/PostTypes.php:233 includes/Widgets/Widgets.php:68
+msgid "All results"
+msgstr ""
+
+#: includes/Content/PostTypes.php:234
+msgid "Add new result"
+msgstr ""
+
+#: includes/Content/PostTypes.php:235
+msgid "Edit result"
+msgstr ""
+
+#: includes/Content/PostTypes.php:236
+msgid "New result"
+msgstr ""
+
+#: includes/Content/PostTypes.php:237
+msgid "View result"
+msgstr ""
+
+#: includes/Content/PostTypes.php:238
+msgid "Search results"
+msgstr ""
+
+#: includes/Content/PostTypes.php:240
+msgid "Results of exams and events."
+msgstr ""
+
+#: includes/Content/PostTypes.php:246
+msgctxt "URL slug"
+msgid "exam-results"
+msgstr ""
+
+#: includes/Content/PostTypes.php:253
+msgctxt "post type general name"
+msgid "Shows"
+msgstr ""
+
+#: includes/Content/PostTypes.php:254
+msgctxt "post type singular name"
+msgid "Show"
+msgstr ""
+
+#: includes/Content/PostTypes.php:255 includes/Frontend/LegacyPageTemplates.php:144
+msgid "Shows"
+msgstr ""
+
+#: includes/Content/PostTypes.php:256
+msgid "All shows"
+msgstr ""
+
+#: includes/Content/PostTypes.php:257
+msgid "Add new show"
+msgstr ""
+
+#: includes/Content/PostTypes.php:258
+msgid "Edit show"
+msgstr ""
+
+#: includes/Content/PostTypes.php:259
+msgid "New show"
+msgstr ""
+
+#: includes/Content/PostTypes.php:260
+msgid "View show"
+msgstr ""
+
+#: includes/Content/PostTypes.php:261
+msgid "Search shows"
+msgstr ""
+
+#: includes/Content/PostTypes.php:263
+msgid "Dog shows."
+msgstr ""
+
+#: includes/Content/PostTypes.php:268
+msgctxt "URL slug"
+msgid "shows"
+msgstr ""
+
+#: includes/Content/PostTypes.php:275
+msgctxt "post type general name"
+msgid "Trimming proofs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:276
+msgctxt "post type singular name"
+msgid "Trimming proof"
+msgstr ""
+
+#: includes/Content/PostTypes.php:277
+msgid "Trimming proofs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:278
+msgid "All trimming proofs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:279
+msgid "Add new trimming proof"
+msgstr ""
+
+#: includes/Content/PostTypes.php:280
+msgid "Edit trimming proof"
+msgstr ""
+
+#: includes/Content/PostTypes.php:281
+msgid "New trimming proof"
+msgstr ""
+
+#: includes/Content/PostTypes.php:282
+msgid "View trimming proof"
+msgstr ""
+
+#: includes/Content/PostTypes.php:283
+msgid "Search trimming proofs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:285
+msgid "Groomers with a trimming proof."
+msgstr ""
+
+#: includes/Content/PostTypes.php:291
+msgctxt "URL slug"
+msgid "trimming-proofs"
+msgstr ""
+
+#: includes/Content/PostTypes.php:298
+msgctxt "post type general name"
+msgid "Dog sitters"
+msgstr ""
+
+#: includes/Content/PostTypes.php:299
+msgctxt "post type singular name"
+msgid "Dog sitter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:300
+msgid "Dog sitters"
+msgstr ""
+
+#: includes/Content/PostTypes.php:301
+msgid "All dog sitters"
+msgstr ""
+
+#: includes/Content/PostTypes.php:302
+msgid "Add new dog sitter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:303
+msgid "Edit dog sitter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:304
+msgid "New dog sitter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:305
+msgid "View dog sitter"
+msgstr ""
+
+#: includes/Content/PostTypes.php:306
+msgid "Search dog sitters"
+msgstr ""
+
+#: includes/Content/PostTypes.php:308
+msgid "Dog sitters and boarding."
+msgstr ""
+
+#: includes/Content/PostTypes.php:314
+msgctxt "URL slug"
+msgid "dog-sitters"
+msgstr ""
+
+#: includes/Content/PostTypes.php:321
+msgctxt "post type general name"
+msgid "Literature"
+msgstr ""
+
+#: includes/Content/PostTypes.php:322
+msgctxt "post type singular name"
+msgid "Book"
+msgstr ""
+
+#: includes/Content/PostTypes.php:323
+msgid "Literature"
+msgstr ""
+
+#: includes/Content/PostTypes.php:324
+msgid "All literature"
+msgstr ""
+
+#: includes/Content/PostTypes.php:325
+msgid "Add new book"
+msgstr ""
+
+#: includes/Content/PostTypes.php:326
+msgid "Edit book"
+msgstr ""
+
+#: includes/Content/PostTypes.php:327
+msgid "New book"
+msgstr ""
+
+#: includes/Content/PostTypes.php:328
+msgid "View book"
+msgstr ""
+
+#: includes/Content/PostTypes.php:329
+msgid "Search literature"
+msgstr ""
+
+#: includes/Content/PostTypes.php:331
+msgid "Recommended literature."
+msgstr ""
+
+#: includes/Content/PostTypes.php:337
+msgctxt "URL slug"
+msgid "literature"
+msgstr ""
+
+#: includes/Content/PostTypes.php:344
+msgctxt "post type general name"
+msgid "Vacation deals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:345
+msgctxt "post type singular name"
+msgid "Vacation deal"
+msgstr ""
+
+#: includes/Content/PostTypes.php:346
+msgid "Vacation deals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:347
+msgid "All vacation deals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:348
+msgid "Add new vacation deal"
+msgstr ""
+
+#: includes/Content/PostTypes.php:349
+msgid "Edit vacation deal"
+msgstr ""
+
+#: includes/Content/PostTypes.php:350
+msgid "New vacation deal"
+msgstr ""
+
+#: includes/Content/PostTypes.php:351
+msgid "View vacation deal"
+msgstr ""
+
+#: includes/Content/PostTypes.php:352
+msgid "Search vacation deals"
+msgstr ""
+
+#: includes/Content/PostTypes.php:354
+msgid "Dog friendly vacation deals."
+msgstr ""
+
+#: includes/Content/PostTypes.php:360
+msgctxt "URL slug"
+msgid "vacationdeals"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:110
+msgctxt "taxonomy general name"
+msgid "Placement categories"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:111
+msgctxt "taxonomy singular name"
+msgid "Placement category"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:112 includes/Content/Taxonomies.php:279
+msgid "Categories"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:113 includes/Content/Taxonomies.php:280
+msgid "Search categories"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:114 includes/Content/Taxonomies.php:281
+msgid "All categories"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:115 includes/Content/Taxonomies.php:282
+msgid "Parent category"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:116 includes/Content/Taxonomies.php:283
+msgid "Parent category:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:117 includes/Content/Taxonomies.php:284
+msgid "Edit category"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:118 includes/Content/Taxonomies.php:285
+msgid "Update category"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:119 includes/Content/Taxonomies.php:286
+msgid "Add new category"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:120 includes/Content/Taxonomies.php:287
+msgid "New category name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:122
+msgctxt "URL slug"
+msgid "dogs-to-place-category"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:130
+msgctxt "taxonomy general name"
+msgid "Kennels"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:131
+msgctxt "taxonomy singular name"
+msgid "Kennel"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:132
+msgid "Kennels"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:133
+msgid "Search kennels"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:134
+msgid "All kennels"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:135
+msgid "Parent kennel"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:136
+msgid "Parent kennel:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:137
+msgid "Edit kennel"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:138
+msgid "Update kennel"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:139
+msgid "Add new kennel"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:140
+msgid "New kennel name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:142
+msgctxt "URL slug"
+msgid "kennels"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:150
+msgctxt "taxonomy general name"
+msgid "Breeders"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:151
+msgctxt "taxonomy singular name"
+msgid "Breeder"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:152 templates/lists/breeders-board.php:24
+msgid "Breeders"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:153
+msgid "Search breeders"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:154
+msgid "All breeders"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:155
+msgid "Parent breeder"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:156
+msgid "Parent breeder:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:157
+msgid "Edit breeder"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:158
+msgid "Update breeder"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:159
+msgid "Add new breeder"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:160
+msgid "New breeder name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:169
+msgctxt "taxonomy general name"
+msgid "Owners"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:170
+msgctxt "taxonomy singular name"
+msgid "Owner"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:171
+msgid "Owners"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:172
+msgid "Search owners"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:173
+msgid "All owners"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:174
+msgid "Parent owner"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:175
+msgid "Parent owner:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:176
+msgid "Edit owner"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:177
+msgid "Update owner"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:178
+msgid "Add new owner"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:179
+msgid "New owner name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:188
+msgctxt "taxonomy general name"
+msgid "Events"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:189
+msgctxt "taxonomy singular name"
+msgid "Event"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:190 includes/Frontend/LegacyPageTemplates.php:136
+msgid "Events"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:191
+msgid "Search events"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:192
+msgid "All events"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:193
+msgid "Parent event"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:194
+msgid "Parent event:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:195
+msgid "Edit event"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:196
+msgid "Update event"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:197
+msgid "Add new event"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:198
+msgid "New event name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:207
+msgctxt "taxonomy general name"
+msgid "Periods"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:208
+msgctxt "taxonomy singular name"
+msgid "Period"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:209 includes/Frontend/LegacyPageTemplates.php:123
+msgid "Periods"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:210
+msgid "Search periods"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:211
+msgid "All periods"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:212
+msgid "Parent period"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:213
+msgid "Parent period:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:214
+msgid "Edit period"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:215
+msgid "Update period"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:216
+msgid "Add new period"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:217
+msgid "New period name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:239
+msgctxt "taxonomy general name"
+msgid "Types"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:240
+msgctxt "taxonomy singular name"
+msgid "Type"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:241
+msgid "Types"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:242
+msgid "Search types"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:243
+msgid "All types"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:244
+msgid "Parent type"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:245
+msgid "Parent type:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:246
+msgid "Edit type"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:247
+msgid "Update type"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:248
+msgid "Add new type"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:249
+msgid "New type name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:277
+msgctxt "taxonomy general name"
+msgid "Literature categories"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:278
+msgctxt "taxonomy singular name"
+msgid "Literature category"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:297
+msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:298
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:299
+msgid "Authors"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:300
+msgid "Search authors"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:301
+msgid "All authors"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:302
+msgid "Parent author"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:303
+msgid "Parent author:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:304
+msgid "Edit author"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:305
+msgid "Update author"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:306
+msgid "Add new author"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:307
+msgid "New author name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:317
+msgctxt "URL slug"
+msgid "puppies-by-city"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:325
+msgctxt "taxonomy general name"
+msgid "Exams"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:326
+msgctxt "taxonomy singular name"
+msgid "Exam"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:327 templates/parts/stud-dog-filter.php:35
+msgid "Exams"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:328
+msgid "Search exams"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:329
+msgid "All exams"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:330
+msgid "Parent exam"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:331
+msgid "Parent exam:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:332
+msgid "Edit exam"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:333
+msgid "Update exam"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:334
+msgid "Add new exam"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:335
+msgid "New exam name"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:337
+msgctxt "URL slug"
+msgid "by-exam"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:345
+msgctxt "taxonomy general name"
+msgid "HD values"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:346
+msgctxt "taxonomy singular name"
+msgid "HD value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:347 templates/parts/stud-dog-filter.php:30
+msgid "HD"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:348
+msgid "Search HD values"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:349
+msgid "All HD values"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:350
+msgid "Parent HD value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:351
+msgid "Parent HD value:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:352
+msgid "Edit HD value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:353
+msgid "Update HD value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:354
+msgid "Add new HD value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:355
+msgid "New HD value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:357
+msgctxt "URL slug"
+msgid "by-hd-value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:365
+msgctxt "taxonomy general name"
+msgid "ED values"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:366
+msgctxt "taxonomy singular name"
+msgid "ED value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:367 templates/parts/stud-dog-filter.php:31
+msgid "ED"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:368
+msgid "Search ED values"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:369
+msgid "All ED values"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:370
+msgid "Parent ED value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:371
+msgid "Parent ED value:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:372
+msgid "Edit ED value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:373
+msgid "Update ED value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:374
+msgid "Add new ED value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:375
+msgid "New ED value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:377
+msgctxt "URL slug"
+msgid "by-ed-value"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:385
+msgctxt "taxonomy general name"
+msgid "Sizes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:386
+msgctxt "taxonomy singular name"
+msgid "Size"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:387
+msgid "Sizes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:388
+msgid "Search sizes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:389
+msgid "All sizes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:390
+msgid "Parent size"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:391
+msgid "Parent size:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:392
+msgid "Edit size"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:393
+msgid "Update size"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:394
+msgid "Add new size"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:395
+msgid "New size"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:397
+msgctxt "URL slug"
+msgid "by-size"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:405
+msgctxt "taxonomy general name"
+msgid "Titles"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:406
+msgctxt "taxonomy singular name"
+msgid "Title"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:407 templates/parts/stud-dog-filter.php:36
+msgid "Titles"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:408
+msgid "Search titles"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:409
+msgid "All titles"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:410
+msgid "Parent title"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:411
+msgid "Parent title:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:412
+msgid "Edit title"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:413
+msgid "Update title"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:414
+msgid "Add new title"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:415
+msgid "New title"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:419
+msgctxt "URL slug"
+msgid "by-title"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:432
+msgctxt "taxonomy general name"
+msgid "ZIP codes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:433
+msgctxt "taxonomy singular name"
+msgid "ZIP code"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:434
+msgid "ZIP codes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:435
+msgid "Search ZIP codes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:436
+msgid "All ZIP codes"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:437
+msgid "Parent ZIP code"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:438
+msgid "Parent ZIP code:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:439
+msgid "Edit ZIP code"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:440
+msgid "Update ZIP code"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:441
+msgid "Add new ZIP code"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:442
+msgid "New ZIP code"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:453
+msgctxt "taxonomy general name"
+msgid "Cities"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:454
+msgctxt "taxonomy singular name"
+msgid "City"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:455
+msgid "Cities"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:456
+msgid "Search cities"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:457
+msgid "All cities"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:458
+msgid "Parent city"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:459
+msgid "Parent city:"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:460
+msgid "Edit city"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:461
+msgid "Update city"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:462
+msgid "Add new city"
+msgstr ""
+
+#: includes/Content/Taxonomies.php:463
+msgid "New city name"
+msgstr ""
+
+#. translators: %s: litter title
+#: includes/Data/Dogs.php:107
+msgid "Expected puppies %s"
+msgstr ""
+
+#. translators: %s: litter title
+#: includes/Data/Dogs.php:109
+msgid "Puppies %s"
+msgstr ""
+
+#. translators: %d: number of male puppies
+#: includes/Data/Dogs.php:154
+msgid "%d male"
+msgid_plural "%d males"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of female puppies
+#: includes/Data/Dogs.php:159
+msgid "%d female"
+msgid_plural "%d females"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Frontend/LegacyPageTemplates.php:38
+msgid "Rudelwerk: Kennels with stud dogs"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:44
+msgid "Registered kennels with stud dogs"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:45
+msgid "An overview of all registered kennels. Click on a kennel to see its dogs."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:51
+msgid "Rudelwerk: All stud dogs (complete list)"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:58
+msgid "A complete list of all stud dogs we know. Click on a dog to have a closer look."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:64
+msgid "Rudelwerk: Approvals"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:70
+msgid "Registered approved dogs"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:71
+msgid "An overview of all registered approvals. Click on an entry to read the approval."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:77
+msgid "Rudelwerk: Breeding licenses"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:83
+msgid "Registered breeding licenses"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:84
+msgid "An overview of all registered breeding licenses. Click on an entry to read the license."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:90
+msgid "Rudelwerk: Puppies by city"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:98
+msgid "Registered puppies"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:99
+msgid "An overview of all registered puppies by city. Click on a city to learn more."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:105
+msgid "Rudelwerk: Dogs to place"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:110
+msgid "Registered dogs to place"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:111
+msgid "An overview of all dogs looking for a new home. Click on a category to learn more."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:117
+msgid "Rudelwerk: Shows"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:124 includes/Frontend/LegacyPageTemplates.php:145
+msgid "Click on a period to see its shows."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:130
+msgid "Rudelwerk: Results and shows"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:137
+msgid "An overview of all registered events. Click on an event to see the results."
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:151
+msgid "Rudelwerk: Trimming proofs"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:155
+msgid "Rudelwerk: Dog sitters"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:159
+msgid "Rudelwerk: Literature"
+msgstr ""
+
+#: includes/Frontend/LegacyPageTemplates.php:163
+msgid "Rudelwerk: Breeders' board"
+msgstr ""
+
+#: includes/Frontend/Shortcodes.php:194
+msgid "Puppy placement"
+msgstr ""
+
+#: includes/Frontend/Shortcodes.php:266
+msgid "Born litters"
+msgstr ""
+
+#: includes/Frontend/Shortcodes.php:273
+msgid "Expected litters"
+msgstr ""
+
+#: includes/Frontend/Shortcodes.php:375
+msgid "No groomers found."
+msgstr ""
+
+#: includes/Frontend/Shortcodes.php:380
+msgid "No dog sitters found."
+msgstr ""
+
+#: includes/Frontend/Sidebars.php:35
+msgid "Single result sidebar"
+msgstr ""
+
+#: includes/Frontend/Sidebars.php:37
+msgid "Replaces the main sidebar on single result pages."
+msgstr ""
+
+#: includes/Widgets/RecentEntries.php:70
+msgid "Recent entries"
+msgstr ""
+
+#: includes/Widgets/RecentEntries.php:123
+msgid "(no title)"
+msgstr ""
+
+#: includes/Widgets/RecentEntries.php:180
+msgid "Title:"
+msgstr ""
+
+#. translators: %s: button label, e.g. "All results"
+#: includes/Widgets/RecentEntries.php:189
+msgid "Link of the button \"%s\":"
+msgstr ""
+
+#: includes/Widgets/RecentEntries.php:196
+msgid "Number of entries to show:"
+msgstr ""
+
+#: includes/Widgets/RecentEntries.php:201
+msgid "Display date?"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:44
+msgid "Rudelwerk: Recent entries"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:45
+msgid "Most recent posts, litters, stud dogs, dogs to place and results."
+msgstr ""
+
+#: includes/Widgets/Widgets.php:51
+msgid "Rudelwerk: Recent litters"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:52
+msgid "Most recent litters."
+msgstr ""
+
+#: includes/Widgets/Widgets.php:57
+msgid "Rudelwerk: Recent stud dogs"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:58
+msgid "Most recent stud dogs."
+msgstr ""
+
+#: includes/Widgets/Widgets.php:63
+msgid "Rudelwerk: Recent results"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:64
+msgid "Most recent results, breeding licenses and shows."
+msgstr ""
+
+#: includes/Widgets/Widgets.php:72
+msgid "Rudelwerk: Recent dogs to place"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:73
+msgid "Most recent dogs to place."
+msgstr ""
+
+#: includes/Widgets/Widgets.php:76 includes/Widgets/Widgets.php:85
+msgid "All dogs to place"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:80
+msgid "Rudelwerk: Recent dogs to place and litters"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:81
+msgid "Most recent dogs to place including litters."
+msgstr ""
+
+#: includes/Widgets/Widgets.php:89
+msgid "Rudelwerk: News"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:90
+msgid "Most recent posts, stud dogs, breeding licenses and approvals."
+msgstr ""
+
+#. translators: %s: type of entry, e.g. "Stud dog"
+#: includes/Widgets/Widgets.php:94
+msgid "New: %s"
+msgstr ""
+
+#: includes/Widgets/Widgets.php:96
+msgid "All news"
+msgstr ""
+
+#: templates/lists/breeders-board.php:30
+msgid "Unknown"
+msgstr ""
+
+#: templates/lists/breeders-board.php:43
+msgid "No kennels found."
+msgstr ""
+
+#: templates/lists/directory.php:31
+msgid "Location"
+msgstr ""
+
+#: templates/lists/literature.php:18
+msgid "No literature found."
+msgstr ""
+
+#: templates/lists/literature.php:27
+msgid "Cover"
+msgstr ""
+
+#: templates/lists/literature.php:28
+msgid "Author"
+msgstr ""
+
+#: templates/lists/literature.php:29
+msgid "Title"
+msgstr ""
+
+#: templates/lists/litters.php:31
+msgid "There are no litters at the moment."
+msgstr ""
+
+#: templates/lists/posts.php:29
+msgid "No entries found."
+msgstr ""
+
+#: templates/lists/stud-dogs.php:37
+msgid "No stud dogs found."
+msgstr ""
+
+#. translators: %s: date of birth
+#: templates/parts/litter-card.php:48
+msgid "Expected: %s"
+msgstr ""
+
+#. translators: %s: date of birth
+#: templates/parts/litter-card.php:48 templates/parts/stud-dog-card.php:28 templates/single/stud-dog.php:76
+msgid "Date born: %s"
+msgstr ""
+
+#. translators: %s: e.g. "2 males, 1 female"
+#: templates/parts/litter-card.php:57
+msgid "Still available: %s"
+msgstr ""
+
+#. translators: %s: name of the mother
+#: templates/parts/litter-card.php:67
+msgid "Mother: %s"
+msgstr ""
+
+#. translators: %s: name of the father
+#: templates/parts/litter-card.php:74
+msgid "Father: %s"
+msgstr ""
+
+#: templates/parts/litter-card.php:81
+msgid "Show puppies"
+msgstr ""
+
+#. translators: %s: withers height in cm
+#: templates/parts/stud-dog-card.php:32
+msgid "Withers: %s cm"
+msgstr ""
+
+#: templates/parts/stud-dog-card.php:49
+msgid "Show dog"
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:29
+msgid "Size"
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:40
+msgid "Filter"
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:46
+msgid "Please enter a ZIP code or the beginning of a ZIP code."
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:55
+msgid "All"
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:68
+msgid "all selected must apply"
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:82
+msgid "Approval available"
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:88
+msgid "Apply"
+msgstr ""
+
+#: templates/parts/stud-dog-filter.php:90
+msgid "Reset"
+msgstr ""
+
+#. translators: %s: date of birth
+#: templates/single/dog-to-place.php:30
+msgid "born %s"
+msgstr ""
+
+#. translators: %s: name of the dog
+#. translators: %s: name of the stud dog
+#: templates/single/dog-to-place.php:42 templates/single/stud-dog.php:186
+msgid "About %s"
+msgstr ""
+
+#. translators: 1: kennel name, 2: expected date of birth
+#: templates/single/litter.php:58
+msgid "The kennel %1$s expects these puppies to be born %2$s."
+msgstr ""
+
+#. translators: 1: kennel name, 2: date of birth
+#: templates/single/litter.php:62
+msgid "The puppies of the kennel %1$s were born on %2$s."
+msgstr ""
+
+#: templates/single/litter.php:72
+msgid "Litter size"
+msgstr ""
+
+#: templates/single/litter.php:75
+msgid "Still available"
+msgstr ""
+
+#. translators: %s: date of the last update
+#: templates/single/litter.php:81
+msgid "Last update: %s"
+msgstr ""
+
+#: templates/single/litter.php:115 templates/single/stud-dog.php:142
+msgid "Breeder"
+msgid_plural "Breeders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/single/litter.php:125
+msgid "About the puppies"
+msgstr ""
+
+#. translators: %s: name of the stud dog
+#: templates/single/litter.php:143
+msgid "More about the stud dog %s"
+msgstr ""
+
+#. translators: %s: kennel name
+#: templates/single/stud-dog.php:52
+msgid "Kennel: %s"
+msgstr ""
+
+#. translators: %s: breeder name
+#: templates/single/stud-dog.php:60
+msgid "Breeder: %s"
+msgstr ""
+
+#. translators: %s: owner name
+#: templates/single/stud-dog.php:68
+msgid "Owner: %s"
+msgstr ""
+
+#. translators: %s: withers height
+#: templates/single/stud-dog.php:94
+msgid "Withers"
+msgstr ""
+
+#: templates/single/stud-dog.php:94
+msgid "%s cm"
+msgstr ""
+
+#: templates/single/stud-dog.php:171
+msgid "Owner"
+msgid_plural "Owners"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Plugin Name of the plugin
+#: rudelwerk.php
+msgid "Rudelwerk"
+msgstr ""
+
+#. Description of the plugin
+#: rudelwerk.php
+msgid "Club management for dog breeding clubs: stud dogs with pedigree, litters, dogs to place, approvals, breeding licenses, results, shows, trimming proofs, dog sitters and literature."
+msgstr ""
+
+#. Author of the plugin
+#: rudelwerk.php
+msgid "Timo Fricke"
+msgstr ""

@@ -1,0 +1,49 @@
+<?php
+/**
+ * Nested list of terms.
+ *
+ * Override: {theme}/rudelwerk/lists/terms.php
+ *
+ * @package Rudelwerk
+ * @version 1.0.0
+ *
+ * @var array $args {
+ *     @type array $items      List of array{name: string, url: string, count: int, children: array}.
+ *     @type bool  $show_count Show the number of entries.
+ *     @type bool  $link_empty Link items without entries.
+ * }
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$rw_render = static function ( array $items ) use ( &$rw_render, $args ) {
+	if ( ! $items ) {
+		return;
+	}
+
+	echo '<ul class="rudelwerk-terms__list">';
+
+	foreach ( $items as $item ) {
+		$linked = '' !== $item['url'] && ( $args['link_empty'] || $item['count'] > 0 );
+
+		echo '<li>';
+
+		if ( $linked ) {
+			printf( '<a href="%1$s">%2$s</a>', esc_url( $item['url'] ), esc_html( $item['name'] ) );
+		} else {
+			echo esc_html( $item['name'] );
+		}
+
+		if ( $args['show_count'] ) {
+			printf( ' <span class="rudelwerk-terms__count">(%s)</span>', esc_html( number_format_i18n( $item['count'] ) ) );
+		}
+
+		$rw_render( $item['children'] );
+
+		echo '</li>';
+	}
+
+	echo '</ul>';
+};
+
+$rw_render( $args['items'] );
