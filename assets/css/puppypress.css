@@ -1,24 +1,24 @@
 /*
- * Rudelwerk – front end styles.
+ * PuppyPress – front end styles.
  *
  * Deliberately light: colors and fonts come from the theme. Customize via
  * the custom properties below or disable the file with
- * add_filter( 'rudelwerk_load_styles', '__return_false' );
+ * add_filter( 'puppypress_load_styles', '__return_false' );
  */
 
-.rudelwerk {
-	--rudelwerk-gap: 1.5rem;
-	--rudelwerk-border: rgba(0, 0, 0, 0.12);
-	--rudelwerk-muted: rgba(0, 0, 0, 0.6);
-	--rudelwerk-surface: rgba(0, 0, 0, 0.03);
-	--rudelwerk-radius: 4px;
+.puppypress {
+	--puppypress-gap: 1.5rem;
+	--puppypress-border: rgba(0, 0, 0, 0.12);
+	--puppypress-muted: rgba(0, 0, 0, 0.6);
+	--puppypress-surface: rgba(0, 0, 0, 0.03);
+	--puppypress-radius: 4px;
 }
 
-.rudelwerk + .rudelwerk {
-	margin-top: calc(var(--rudelwerk-gap) * 1.5);
+.puppypress + .puppypress {
+	margin-top: calc(var(--puppypress-gap) * 1.5);
 }
 
-.rudelwerk-icon {
+.puppypress-icon {
 	display: inline-block;
 	width: 1em;
 	height: 1em;
@@ -26,113 +26,113 @@
 	vertical-align: -0.125em;
 }
 
-.rudelwerk-empty {
-	color: var(--rudelwerk-muted);
+.puppypress-empty {
+	color: var(--puppypress-muted);
 }
 
-.rudelwerk-nowrap {
+.puppypress-nowrap {
 	white-space: nowrap;
 }
 
 /* Summary line and data list */
-.rudelwerk-summary {
-	color: var(--rudelwerk-muted);
+.puppypress-summary {
+	color: var(--puppypress-muted);
 }
 
-.rudelwerk-summary__sep {
+.puppypress-summary__sep {
 	opacity: 0.5;
 }
 
-.rudelwerk-data {
+.puppypress-data {
 	display: grid;
 	grid-template-columns: max-content 1fr;
 	gap: 0.4em 1.5em;
-	margin: 0 0 var(--rudelwerk-gap);
+	margin: 0 0 var(--puppypress-gap);
 }
 
-.rudelwerk-data dt {
+.puppypress-data dt {
 	font-weight: 600;
 }
 
-.rudelwerk-data dd {
+.puppypress-data dd {
 	margin: 0;
 }
 
 /* Contacts */
-.rudelwerk-contact {
+.puppypress-contact {
 	margin: 0 0 1em;
 	padding: 0;
 	list-style: none;
 }
 
-.rudelwerk-contact li {
+.puppypress-contact li {
 	margin: 0 0 0.2em;
 	padding: 0;
 	list-style: none;
 }
 
-.rudelwerk-columns {
+.puppypress-columns {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-	gap: var(--rudelwerk-gap);
+	gap: var(--puppypress-gap);
 }
 
 /* Pedigree */
-.rudelwerk-pedigree {
+.puppypress-pedigree {
 	overflow-x: auto;
-	margin: 0 0 var(--rudelwerk-gap);
+	margin: 0 0 var(--puppypress-gap);
 }
 
-.rudelwerk-pedigree__table {
+.puppypress-pedigree__table {
 	width: 100%;
 	min-width: 36rem;
 	border-collapse: collapse;
 }
 
-.rudelwerk-pedigree__table td {
+.puppypress-pedigree__table td {
 	width: 33.33%;
 	padding: 0.6em 0.8em;
 	vertical-align: middle;
-	border: 1px solid var(--rudelwerk-border);
+	border: 1px solid var(--puppypress-border);
 }
 
-.rudelwerk-pedigree__generation-1 {
-	background: var(--rudelwerk-surface);
+.puppypress-pedigree__generation-1 {
+	background: var(--puppypress-surface);
 }
 
-.rudelwerk-pedigree__role {
+.puppypress-pedigree__role {
 	display: block;
 	margin-bottom: 0.3em;
 	font-size: 0.8em;
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
-	color: var(--rudelwerk-muted);
+	color: var(--puppypress-muted);
 }
 
-.rudelwerk-pedigree__approval {
+.puppypress-pedigree__approval {
 	display: inline-block;
 	margin-top: 0.4em;
 	font-size: 0.9em;
 }
 
 /* Cards (stud dogs, litters) */
-.rudelwerk-cards {
+.puppypress-cards {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-	gap: var(--rudelwerk-gap);
-	margin: 0 0 var(--rudelwerk-gap);
+	gap: var(--puppypress-gap);
+	margin: 0 0 var(--puppypress-gap);
 }
 
-.rudelwerk-card {
+.puppypress-card {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	border: 1px solid var(--rudelwerk-border);
-	border-radius: var(--rudelwerk-radius);
+	border: 1px solid var(--puppypress-border);
+	border-radius: var(--puppypress-radius);
 }
 
-.rudelwerk-card__image img {
+.puppypress-card__image img {
 	display: block;
 	width: 100%;
 	height: auto;
@@ -140,83 +140,83 @@
 	object-fit: cover;
 }
 
-.rudelwerk-card__body {
+.puppypress-card__body {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
 	padding: 1rem;
 }
 
-.rudelwerk-card__title {
+.puppypress-card__title {
 	margin: 0 0 0.5em;
 	font-size: 1.15em;
 }
 
-.rudelwerk-card__meta {
+.puppypress-card__meta {
 	margin: 0 0 1em;
-	color: var(--rudelwerk-muted);
+	color: var(--puppypress-muted);
 	font-size: 0.95em;
 }
 
-.rudelwerk-card__meta p {
+.puppypress-card__meta p {
 	margin: 0 0 0.3em;
 }
 
-.rudelwerk-card__more {
+.puppypress-card__more {
 	margin-top: auto;
 	font-weight: 600;
 }
 
 /* Filter */
-.rudelwerk-filter {
-	margin: 0 0 var(--rudelwerk-gap);
+.puppypress-filter {
+	margin: 0 0 var(--puppypress-gap);
 	padding: 0.8rem 1rem;
-	background: var(--rudelwerk-surface);
-	border: 1px solid var(--rudelwerk-border);
-	border-radius: var(--rudelwerk-radius);
+	background: var(--puppypress-surface);
+	border: 1px solid var(--puppypress-border);
+	border-radius: var(--puppypress-radius);
 }
 
-.rudelwerk-filter summary {
+.puppypress-filter summary {
 	font-weight: 600;
 	cursor: pointer;
 }
 
-.rudelwerk-filter__fields {
+.puppypress-filter__fields {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 	gap: 1rem;
 	margin-top: 1rem;
 }
 
-.rudelwerk-filter__field {
+.puppypress-filter__field {
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
 
-.rudelwerk-filter__field > label,
-.rudelwerk-filter__field legend {
+.puppypress-filter__field > label,
+.puppypress-filter__field legend {
 	display: block;
 	margin-bottom: 0.3em;
 	padding: 0;
 	font-weight: 600;
 }
 
-.rudelwerk-filter__field input[type="text"],
-.rudelwerk-filter__field select {
+.puppypress-filter__field input[type="text"],
+.puppypress-filter__field select {
 	width: 100%;
 }
 
-.rudelwerk-filter__field--multi label {
+.puppypress-filter__field--multi label {
 	display: block;
 	font-weight: normal;
 }
 
-.rudelwerk-filter__field--checkbox label {
+.puppypress-filter__field--checkbox label {
 	font-weight: normal;
 }
 
-.rudelwerk-filter__actions {
+.puppypress-filter__actions {
 	display: flex;
 	gap: 1rem;
 	align-items: center;
@@ -224,58 +224,58 @@
 }
 
 /* Tables */
-.rudelwerk-table-scroll {
+.puppypress-table-scroll {
 	overflow-x: auto;
-	margin: 0 0 var(--rudelwerk-gap);
+	margin: 0 0 var(--puppypress-gap);
 }
 
-.rudelwerk-table {
+.puppypress-table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-.rudelwerk-table th,
-.rudelwerk-table td {
+.puppypress-table th,
+.puppypress-table td {
 	padding: 0.6em 0.8em;
 	text-align: left;
 	vertical-align: top;
-	border-bottom: 1px solid var(--rudelwerk-border);
+	border-bottom: 1px solid var(--puppypress-border);
 }
 
-.rudelwerk-table__wide {
+.puppypress-table__wide {
 	width: 40%;
 }
 
-.rudelwerk-table__cover img {
+.puppypress-table__cover img {
 	max-width: 80px;
 	height: auto;
 }
 
-.rudelwerk-icons a + a {
+.puppypress-icons a + a {
 	margin-left: 0.6em;
 }
 
 /* Litter details */
-.rudelwerk-gallery {
+.puppypress-gallery {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
 	gap: 0.75rem;
-	margin: 0 0 var(--rudelwerk-gap);
+	margin: 0 0 var(--puppypress-gap);
 }
 
-.rudelwerk-gallery img {
+.puppypress-gallery img {
 	display: block;
 	width: 100%;
 	height: auto;
 }
 
 /* Widgets */
-.rudelwerk-recent__type {
+.puppypress-recent__type {
 	font-size: 0.85em;
 	opacity: 0.75;
 }
 
-.rudelwerk-recent__more {
+.puppypress-recent__more {
 	display: inline-block;
 	margin-top: 0.75em;
 }

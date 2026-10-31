@@ -2,10 +2,10 @@
 /**
  * Custom post types.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Content;
+namespace PuppyPress\Content;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -42,12 +42,12 @@ final class PostTypes {
 	public function register() {
 		foreach ( $this->definitions() as $post_type => $args ) {
 			/**
-			 * Filters the arguments of a Rudelwerk post type.
+			 * Filters the arguments of a PuppyPress post type.
 			 *
 			 * @param array  $args      register_post_type() arguments.
 			 * @param string $post_type Post type key.
 			 */
-			register_post_type( $post_type, apply_filters( 'rudelwerk_post_type_args', $args, $post_type ) );
+			register_post_type( $post_type, apply_filters( 'puppypress_post_type_args', $args, $post_type ) );
 		}
 	}
 
@@ -60,12 +60,12 @@ final class PostTypes {
 	 */
 	private function slug( $post_type, $default ) {
 		/**
-		 * Filters the rewrite slug of a Rudelwerk post type.
+		 * Filters the rewrite slug of a PuppyPress post type.
 		 *
 		 * @param string $slug      Slug.
 		 * @param string $post_type Post type key.
 		 */
-		return (string) apply_filters( 'rudelwerk_post_type_slug', $default, $post_type );
+		return (string) apply_filters( 'puppypress_post_type_slug', $default, $post_type );
 	}
 
 	/**
@@ -96,9 +96,9 @@ final class PostTypes {
 	 */
 	private function common_labels() {
 		return array(
-			'add_new'            => __( 'Add New', 'rudelwerk' ),
-			'not_found'          => __( 'Not found', 'rudelwerk' ),
-			'not_found_in_trash' => __( 'Not found in Trash', 'rudelwerk' ),
+			'add_new'            => __( 'Add New', 'puppypress' ),
+			'not_found'          => __( 'Not found', 'puppypress' ),
+			'not_found_in_trash' => __( 'Not found in Trash', 'puppypress' ),
 		);
 	}
 
@@ -115,249 +115,249 @@ final class PostTypes {
 
 		$types[ self::PUPPIES ] = array(
 			'labels'        => $common + array(
-				'name'           => _x( 'Puppies', 'post type general name', 'rudelwerk' ),
-				'singular_name'  => _x( 'Litter', 'post type singular name', 'rudelwerk' ),
-				'menu_name'      => __( 'Puppies', 'rudelwerk' ),
-				'all_items'      => __( 'All litters', 'rudelwerk' ),
-				'add_new_item'   => __( 'Add new litter', 'rudelwerk' ),
-				'edit_item'      => __( 'Edit litter', 'rudelwerk' ),
-				'new_item'       => __( 'New litter', 'rudelwerk' ),
-				'view_item'      => __( 'View litter', 'rudelwerk' ),
-				'search_items'   => __( 'Search litters', 'rudelwerk' ),
+				'name'           => _x( 'Puppies', 'post type general name', 'puppypress' ),
+				'singular_name'  => _x( 'Litter', 'post type singular name', 'puppypress' ),
+				'menu_name'      => __( 'Puppies', 'puppypress' ),
+				'all_items'      => __( 'All litters', 'puppypress' ),
+				'add_new_item'   => __( 'Add new litter', 'puppypress' ),
+				'edit_item'      => __( 'Edit litter', 'puppypress' ),
+				'new_item'       => __( 'New litter', 'puppypress' ),
+				'view_item'      => __( 'View litter', 'puppypress' ),
+				'search_items'   => __( 'Search litters', 'puppypress' ),
 			),
-			'description'   => __( 'Litters of puppies and expected litters.', 'rudelwerk' ),
+			'description'   => __( 'Litters of puppies and expected litters.', 'puppypress' ),
 			'menu_icon'     => 'dashicons-heart',
 			'menu_position' => 5,
 			'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'revisions' ),
 			'has_archive'   => true,
 			'rewrite'       => array(
-				'slug'       => $this->slug( self::PUPPIES, _x( 'puppies', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::PUPPIES, _x( 'puppies', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::DOG_TO_PLACE ] = array(
 			'labels'        => $common + array(
-				'name'          => _x( 'Dogs to place', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Dog to place', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Dogs to place', 'rudelwerk' ),
-				'all_items'     => __( 'All dogs', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new dog', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit dog', 'rudelwerk' ),
-				'new_item'      => __( 'New dog', 'rudelwerk' ),
-				'view_item'     => __( 'View dog', 'rudelwerk' ),
-				'search_items'  => __( 'Search dogs', 'rudelwerk' ),
+				'name'          => _x( 'Dogs to place', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Dog to place', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Dogs to place', 'puppypress' ),
+				'all_items'     => __( 'All dogs', 'puppypress' ),
+				'add_new_item'  => __( 'Add new dog', 'puppypress' ),
+				'edit_item'     => __( 'Edit dog', 'puppypress' ),
+				'new_item'      => __( 'New dog', 'puppypress' ),
+				'view_item'     => __( 'View dog', 'puppypress' ),
+				'search_items'  => __( 'Search dogs', 'puppypress' ),
 			),
-			'description'   => __( 'Dogs looking for a new home.', 'rudelwerk' ),
+			'description'   => __( 'Dogs looking for a new home.', 'puppypress' ),
 			'menu_icon'     => 'dashicons-admin-home',
 			'menu_position' => 6,
 			'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'revisions' ),
 			'has_archive'   => true,
 			'rewrite'       => array(
-				'slug'       => $this->slug( self::DOG_TO_PLACE, _x( 'dogs-to-place', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::DOG_TO_PLACE, _x( 'dogs-to-place', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::STUD_DOG ] = array(
 			'labels'        => $common + array(
-				'name'          => _x( 'Stud dogs', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Stud dog', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Stud dogs', 'rudelwerk' ),
-				'all_items'     => __( 'All stud dogs', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new stud dog', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit stud dog', 'rudelwerk' ),
-				'new_item'      => __( 'New stud dog', 'rudelwerk' ),
-				'view_item'     => __( 'View stud dog', 'rudelwerk' ),
-				'search_items'  => __( 'Search stud dogs', 'rudelwerk' ),
+				'name'          => _x( 'Stud dogs', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Stud dog', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Stud dogs', 'puppypress' ),
+				'all_items'     => __( 'All stud dogs', 'puppypress' ),
+				'add_new_item'  => __( 'Add new stud dog', 'puppypress' ),
+				'edit_item'     => __( 'Edit stud dog', 'puppypress' ),
+				'new_item'      => __( 'New stud dog', 'puppypress' ),
+				'view_item'     => __( 'View stud dog', 'puppypress' ),
+				'search_items'  => __( 'Search stud dogs', 'puppypress' ),
 			),
-			'description'   => __( 'Stud dogs including pedigree.', 'rudelwerk' ),
+			'description'   => __( 'Stud dogs including pedigree.', 'puppypress' ),
 			'menu_icon'     => 'dashicons-pets',
 			'menu_position' => 7,
 			'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'comments', 'revisions' ),
 			'has_archive'   => true,
 			'rewrite'       => array(
-				'slug'       => $this->slug( self::STUD_DOG, _x( 'stud-dogs', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::STUD_DOG, _x( 'stud-dogs', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::APPROVAL ] = array(
 			'labels'       => $common + array(
-				'name'          => _x( 'Approvals', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Approval', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Approvals', 'rudelwerk' ),
-				'all_items'     => __( 'Approvals', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new approval', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit approval', 'rudelwerk' ),
-				'new_item'      => __( 'New approval', 'rudelwerk' ),
-				'view_item'     => __( 'View approval', 'rudelwerk' ),
-				'search_items'  => __( 'Search approvals', 'rudelwerk' ),
+				'name'          => _x( 'Approvals', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Approval', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Approvals', 'puppypress' ),
+				'all_items'     => __( 'Approvals', 'puppypress' ),
+				'add_new_item'  => __( 'Add new approval', 'puppypress' ),
+				'edit_item'     => __( 'Edit approval', 'puppypress' ),
+				'new_item'      => __( 'New approval', 'puppypress' ),
+				'view_item'     => __( 'View approval', 'puppypress' ),
+				'search_items'  => __( 'Search approvals', 'puppypress' ),
 			),
-			'description'  => __( 'Approval reports of breeding dogs.', 'rudelwerk' ),
+			'description'  => __( 'Approval reports of breeding dogs.', 'puppypress' ),
 			'show_in_menu' => 'edit.php?post_type=' . self::STUD_DOG,
 			'supports'     => array( 'title', 'editor', 'author', 'revisions' ),
 			'rewrite'      => array(
-				'slug'       => $this->slug( self::APPROVAL, _x( 'breeding/approvals', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::APPROVAL, _x( 'breeding/approvals', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::BREEDING_LICENSE ] = array(
 			'labels'       => $common + array(
-				'name'          => _x( 'Breeding licenses', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Breeding license', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Breeding licenses', 'rudelwerk' ),
-				'all_items'     => __( 'Breeding licenses', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new breeding license', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit breeding license', 'rudelwerk' ),
-				'new_item'      => __( 'New breeding license', 'rudelwerk' ),
-				'view_item'     => __( 'View breeding license', 'rudelwerk' ),
-				'search_items'  => __( 'Search breeding licenses', 'rudelwerk' ),
+				'name'          => _x( 'Breeding licenses', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Breeding license', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Breeding licenses', 'puppypress' ),
+				'all_items'     => __( 'Breeding licenses', 'puppypress' ),
+				'add_new_item'  => __( 'Add new breeding license', 'puppypress' ),
+				'edit_item'     => __( 'Edit breeding license', 'puppypress' ),
+				'new_item'      => __( 'New breeding license', 'puppypress' ),
+				'view_item'     => __( 'View breeding license', 'puppypress' ),
+				'search_items'  => __( 'Search breeding licenses', 'puppypress' ),
 			),
-			'description'  => __( 'Breeding licenses.', 'rudelwerk' ),
+			'description'  => __( 'Breeding licenses.', 'puppypress' ),
 			'show_in_menu' => 'edit.php?post_type=' . self::STUD_DOG,
 			'supports'     => array( 'title', 'editor', 'author', 'revisions' ),
 			'has_archive'  => true,
 			'rewrite'      => array(
-				'slug'       => $this->slug( self::BREEDING_LICENSE, _x( 'breedinglicenses', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::BREEDING_LICENSE, _x( 'breedinglicenses', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::RESULT ] = array(
 			'labels'        => $common + array(
-				'name'          => _x( 'Results', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Result', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Results', 'rudelwerk' ),
-				'all_items'     => __( 'All results', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new result', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit result', 'rudelwerk' ),
-				'new_item'      => __( 'New result', 'rudelwerk' ),
-				'view_item'     => __( 'View result', 'rudelwerk' ),
-				'search_items'  => __( 'Search results', 'rudelwerk' ),
+				'name'          => _x( 'Results', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Result', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Results', 'puppypress' ),
+				'all_items'     => __( 'All results', 'puppypress' ),
+				'add_new_item'  => __( 'Add new result', 'puppypress' ),
+				'edit_item'     => __( 'Edit result', 'puppypress' ),
+				'new_item'      => __( 'New result', 'puppypress' ),
+				'view_item'     => __( 'View result', 'puppypress' ),
+				'search_items'  => __( 'Search results', 'puppypress' ),
 			),
-			'description'   => __( 'Results of exams and events.', 'rudelwerk' ),
+			'description'   => __( 'Results of exams and events.', 'puppypress' ),
 			'menu_icon'     => 'dashicons-awards',
 			'menu_position' => 8,
 			'supports'      => array( 'title', 'editor', 'author', 'revisions' ),
 			'rewrite'       => array(
 				// German translation is "pruefungen", which keeps the URLs of the former theme.
-				'slug'       => $this->slug( self::RESULT, _x( 'exam-results', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::RESULT, _x( 'exam-results', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::SHOW ] = array(
 			'labels'        => $common + array(
-				'name'          => _x( 'Shows', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Show', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Shows', 'rudelwerk' ),
-				'all_items'     => __( 'All shows', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new show', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit show', 'rudelwerk' ),
-				'new_item'      => __( 'New show', 'rudelwerk' ),
-				'view_item'     => __( 'View show', 'rudelwerk' ),
-				'search_items'  => __( 'Search shows', 'rudelwerk' ),
+				'name'          => _x( 'Shows', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Show', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Shows', 'puppypress' ),
+				'all_items'     => __( 'All shows', 'puppypress' ),
+				'add_new_item'  => __( 'Add new show', 'puppypress' ),
+				'edit_item'     => __( 'Edit show', 'puppypress' ),
+				'new_item'      => __( 'New show', 'puppypress' ),
+				'view_item'     => __( 'View show', 'puppypress' ),
+				'search_items'  => __( 'Search shows', 'puppypress' ),
 			),
-			'description'   => __( 'Dog shows.', 'rudelwerk' ),
+			'description'   => __( 'Dog shows.', 'puppypress' ),
 			'menu_icon'     => 'dashicons-star-filled',
 			'menu_position' => 9,
 			'supports'      => array( 'title', 'editor', 'author', 'revisions' ),
 			'rewrite'       => array(
-				'slug'       => $this->slug( self::SHOW, _x( 'shows', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::SHOW, _x( 'shows', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::TRIMMING_PROOF ] = array(
 			'labels'             => $common + array(
-				'name'          => _x( 'Trimming proofs', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Trimming proof', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Trimming proofs', 'rudelwerk' ),
-				'all_items'     => __( 'All trimming proofs', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new trimming proof', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit trimming proof', 'rudelwerk' ),
-				'new_item'      => __( 'New trimming proof', 'rudelwerk' ),
-				'view_item'     => __( 'View trimming proof', 'rudelwerk' ),
-				'search_items'  => __( 'Search trimming proofs', 'rudelwerk' ),
+				'name'          => _x( 'Trimming proofs', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Trimming proof', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Trimming proofs', 'puppypress' ),
+				'all_items'     => __( 'All trimming proofs', 'puppypress' ),
+				'add_new_item'  => __( 'Add new trimming proof', 'puppypress' ),
+				'edit_item'     => __( 'Edit trimming proof', 'puppypress' ),
+				'new_item'      => __( 'New trimming proof', 'puppypress' ),
+				'view_item'     => __( 'View trimming proof', 'puppypress' ),
+				'search_items'  => __( 'Search trimming proofs', 'puppypress' ),
 			),
-			'description'        => __( 'Groomers with a trimming proof.', 'rudelwerk' ),
+			'description'        => __( 'Groomers with a trimming proof.', 'puppypress' ),
 			'menu_icon'          => 'dashicons-admin-tools',
 			'menu_position'      => 5,
 			'supports'           => array( 'title', 'author', 'editor' ),
 			'publicly_queryable' => false,
 			'rewrite'            => array(
-				'slug'       => $this->slug( self::TRIMMING_PROOF, _x( 'trimming-proofs', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::TRIMMING_PROOF, _x( 'trimming-proofs', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::DOG_SITTER ] = array(
 			'labels'             => $common + array(
-				'name'          => _x( 'Dog sitters', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Dog sitter', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Dog sitters', 'rudelwerk' ),
-				'all_items'     => __( 'All dog sitters', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new dog sitter', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit dog sitter', 'rudelwerk' ),
-				'new_item'      => __( 'New dog sitter', 'rudelwerk' ),
-				'view_item'     => __( 'View dog sitter', 'rudelwerk' ),
-				'search_items'  => __( 'Search dog sitters', 'rudelwerk' ),
+				'name'          => _x( 'Dog sitters', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Dog sitter', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Dog sitters', 'puppypress' ),
+				'all_items'     => __( 'All dog sitters', 'puppypress' ),
+				'add_new_item'  => __( 'Add new dog sitter', 'puppypress' ),
+				'edit_item'     => __( 'Edit dog sitter', 'puppypress' ),
+				'new_item'      => __( 'New dog sitter', 'puppypress' ),
+				'view_item'     => __( 'View dog sitter', 'puppypress' ),
+				'search_items'  => __( 'Search dog sitters', 'puppypress' ),
 			),
-			'description'        => __( 'Dog sitters and boarding.', 'rudelwerk' ),
+			'description'        => __( 'Dog sitters and boarding.', 'puppypress' ),
 			'menu_icon'          => 'dashicons-groups',
 			'menu_position'      => 5,
 			'supports'           => array( 'title', 'author', 'editor' ),
 			'publicly_queryable' => false,
 			'rewrite'            => array(
-				'slug'       => $this->slug( self::DOG_SITTER, _x( 'dog-sitters', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::DOG_SITTER, _x( 'dog-sitters', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::LITERATURE ] = array(
 			'labels'             => $common + array(
-				'name'          => _x( 'Literature', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Book', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Literature', 'rudelwerk' ),
-				'all_items'     => __( 'All literature', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new book', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit book', 'rudelwerk' ),
-				'new_item'      => __( 'New book', 'rudelwerk' ),
-				'view_item'     => __( 'View book', 'rudelwerk' ),
-				'search_items'  => __( 'Search literature', 'rudelwerk' ),
+				'name'          => _x( 'Literature', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Book', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Literature', 'puppypress' ),
+				'all_items'     => __( 'All literature', 'puppypress' ),
+				'add_new_item'  => __( 'Add new book', 'puppypress' ),
+				'edit_item'     => __( 'Edit book', 'puppypress' ),
+				'new_item'      => __( 'New book', 'puppypress' ),
+				'view_item'     => __( 'View book', 'puppypress' ),
+				'search_items'  => __( 'Search literature', 'puppypress' ),
 			),
-			'description'        => __( 'Recommended literature.', 'rudelwerk' ),
+			'description'        => __( 'Recommended literature.', 'puppypress' ),
 			'menu_icon'          => 'dashicons-book',
 			'menu_position'      => 5,
 			'supports'           => array( 'title', 'author', 'editor', 'thumbnail' ),
 			'publicly_queryable' => false,
 			'rewrite'            => array(
-				'slug'       => $this->slug( self::LITERATURE, _x( 'literature', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::LITERATURE, _x( 'literature', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);
 
 		$types[ self::VACATION_DEAL ] = array(
 			'labels'        => $common + array(
-				'name'          => _x( 'Vacation deals', 'post type general name', 'rudelwerk' ),
-				'singular_name' => _x( 'Vacation deal', 'post type singular name', 'rudelwerk' ),
-				'menu_name'     => __( 'Vacation deals', 'rudelwerk' ),
-				'all_items'     => __( 'All vacation deals', 'rudelwerk' ),
-				'add_new_item'  => __( 'Add new vacation deal', 'rudelwerk' ),
-				'edit_item'     => __( 'Edit vacation deal', 'rudelwerk' ),
-				'new_item'      => __( 'New vacation deal', 'rudelwerk' ),
-				'view_item'     => __( 'View vacation deal', 'rudelwerk' ),
-				'search_items'  => __( 'Search vacation deals', 'rudelwerk' ),
+				'name'          => _x( 'Vacation deals', 'post type general name', 'puppypress' ),
+				'singular_name' => _x( 'Vacation deal', 'post type singular name', 'puppypress' ),
+				'menu_name'     => __( 'Vacation deals', 'puppypress' ),
+				'all_items'     => __( 'All vacation deals', 'puppypress' ),
+				'add_new_item'  => __( 'Add new vacation deal', 'puppypress' ),
+				'edit_item'     => __( 'Edit vacation deal', 'puppypress' ),
+				'new_item'      => __( 'New vacation deal', 'puppypress' ),
+				'view_item'     => __( 'View vacation deal', 'puppypress' ),
+				'search_items'  => __( 'Search vacation deals', 'puppypress' ),
 			),
-			'description'   => __( 'Dog friendly vacation deals.', 'rudelwerk' ),
+			'description'   => __( 'Dog friendly vacation deals.', 'puppypress' ),
 			'menu_icon'     => 'dashicons-palmtree',
 			'menu_position' => 5,
 			'supports'      => array( 'title', 'author', 'editor', 'thumbnail' ),
 			'has_archive'   => true,
 			'rewrite'       => array(
-				'slug'       => $this->slug( self::VACATION_DEAL, _x( 'vacationdeals', 'URL slug', 'rudelwerk' ) ),
+				'slug'       => $this->slug( self::VACATION_DEAL, _x( 'vacationdeals', 'URL slug', 'puppypress' ) ),
 				'with_front' => false,
 			),
 		);

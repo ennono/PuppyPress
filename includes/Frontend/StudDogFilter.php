@@ -2,12 +2,12 @@
 /**
  * Stud dog search filter.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
-use Rudelwerk\Content\Taxonomies;
+use PuppyPress\Content\Taxonomies;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -19,13 +19,13 @@ defined( 'ABSPATH' ) || exit;
  */
 final class StudDogFilter {
 
-	const PARAM_ZIP      = 'rw_zip';
-	const PARAM_SIZE     = 'rw_size';
-	const PARAM_HD       = 'rw_hd';
-	const PARAM_ED       = 'rw_ed';
-	const PARAM_EXAMS    = 'rw_exams';
-	const PARAM_TITLES   = 'rw_titles';
-	const PARAM_APPROVAL = 'rw_approval';
+	const PARAM_ZIP      = 'pp_zip';
+	const PARAM_SIZE     = 'pp_size';
+	const PARAM_HD       = 'pp_hd';
+	const PARAM_ED       = 'pp_ed';
+	const PARAM_EXAMS    = 'pp_exams';
+	const PARAM_TITLES   = 'pp_titles';
+	const PARAM_APPROVAL = 'pp_approval';
 
 	/**
 	 * ZIP code prefix (digits only).

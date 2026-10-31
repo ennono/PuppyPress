@@ -2,13 +2,13 @@
 /**
  * Configurable "recent entries" widget.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Widgets;
+namespace PuppyPress\Widgets;
 
-use Rudelwerk\Data\Dogs;
-use Rudelwerk\Frontend\Icons;
+use PuppyPress\Data\Dogs;
+use PuppyPress\Frontend\Icons;
 use WP_Query;
 use WP_Widget;
 
@@ -51,7 +51,7 @@ class RecentEntries extends WP_Widget {
 			$this->config['id_base'],
 			$this->config['name'],
 			array(
-				'classname'                   => $this->config['id_base'] . ' rudelwerk-recent',
+				'classname'                   => $this->config['id_base'] . ' puppypress-recent',
 				'description'                 => $this->config['description'],
 				'customize_selective_refresh' => true,
 			)
@@ -67,7 +67,7 @@ class RecentEntries extends WP_Widget {
 	 * @param array $instance Settings.
 	 */
 	public function widget( $args, $instance ) {
-		$title  = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Recent entries', 'rudelwerk' );
+		$title  = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Recent entries', 'puppypress' );
 		$title  = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$number = ! empty( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 
@@ -83,13 +83,13 @@ class RecentEntries extends WP_Widget {
 		$query_args = apply_filters( 'widget_posts_args', $query_args, $instance );
 
 		/**
-		 * Filters the query of a Rudelwerk "recent entries" widget.
+		 * Filters the query of a PuppyPress "recent entries" widget.
 		 *
 		 * @param array  $query_args WP_Query arguments.
 		 * @param array  $instance   Widget settings.
 		 * @param string $id_base    Widget ID base.
 		 */
-		$query = new WP_Query( apply_filters( 'rudelwerk_recent_entries_query_args', $query_args, $instance, $this->id_base ) );
+		$query = new WP_Query( apply_filters( 'puppypress_recent_entries_query_args', $query_args, $instance, $this->id_base ) );
 
 		if ( ! $query->have_posts() ) {
 			return;
@@ -112,7 +112,7 @@ class RecentEntries extends WP_Widget {
 
 			if ( $this->config['show_type'] ) {
 				printf(
-					'<span class="rudelwerk-recent__type">%s:</span><br>',
+					'<span class="puppypress-recent__type">%s:</span><br>',
 					esc_html( sprintf( $this->config['type_format'], Dogs::post_type_label( $post->post_type ) ) )
 				);
 			}
@@ -120,7 +120,7 @@ class RecentEntries extends WP_Widget {
 			printf(
 				'<a href="%1$s">%2$s</a>',
 				esc_url( get_permalink( $post ) ),
-				esc_html( '' !== $post_title ? $post_title : __( '(no title)', 'rudelwerk' ) )
+				esc_html( '' !== $post_title ? $post_title : __( '(no title)', 'puppypress' ) )
 			);
 
 			if ( ! empty( $instance['show_date'] ) ) {
@@ -134,7 +134,7 @@ class RecentEntries extends WP_Widget {
 
 		if ( $link ) {
 			printf(
-				'<a href="%1$s" class="button rudelwerk-recent__more">%2$s&nbsp;%3$s</a>',
+				'<a href="%1$s" class="button puppypress-recent__more">%2$s&nbsp;%3$s</a>',
 				esc_url( $link ),
 				Icons::svg( 'arrow' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				esc_html( $this->config['link_label'] )
@@ -177,7 +177,7 @@ class RecentEntries extends WP_Widget {
 		$show_date = ! empty( $instance['show_date'] );
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'rudelwerk' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'puppypress' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<?php if ( $this->config['link_option'] ) : ?>
@@ -186,19 +186,19 @@ class RecentEntries extends WP_Widget {
 				<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>">
 					<?php
 					/* translators: %s: button label, e.g. "All results" */
-					echo esc_html( sprintf( __( 'Link of the button "%s":', 'rudelwerk' ), $this->config['link_label'] ) );
+					echo esc_html( sprintf( __( 'Link of the button "%s":', 'puppypress' ), $this->config['link_label'] ) );
 					?>
 				</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="url" value="<?php echo esc_attr( isset( $instance[ $key ] ) ? $instance[ $key ] : '' ); ?>" />
 			</p>
 		<?php endif; ?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of entries to show:', 'rudelwerk' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of entries to show:', 'puppypress' ); ?></label>
 			<input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="number" step="1" min="1" value="<?php echo esc_attr( $number ); ?>" size="3" />
 		</p>
 		<p>
 			<input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Display date?', 'rudelwerk' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Display date?', 'puppypress' ); ?></label>
 		</p>
 		<?php
 		return '';

@@ -2,9 +2,9 @@
 /**
  * Stud dogs, optionally grouped by kennel.
  *
- * Override: {theme}/rudelwerk/lists/stud-dogs.php
+ * Override: {theme}/puppypress/lists/stud-dogs.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  * @version 1.0.0
  *
  * @var array $args {
@@ -14,18 +14,18 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$rw_found = false;
+$pp_found = false;
 ?>
-<div class="rudelwerk-cards">
-	<?php foreach ( $args['groups'] as $rw_group ) : ?>
-		<?php foreach ( $rw_group['posts'] as $rw_post ) : ?>
-			<?php $rw_found = true; ?>
+<div class="puppypress-cards">
+	<?php foreach ( $args['groups'] as $pp_group ) : ?>
+		<?php foreach ( $pp_group['posts'] as $pp_post ) : ?>
+			<?php $pp_found = true; ?>
 			<?php
-			rudelwerk_template(
+			puppypress_template(
 				'parts/stud-dog-card.php',
 				array(
-					'post'   => $rw_post,
-					'kennel' => $rw_group['kennel'],
+					'post'   => $pp_post,
+					'kennel' => $pp_group['kennel'],
 				)
 			);
 			?>
@@ -33,6 +33,6 @@ $rw_found = false;
 	<?php endforeach; ?>
 </div>
 
-<?php if ( ! $rw_found ) : ?>
-	<p class="rudelwerk-empty"><?php esc_html_e( 'No stud dogs found.', 'rudelwerk' ); ?></p>
+<?php if ( ! $pp_found ) : ?>
+	<p class="puppypress-empty"><?php esc_html_e( 'No stud dogs found.', 'puppypress' ); ?></p>
 <?php endif; ?>

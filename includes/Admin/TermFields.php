@@ -2,12 +2,12 @@
 /**
  * Custom fields for kennels, breeders and owners.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Admin;
+namespace PuppyPress\Admin;
 
-use Rudelwerk\Content\Fields;
+use PuppyPress\Content\Fields;
 use WP_Term;
 
 defined( 'ABSPATH' ) || exit;
@@ -17,8 +17,8 @@ defined( 'ABSPATH' ) || exit;
  */
 final class TermFields {
 
-	const NONCE_ACTION = 'rudelwerk_save_term_meta';
-	const NONCE_NAME   = 'rudelwerk_term_nonce';
+	const NONCE_ACTION = 'puppypress_save_term_meta';
+	const NONCE_NAME   = 'puppypress_term_nonce';
 
 	/**
 	 * Hooks.
@@ -50,7 +50,7 @@ final class TermFields {
 		foreach ( $this->fields( $taxonomy ) as $key => $field ) {
 			$default = isset( $field['unchecked'] ) ? $field['unchecked'] : '';
 
-			echo '<div class="form-field rudelwerk-term-field">';
+			echo '<div class="form-field puppypress-term-field">';
 			printf( '<label for="%1$s">%2$s</label>', esc_attr( FieldRenderer::id( $key ) ), esc_html( $field['label'] ) );
 			FieldRenderer::control( $key, $field, $default );
 			$this->checkbox_description( $field );
@@ -68,7 +68,7 @@ final class TermFields {
 		wp_nonce_field( self::NONCE_ACTION, self::NONCE_NAME );
 
 		foreach ( $this->fields( $taxonomy ) as $key => $field ) {
-			echo '<tr class="form-field rudelwerk-term-field">';
+			echo '<tr class="form-field puppypress-term-field">';
 			printf( '<th scope="row"><label for="%1$s">%2$s</label></th><td>', esc_attr( FieldRenderer::id( $key ) ), esc_html( $field['label'] ) );
 			FieldRenderer::control( $key, $field, (string) get_term_meta( $term->term_id, $key, true ) );
 			$this->checkbox_description( $field );

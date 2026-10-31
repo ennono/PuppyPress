@@ -3,20 +3,20 @@
  * Dependency free i18n tooling.
  *
  * Usage:
- *   php bin/i18n.php pot                Extract strings into languages/rudelwerk.pot
+ *   php bin/i18n.php pot                Extract strings into languages/puppypress.pot
  *   php bin/i18n.php update             Merge the POT into all languages/*.po files
  *   php bin/i18n.php compile            Compile languages/*.po into .mo and .l10n.php
  *
  * WP-CLI (`wp i18n make-pot`, `make-mo`, `make-php`) produces equivalent files.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
 if ( 'cli' !== PHP_SAPI ) {
 	exit( 1 );
 }
 
-const RW_DOMAIN = 'rudelwerk';
+const PP_DOMAIN = 'puppypress';
 
 $root = dirname( __DIR__ );
 
@@ -46,7 +46,7 @@ $functions = array(
  * @param string $literal Token.
  * @return string
  */
-function rw_decode_literal( $literal ) {
+function pp_decode_literal( $literal ) {
 	$quote = $literal[0];
 	$body  = substr( $literal, 1, -1 );
 
@@ -65,7 +65,7 @@ function rw_decode_literal( $literal ) {
  * @param array  $functions Function map.
  * @return array[]
  */
-function rw_extract( $file, $relative, array $functions ) {
+function pp_extract( $file, $relative, array $functions ) {
 	$tokens  = token_get_all( file_get_contents( $file ) );
 	$count   = count( $tokens );
 	$found   = array();
@@ -135,10 +135,10 @@ function rw_extract( $file, $relative, array $functions ) {
 				continue;
 			}
 
-			$entry[ $role ] = rw_decode_literal( $arg[0][1] );
+			$entry[ $role ] = pp_decode_literal( $arg[0][1] );
 		}
 
-		if ( RW_DOMAIN !== $entry['domain'] || null === $entry['text'] || '' === $entry['text'] ) {
+		if ( PP_DOMAIN !== $entry['domain'] || null === $entry['text'] || '' === $entry['text'] ) {
 			continue;
 		}
 
@@ -162,7 +162,7 @@ function rw_extract( $file, $relative, array $functions ) {
  * @param string $string String.
  * @return string
  */
-function rw_po_escape( $string ) {
+function pp_po_escape( $string ) {
 	return '"' . str_replace( array( '\\', '"', "\n", "\t" ), array( '\\\\', '\\"', '\\n', '\\t' ), $string ) . '"';
 }
 
@@ -172,7 +172,7 @@ function rw_po_escape( $string ) {
  * @param array $entry Entry.
  * @return string
  */
-function rw_key( array $entry ) {
+function pp_key( array $entry ) {
 	return ( null !== $entry['context'] ? $entry['context'] . "\x04" : '' ) . $entry['msgid'];
 }
 
@@ -182,7 +182,7 @@ function rw_key( array $entry ) {
  * @param string $file Path.
  * @return array{headers: string, entries: array<string, array>}
  */
-function rw_parse_po( $file ) {
+function pp_parse_po( $file ) {
 	$lines   = file( $file, FILE_IGNORE_NEW_LINES );
 	$entries = array();
 	$headers = '';
@@ -198,7 +198,7 @@ function rw_parse_po( $file ) {
 		if ( '' === $entry['msgid'] && null === $entry['context'] ) {
 			$headers = isset( $entry['msgstr'][0] ) ? $entry['msgstr'][0] : '';
 		} else {
-			$entries[ rw_key( $entry ) ] = $entry;
+			$entries[ pp_key( $entry ) ] = $entry;
 		}
 
 		$entry = null;
@@ -275,11 +275,11 @@ function rw_parse_po( $file ) {
  * @param array  $entries Entries.
  * @param int    $nplurals Number of plural forms.
  */
-function rw_write_po( $file, $headers, array $entries, $nplurals = 2 ) {
+function pp_write_po( $file, $headers, array $entries, $nplurals = 2 ) {
 	$out = "msgid \"\"\nmsgstr \"\"\n";
 
 	foreach ( explode( "\n", rtrim( $headers, "\n" ) ) as $header ) {
-		$out .= rw_po_escape( $header . "\n" ) . "\n";
+		$out .= pp_po_escape( $header . "\n" ) . "\n";
 	}
 
 	foreach ( $entries as $entry ) {
@@ -298,19 +298,19 @@ function rw_write_po( $file, $headers, array $entries, $nplurals = 2 ) {
 		}
 
 		if ( null !== $entry['context'] ) {
-			$out .= 'msgctxt ' . rw_po_escape( $entry['context'] ) . "\n";
+			$out .= 'msgctxt ' . pp_po_escape( $entry['context'] ) . "\n";
 		}
 
-		$out .= 'msgid ' . rw_po_escape( $entry['msgid'] ) . "\n";
+		$out .= 'msgid ' . pp_po_escape( $entry['msgid'] ) . "\n";
 
 		if ( null !== $entry['plural'] ) {
-			$out .= 'msgid_plural ' . rw_po_escape( $entry['plural'] ) . "\n";
+			$out .= 'msgid_plural ' . pp_po_escape( $entry['plural'] ) . "\n";
 
 			for ( $i = 0; $i < $nplurals; $i++ ) {
-				$out .= 'msgstr[' . $i . '] ' . rw_po_escape( isset( $entry['msgstr'][ $i ] ) ? $entry['msgstr'][ $i ] : '' ) . "\n";
+				$out .= 'msgstr[' . $i . '] ' . pp_po_escape( isset( $entry['msgstr'][ $i ] ) ? $entry['msgstr'][ $i ] : '' ) . "\n";
 			}
 		} else {
-			$out .= 'msgstr ' . rw_po_escape( isset( $entry['msgstr'][0] ) ? $entry['msgstr'][0] : '' ) . "\n";
+			$out .= 'msgstr ' . pp_po_escape( isset( $entry['msgstr'][0] ) ? $entry['msgstr'][0] : '' ) . "\n";
 		}
 	}
 
@@ -323,8 +323,8 @@ function rw_write_po( $file, $headers, array $entries, $nplurals = 2 ) {
  * @param string $root      Plugin root.
  * @param array  $functions Function map.
  */
-function rw_make_pot( $root, array $functions ) {
-	$files = array( $root . '/rudelwerk.php' );
+function pp_make_pot( $root, array $functions ) {
+	$files = array( $root . '/puppypress.php' );
 
 	foreach ( array( 'includes', 'templates' ) as $dir ) {
 		$iterator = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $root . '/' . $dir, FilesystemIterator::SKIP_DOTS ) );
@@ -342,8 +342,8 @@ function rw_make_pot( $root, array $functions ) {
 	foreach ( $files as $file ) {
 		$relative = ltrim( substr( $file, strlen( $root ) ), '/' );
 
-		foreach ( rw_extract( $file, $relative, $functions ) as $found ) {
-			$key = rw_key( $found );
+		foreach ( pp_extract( $file, $relative, $functions ) as $found ) {
+			$key = pp_key( $found );
 
 			if ( ! isset( $entries[ $key ] ) ) {
 				$entries[ $key ] = array(
@@ -369,7 +369,7 @@ function rw_make_pot( $root, array $functions ) {
 	}
 
 	// Plugin header strings.
-	$header = file_get_contents( $root . '/rudelwerk.php' );
+	$header = file_get_contents( $root . '/puppypress.php' );
 	foreach ( array( 'Plugin Name', 'Description', 'Author' ) as $field ) {
 		if ( preg_match( '/^\s*\*\s*' . preg_quote( $field, '/' ) . ':\s*(.+)$/m', $header, $m ) ) {
 			$entry = array(
@@ -377,11 +377,11 @@ function rw_make_pot( $root, array $functions ) {
 				'msgid'      => trim( $m[1] ),
 				'plural'     => null,
 				'msgstr'     => array(),
-				'references' => array( 'rudelwerk.php' ),
+				'references' => array( 'puppypress.php' ),
 				'comments'   => array( $field . ' of the plugin' ),
 			);
 
-			$entries[ rw_key( $entry ) ] = isset( $entries[ rw_key( $entry ) ] ) ? $entries[ rw_key( $entry ) ] : $entry;
+			$entries[ pp_key( $entry ) ] = isset( $entries[ pp_key( $entry ) ] ) ? $entries[ pp_key( $entry ) ] : $entry;
 		}
 	}
 
@@ -390,20 +390,20 @@ function rw_make_pot( $root, array $functions ) {
 	$headers = implode(
 		"\n",
 		array(
-			'Project-Id-Version: Rudelwerk ' . trim( $version[1] ),
+			'Project-Id-Version: PuppyPress ' . trim( $version[1] ),
 			'Report-Msgid-Bugs-To: ',
 			'POT-Creation-Date: ' . gmdate( 'Y-m-d H:i+0000' ),
 			'MIME-Version: 1.0',
 			'Content-Type: text/plain; charset=UTF-8',
 			'Content-Transfer-Encoding: 8bit',
-			'X-Generator: rudelwerk/bin/i18n.php',
-			'X-Domain: ' . RW_DOMAIN,
+			'X-Generator: puppypress/bin/i18n.php',
+			'X-Domain: ' . PP_DOMAIN,
 		)
 	);
 
-	rw_write_po( $root . '/languages/rudelwerk.pot', $headers, $entries );
+	pp_write_po( $root . '/languages/puppypress.pot', $headers, $entries );
 
-	fwrite( STDOUT, sprintf( "Wrote languages/rudelwerk.pot (%d strings)\n", count( $entries ) ) );
+	fwrite( STDOUT, sprintf( "Wrote languages/puppypress.pot (%d strings)\n", count( $entries ) ) );
 }
 
 /**
@@ -412,7 +412,7 @@ function rw_make_pot( $root, array $functions ) {
  * @param string $headers Headers.
  * @return int
  */
-function rw_nplurals( $headers ) {
+function pp_nplurals( $headers ) {
 	return preg_match( '/nplurals\s*=\s*(\d+)/', $headers, $m ) ? (int) $m[1] : 2;
 }
 
@@ -421,11 +421,11 @@ function rw_nplurals( $headers ) {
  *
  * @param string $root Plugin root.
  */
-function rw_update( $root ) {
-	$pot = rw_parse_po( $root . '/languages/rudelwerk.pot' );
+function pp_update( $root ) {
+	$pot = pp_parse_po( $root . '/languages/puppypress.pot' );
 
 	foreach ( glob( $root . '/languages/*.po' ) as $po_file ) {
-		$po      = rw_parse_po( $po_file );
+		$po      = pp_parse_po( $po_file );
 		$merged  = array();
 		$missing = 0;
 
@@ -439,7 +439,7 @@ function rw_update( $root ) {
 			}
 		}
 
-		rw_write_po( $po_file, $po['headers'], $merged, rw_nplurals( $po['headers'] ) );
+		pp_write_po( $po_file, $po['headers'], $merged, pp_nplurals( $po['headers'] ) );
 
 		fwrite( STDOUT, sprintf( "Updated %s (%d untranslated)\n", basename( $po_file ), $missing ) );
 	}
@@ -450,9 +450,9 @@ function rw_update( $root ) {
  *
  * @param string $root Plugin root.
  */
-function rw_compile( $root ) {
+function pp_compile( $root ) {
 	foreach ( glob( $root . '/languages/*.po' ) as $po_file ) {
-		$po       = rw_parse_po( $po_file );
+		$po       = pp_parse_po( $po_file );
 		$messages = array();
 
 		foreach ( $po['entries'] as $entry ) {
@@ -462,7 +462,7 @@ function rw_compile( $root ) {
 				continue;
 			}
 
-			$original              = rw_key( $entry ) . ( null !== $entry['plural'] ? "\0" . $entry['plural'] : '' );
+			$original              = pp_key( $entry ) . ( null !== $entry['plural'] ? "\0" . $entry['plural'] : '' );
 			$messages[ $original ] = $translation;
 		}
 
@@ -526,13 +526,13 @@ $command = isset( $argv[1] ) ? $argv[1] : '';
 
 switch ( $command ) {
 	case 'pot':
-		rw_make_pot( $root, $functions );
+		pp_make_pot( $root, $functions );
 		break;
 	case 'update':
-		rw_update( $root );
+		pp_update( $root );
 		break;
 	case 'compile':
-		rw_compile( $root );
+		pp_compile( $root );
 		break;
 	default:
 		fwrite( STDERR, "Usage: php bin/i18n.php pot|update|compile\n" );

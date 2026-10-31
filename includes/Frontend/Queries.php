@@ -1,14 +1,14 @@
 <?php
 /**
- * Adjustments of the main query on Rudelwerk archives.
+ * Adjustments of the main query on PuppyPress archives.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
-use Rudelwerk\Content\PostTypes;
-use Rudelwerk\Content\Taxonomies;
+use PuppyPress\Content\PostTypes;
+use PuppyPress\Content\Taxonomies;
 use WP_Query;
 
 defined( 'ABSPATH' ) || exit;
@@ -94,7 +94,7 @@ final class Queries {
 		 *
 		 * @param bool $all Default true.
 		 */
-		if ( apply_filters( 'rudelwerk_stud_dog_archive_show_all', true ) ) {
+		if ( apply_filters( 'puppypress_stud_dog_archive_show_all', true ) ) {
 			$query->set( 'posts_per_page', -1 );
 		}
 
@@ -117,7 +117,7 @@ final class Queries {
 		 *
 		 * @param bool $print Default true.
 		 */
-		if ( ! apply_filters( 'rudelwerk_archive_filter_form', true ) ) {
+		if ( ! apply_filters( 'puppypress_archive_filter_form', true ) ) {
 			return;
 		}
 

@@ -2,10 +2,10 @@
 /**
  * Contact details of breeders, owners, groomers and dog sitters.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Data;
+namespace PuppyPress\Data;
 
 use WP_Term;
 

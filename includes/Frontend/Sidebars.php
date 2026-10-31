@@ -2,12 +2,12 @@
 /**
  * Widget areas.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
-use Rudelwerk\Content\PostTypes;
+use PuppyPress\Content\PostTypes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -32,9 +32,9 @@ final class Sidebars {
 	public function register() {
 		register_sidebar(
 			array(
-				'name'          => __( 'Single result sidebar', 'rudelwerk' ),
+				'name'          => __( 'Single result sidebar', 'puppypress' ),
 				'id'            => self::RESULT_SIDEBAR,
-				'description'   => __( 'Replaces the main sidebar on single result pages.', 'rudelwerk' ),
+				'description'   => __( 'Replaces the main sidebar on single result pages.', 'puppypress' ),
 				'before_widget' => '<div id="%1$s" class="et_pb_widget widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h4 class="widgettitle">',
@@ -61,7 +61,7 @@ final class Sidebars {
 		 *
 		 * @param string[] $sidebar_ids Sidebar IDs.
 		 */
-		$replaced = (array) apply_filters( 'rudelwerk_result_replaced_sidebars', array( 'sidebar-main', 'sidebar-1' ) );
+		$replaced = (array) apply_filters( 'puppypress_result_replaced_sidebars', array( 'sidebar-main', 'sidebar-1' ) );
 
 		foreach ( $replaced as $sidebar_id ) {
 			if ( isset( $sidebars_widgets[ $sidebar_id ] ) ) {

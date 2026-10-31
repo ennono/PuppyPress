@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rudelwerk 1.0.0\n"
+"Project-Id-Version: PuppyPress 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 13:10+0000\n"
+"POT-Creation-Date: 2026-10-31 13:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: rudelwerk/bin/i18n.php\n"
-"X-Domain: rudelwerk\n"
+"X-Generator: puppypress/bin/i18n.php\n"
+"X-Domain: puppypress\n"
 
 #: includes/Admin/Assets.php:55
 msgid "Choose or upload photos"
@@ -30,11 +30,11 @@ msgid "Add photos"
 msgstr ""
 
 #: includes/Admin/LegacyThemeNotice.php:51
-msgid "Rudelwerk:"
+msgid "PuppyPress:"
 msgstr ""
 
 #: includes/Admin/LegacyThemeNotice.php:52
-msgid "The active theme still registers post types, fields or widgets that are now provided by Rudelwerk. Please remove the files in the theme's \"includes\" folder and their require_once lines from functions.php (see docs/MIGRATION.md)."
+msgid "The active theme still registers post types, fields or widgets that are now provided by PuppyPress. Please remove the files in the theme's \"includes\" folder and their require_once lines from functions.php (see docs/MIGRATION.md)."
 msgstr ""
 
 #: includes/Admin/MetaBoxes.php:131 includes/Content/Fields.php:115 templates/parts/pedigree.php:38 templates/single/stud-dog.php:100
@@ -1558,7 +1558,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: includes/Frontend/LegacyPageTemplates.php:38
-msgid "Rudelwerk: Kennels with stud dogs"
+msgid "PuppyPress: Kennels with stud dogs"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:44
@@ -1570,7 +1570,7 @@ msgid "An overview of all registered kennels. Click on a kennel to see its dogs.
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:51
-msgid "Rudelwerk: All stud dogs (complete list)"
+msgid "PuppyPress: All stud dogs (complete list)"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:58
@@ -1578,7 +1578,7 @@ msgid "A complete list of all stud dogs we know. Click on a dog to have a closer
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:64
-msgid "Rudelwerk: Approvals"
+msgid "PuppyPress: Approvals"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:70
@@ -1590,7 +1590,7 @@ msgid "An overview of all registered approvals. Click on an entry to read the ap
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:77
-msgid "Rudelwerk: Breeding licenses"
+msgid "PuppyPress: Breeding licenses"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:83
@@ -1602,7 +1602,7 @@ msgid "An overview of all registered breeding licenses. Click on an entry to rea
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:90
-msgid "Rudelwerk: Puppies by city"
+msgid "PuppyPress: Puppies by city"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:98
@@ -1614,7 +1614,7 @@ msgid "An overview of all registered puppies by city. Click on a city to learn m
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:105
-msgid "Rudelwerk: Dogs to place"
+msgid "PuppyPress: Dogs to place"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:110
@@ -1626,7 +1626,7 @@ msgid "An overview of all dogs looking for a new home. Click on a category to le
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:117
-msgid "Rudelwerk: Shows"
+msgid "PuppyPress: Shows"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:124 includes/Frontend/LegacyPageTemplates.php:145
@@ -1634,7 +1634,7 @@ msgid "Click on a period to see its shows."
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:130
-msgid "Rudelwerk: Results and shows"
+msgid "PuppyPress: Results and shows"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:137
@@ -1642,38 +1642,38 @@ msgid "An overview of all registered events. Click on an event to see the result
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:151
-msgid "Rudelwerk: Trimming proofs"
+msgid "PuppyPress: Trimming proofs"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:155
-msgid "Rudelwerk: Dog sitters"
+msgid "PuppyPress: Dog sitters"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:159
-msgid "Rudelwerk: Literature"
+msgid "PuppyPress: Literature"
 msgstr ""
 
 #: includes/Frontend/LegacyPageTemplates.php:163
-msgid "Rudelwerk: Breeders' board"
+msgid "PuppyPress: Breeders' board"
 msgstr ""
 
-#: includes/Frontend/Shortcodes.php:194
+#: includes/Frontend/Shortcodes.php:193
 msgid "Puppy placement"
 msgstr ""
 
-#: includes/Frontend/Shortcodes.php:266
+#: includes/Frontend/Shortcodes.php:265
 msgid "Born litters"
 msgstr ""
 
-#: includes/Frontend/Shortcodes.php:273
+#: includes/Frontend/Shortcodes.php:272
 msgid "Expected litters"
 msgstr ""
 
-#: includes/Frontend/Shortcodes.php:375
+#: includes/Frontend/Shortcodes.php:374
 msgid "No groomers found."
 msgstr ""
 
-#: includes/Frontend/Shortcodes.php:380
+#: includes/Frontend/Shortcodes.php:379
 msgid "No dog sitters found."
 msgstr ""
 
@@ -1711,7 +1711,7 @@ msgid "Display date?"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:44
-msgid "Rudelwerk: Recent entries"
+msgid "PuppyPress: Recent entries"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:45
@@ -1719,7 +1719,7 @@ msgid "Most recent posts, litters, stud dogs, dogs to place and results."
 msgstr ""
 
 #: includes/Widgets/Widgets.php:51
-msgid "Rudelwerk: Recent litters"
+msgid "PuppyPress: Recent litters"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:52
@@ -1727,7 +1727,7 @@ msgid "Most recent litters."
 msgstr ""
 
 #: includes/Widgets/Widgets.php:57
-msgid "Rudelwerk: Recent stud dogs"
+msgid "PuppyPress: Recent stud dogs"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:58
@@ -1735,7 +1735,7 @@ msgid "Most recent stud dogs."
 msgstr ""
 
 #: includes/Widgets/Widgets.php:63
-msgid "Rudelwerk: Recent results"
+msgid "PuppyPress: Recent results"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:64
@@ -1743,7 +1743,7 @@ msgid "Most recent results, breeding licenses and shows."
 msgstr ""
 
 #: includes/Widgets/Widgets.php:72
-msgid "Rudelwerk: Recent dogs to place"
+msgid "PuppyPress: Recent dogs to place"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:73
@@ -1755,7 +1755,7 @@ msgid "All dogs to place"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:80
-msgid "Rudelwerk: Recent dogs to place and litters"
+msgid "PuppyPress: Recent dogs to place and litters"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:81
@@ -1763,7 +1763,7 @@ msgid "Most recent dogs to place including litters."
 msgstr ""
 
 #: includes/Widgets/Widgets.php:89
-msgid "Rudelwerk: News"
+msgid "PuppyPress: News"
 msgstr ""
 
 #: includes/Widgets/Widgets.php:90
@@ -1969,16 +1969,16 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. Plugin Name of the plugin
-#: rudelwerk.php
-msgid "Rudelwerk"
+#: puppypress.php
+msgid "PuppyPress"
 msgstr ""
 
 #. Description of the plugin
-#: rudelwerk.php
+#: puppypress.php
 msgid "Club management for dog breeding clubs: stud dogs with pedigree, litters, dogs to place, approvals, breeding licenses, results, shows, trimming proofs, dog sitters and literature."
 msgstr ""
 
 #. Author of the plugin
-#: rudelwerk.php
+#: puppypress.php
 msgid "Timo Fricke"
 msgstr ""

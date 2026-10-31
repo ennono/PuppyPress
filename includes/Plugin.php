@@ -2,10 +2,10 @@
 /**
  * Plugin bootstrap.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk;
+namespace PuppyPress;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -64,18 +64,18 @@ final class Plugin {
 		( new Frontend\LegacyPageTemplates() )->register_hooks();
 
 		/**
-		 * Fires after Rudelwerk has registered all of its hooks.
+		 * Fires after PuppyPress has registered all of its hooks.
 		 *
 		 * @param Plugin $plugin Plugin instance.
 		 */
-		do_action( 'rudelwerk_loaded', $this );
+		do_action( 'puppypress_loaded', $this );
 	}
 
 	/**
 	 * Loads translations.
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'rudelwerk', false, dirname( plugin_basename( RUDELWERK_FILE ) ) . '/languages' );
+		load_plugin_textdomain( 'puppypress', false, dirname( plugin_basename( PUPPYPRESS_FILE ) ) . '/languages' );
 	}
 
 	/**
@@ -85,19 +85,19 @@ final class Plugin {
 	 * with their translated slugs.
 	 */
 	public function maybe_flush_rewrite_rules() {
-		if ( get_option( 'rudelwerk_version' ) === RUDELWERK_VERSION ) {
+		if ( get_option( 'puppypress_version' ) === PUPPYPRESS_VERSION ) {
 			return;
 		}
 
 		flush_rewrite_rules();
-		update_option( 'rudelwerk_version', RUDELWERK_VERSION );
+		update_option( 'puppypress_version', PUPPYPRESS_VERSION );
 	}
 
 	/**
 	 * Activation: schedule a rewrite flush for the next request.
 	 */
 	public static function activate() {
-		delete_option( 'rudelwerk_version' );
+		delete_option( 'puppypress_version' );
 	}
 
 	/**
@@ -105,6 +105,6 @@ final class Plugin {
 	 */
 	public static function deactivate() {
 		delete_option( 'rewrite_rules' );
-		delete_option( 'rudelwerk_version' );
+		delete_option( 'puppypress_version' );
 	}
 }

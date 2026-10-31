@@ -1,8 +1,8 @@
-# Rudelwerk
+# PuppyPress
 
 **Vereinsverwaltung für Hundezuchtvereine als WordPress-Plugin.**
 
-Rudelwerk bündelt alles, was ein Zuchtverein auf seiner Website braucht: Deckrüden mit dreistufiger Abstammung, Würfe und Welpenvermittlung, Vermittlungshunde, Körberichte, Zuchtzulassungen, Ergebnisse, Ausstellungen, Trimmnachweise, Tierbetreuungen, Literatur und Urlaubsangebote. Dazu kommen Züchter-, Besitzer- und Zwingerverwaltung, Filter für die Deckrüdensuche, Übersichtsseiten und Widgets.
+PuppyPress bündelt alles, was ein Zuchtverein auf seiner Website braucht: Deckrüden mit dreistufiger Abstammung, Würfe und Welpenvermittlung, Vermittlungshunde, Körberichte, Zuchtzulassungen, Ergebnisse, Ausstellungen, Trimmnachweise, Tierbetreuungen, Literatur und Urlaubsangebote. Dazu kommen Züchter-, Besitzer- und Zwingerverwaltung, Filter für die Deckrüdensuche, Übersichtsseiten und Widgets.
 
 Das Plugin ist aus dem Child-Theme *Extra Child* hervorgegangen und übernimmt dessen komplette Fachlogik. Seitdem kümmert sich das Theme nur noch um das Aussehen; die Inhalte bleiben auch bei einem Theme-Wechsel erhalten.
 
@@ -22,7 +22,7 @@ Das Plugin ist aus dem Child-Theme *Extra Child* hervorgegangen und übernimmt d
 
 ## Installation
 
-1. Ordner `rudelwerk` nach `wp-content/plugins/` kopieren (oder ZIP über *Plugins → Installieren* hochladen).
+1. Ordner `puppypress` nach `wp-content/plugins/` kopieren (oder ZIP über *Plugins → Installieren* hochladen).
 2. Plugin aktivieren.
 3. Bei bestehender Website mit dem *Extra Child*-Theme: der [Migrationsanleitung](docs/MIGRATION.md) folgen.
 
@@ -34,59 +34,59 @@ Alle Shortcodes akzeptieren zusätzlich `title="…"` und `intro="…"` für ein
 
 | Shortcode | Ausgabe | Wichtige Attribute |
 | --- | --- | --- |
-| `[rudelwerk_stud_dogs]` | Deckrüden als Karten, nach Zwingern gruppiert | `filter="yes"` zeigt den Filter, `group="none"` für eine alphabetische Gesamtliste |
-| `[rudelwerk_stud_dog_filter]` | Nur das Filterformular | `action="current"` filtert auf der aktuellen Seite statt im Deckrüden-Archiv |
-| `[rudelwerk_terms]` | Hierarchische Liste einer Taxonomie | `taxonomy="kennel"`, `count="yes"`, `hide_empty="no"`, `link_empty="no"`, `depth="2"`, `orderby`, `order` |
-| `[rudelwerk_placement_overview]` | Welpenvermittlung und Vermittlungskategorien mit Anzahl | – |
-| `[rudelwerk_posts]` | Alphabetische Liste mit Zwingername | `post_type="approvals"` oder `post_type="breeding-license"` |
-| `[rudelwerk_litters]` | Gefallene und erwartete Würfe, nach PLZ sortiert | `status="all\|born\|expected"` |
-| `[rudelwerk_breeders_board]` | Züchtertafel: sichtbare Zwinger nach PLZ mit Züchterkontakten | – |
-| `[rudelwerk_directory]` | Tabelle nach PLZ-Regionen | `post_type="trimming-proofs"` oder `post_type="dog-sitters"` |
-| `[rudelwerk_literature]` | Literatur nach Kategorien | – |
+| `[puppypress_stud_dogs]` | Deckrüden als Karten, nach Zwingern gruppiert | `filter="yes"` zeigt den Filter, `group="none"` für eine alphabetische Gesamtliste |
+| `[puppypress_stud_dog_filter]` | Nur das Filterformular | `action="current"` filtert auf der aktuellen Seite statt im Deckrüden-Archiv |
+| `[puppypress_terms]` | Hierarchische Liste einer Taxonomie | `taxonomy="kennel"`, `count="yes"`, `hide_empty="no"`, `link_empty="no"`, `depth="2"`, `orderby`, `order` |
+| `[puppypress_placement_overview]` | Welpenvermittlung und Vermittlungskategorien mit Anzahl | – |
+| `[puppypress_posts]` | Alphabetische Liste mit Zwingername | `post_type="approvals"` oder `post_type="breeding-license"` |
+| `[puppypress_litters]` | Gefallene und erwartete Würfe, nach PLZ sortiert | `status="all\|born\|expected"` |
+| `[puppypress_breeders_board]` | Züchtertafel: sichtbare Zwinger nach PLZ mit Züchterkontakten | – |
+| `[puppypress_directory]` | Tabelle nach PLZ-Regionen | `post_type="trimming-proofs"` oder `post_type="dog-sitters"` |
+| `[puppypress_literature]` | Literatur nach Kategorien | – |
 
 ## Anpassen
 
 ### Templates überschreiben
 
-Alle Ausgaben stammen aus `templates/`. Wer etwas anpassen will, kopiert die Datei ins Theme nach `rudelwerk/` und ändert sie dort, z. B.:
+Alle Ausgaben stammen aus `templates/`. Wer etwas anpassen will, kopiert die Datei ins Theme nach `puppypress/` und ändert sie dort, z. B.:
 
 ```text
-wp-content/themes/mein-theme/rudelwerk/single/stud-dog.php
-wp-content/themes/mein-theme/rudelwerk/parts/pedigree.php
+wp-content/themes/mein-theme/puppypress/single/stud-dog.php
+wp-content/themes/mein-theme/puppypress/parts/pedigree.php
 ```
 
-Templates bekommen ihre Daten über `$args`. Mit `rudelwerk_template( 'parts/pedigree.php', $args )` lassen sie sich auch in eigenen Theme-Dateien einbinden.
+Templates bekommen ihre Daten über `$args`. Mit `puppypress_template( 'parts/pedigree.php', $args )` lassen sie sich auch in eigenen Theme-Dateien einbinden.
 
 ### Template-Tags
 
 ```php
-rudelwerk_stud_dog_name( $post );        // "Arko vom Waldrand"
-rudelwerk_display_kennel( $post );       // WP_Term|null (erster sichtbarer Zwinger)
-rudelwerk_the_pedigree( $post );         // Abstammungstabelle
-rudelwerk_stud_dog_filter_form( $url );  // Filterformular
+puppypress_stud_dog_name( $post );        // "Arko vom Waldrand"
+puppypress_display_kennel( $post );       // WP_Term|null (erster sichtbarer Zwinger)
+puppypress_the_pedigree( $post );         // Abstammungstabelle
+puppypress_stud_dog_filter_form( $url );  // Filterformular
 ```
 
 ### Hooks (Auswahl)
 
 | Hook | Zweck |
 | --- | --- |
-| `rudelwerk_post_type_args`, `rudelwerk_taxonomy_args` | Registrierungsargumente ändern |
-| `rudelwerk_post_type_slug`, `rudelwerk_taxonomy_slug` | URL-Slugs unabhängig von der Übersetzung festlegen |
-| `rudelwerk_post_fields`, `rudelwerk_term_fields` | Felder hinzufügen oder entfernen |
-| `rudelwerk_display_titles` | `false` schaltet „Name + Zwinger“ bzw. „Welpen …“ in Titeln ab |
-| `rudelwerk_single_content` | `false` schaltet die automatische Detailansicht ab |
-| `rudelwerk_archive_filter_form` | `false` blendet den Filter im Deckrüden-Archiv aus |
-| `rudelwerk_load_styles` | `false` lädt das Plugin-CSS nicht |
-| `rudelwerk_template` | Template-Pfade umleiten |
-| `rudelwerk_widgets` | Widget-Konfigurationen ändern |
-| `rudelwerk_date_format` | Datumsformat für Wurftage (Standard: WordPress-Einstellung) |
-| `rudelwerk_icon` | Eigene Icons statt der eingebauten SVGs |
-| `rudelwerk_result_replaced_sidebars` | Welche Theme-Sidebar auf Ergebnisseiten ersetzt wird |
+| `puppypress_post_type_args`, `puppypress_taxonomy_args` | Registrierungsargumente ändern |
+| `puppypress_post_type_slug`, `puppypress_taxonomy_slug` | URL-Slugs unabhängig von der Übersetzung festlegen |
+| `puppypress_post_fields`, `puppypress_term_fields` | Felder hinzufügen oder entfernen |
+| `puppypress_display_titles` | `false` schaltet „Name + Zwinger“ bzw. „Welpen …“ in Titeln ab |
+| `puppypress_single_content` | `false` schaltet die automatische Detailansicht ab |
+| `puppypress_archive_filter_form` | `false` blendet den Filter im Deckrüden-Archiv aus |
+| `puppypress_load_styles` | `false` lädt das Plugin-CSS nicht |
+| `puppypress_template` | Template-Pfade umleiten |
+| `puppypress_widgets` | Widget-Konfigurationen ändern |
+| `puppypress_date_format` | Datumsformat für Wurftage (Standard: WordPress-Einstellung) |
+| `puppypress_icon` | Eigene Icons statt der eingebauten SVGs |
+| `puppypress_result_replaced_sidebars` | Welche Theme-Sidebar auf Ergebnisseiten ersetzt wird |
 
 ## Aufbau
 
 ```text
-rudelwerk.php                 Plugin-Header, Autoloader, Bootstrap
+puppypress.php                 Plugin-Header, Autoloader, Bootstrap
 includes/
   Plugin.php                  Verdrahtet alle Module
   Content/                    Post Types, Taxonomien, Feld-Schema, Abstammung
@@ -109,7 +109,7 @@ Das Feld-Schema in `includes/Content/Fields.php` bestimmt alles Weitere: Meta-Re
 
 ```bash
 php tests/run.php            # Tests (Datenmodell, Sanitizing, Abstammung, Filter, Übersetzungen, Templates)
-php bin/i18n.php pot         # languages/rudelwerk.pot neu erzeugen
+php bin/i18n.php pot         # languages/puppypress.pot neu erzeugen
 php bin/i18n.php update      # POT in die PO-Dateien übernehmen
 php bin/i18n.php compile     # PO → MO und .l10n.php
 composer install && composer lint   # optional: WordPress Coding Standards

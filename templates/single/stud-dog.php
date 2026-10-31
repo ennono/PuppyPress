@@ -2,9 +2,9 @@
 /**
  * Detail view of a stud dog (wraps the post content).
  *
- * Override: {theme}/rudelwerk/single/stud-dog.php
+ * Override: {theme}/puppypress/single/stud-dog.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  * @version 1.0.0
  *
  * @var array $args {
@@ -13,67 +13,67 @@
  * }
  */
 
-use Rudelwerk\Content\Pedigree;
-use Rudelwerk\Data\Contact;
-use Rudelwerk\Data\Dogs;
+use PuppyPress\Content\Pedigree;
+use PuppyPress\Data\Contact;
+use PuppyPress\Data\Dogs;
 
 defined( 'ABSPATH' ) || exit;
 
-$rw_post = $args['post'];
-$rw_id   = $rw_post->ID;
+$pp_post = $args['post'];
+$pp_id   = $pp_post->ID;
 
-$rw_terms = static function ( $taxonomy ) use ( $rw_id ) {
-	$terms = get_the_terms( $rw_id, $taxonomy );
+$pp_terms = static function ( $taxonomy ) use ( $pp_id ) {
+	$terms = get_the_terms( $pp_id, $taxonomy );
 	return ( $terms && ! is_wp_error( $terms ) ) ? $terms : array();
 };
 
-$rw_kennels  = array_values( array_filter( $rw_terms( 'kennel' ), static function ( $kennel ) {
+$pp_kennels  = array_values( array_filter( $pp_terms( 'kennel' ), static function ( $kennel ) {
 	return ! Dogs::is_kennel_hidden( $kennel );
 } ) );
-$rw_breeders = array_map( array( Contact::class, 'for_term' ), $rw_terms( 'breeder' ) );
-$rw_owners   = array_map( array( Contact::class, 'for_term' ), $rw_terms( 'owner' ) );
+$pp_breeders = array_map( array( Contact::class, 'for_term' ), $pp_terms( 'breeder' ) );
+$pp_owners   = array_map( array( Contact::class, 'for_term' ), $pp_terms( 'owner' ) );
 
-$rw_born     = Dogs::format_date( (string) get_post_meta( $rw_id, 'date_born', true ) );
-$rw_withers  = (string) get_post_meta( $rw_id, 'withers', true );
-$rw_studbook = (string) get_post_meta( $rw_id, 'studbook_no', true );
-$rw_tests    = (string) get_post_meta( $rw_id, 'tests', true );
-$rw_license  = absint( get_post_meta( $rw_id, 'license', true ) );
-$rw_approval = absint( get_post_meta( $rw_id, 'approval', true ) );
-$rw_pedigree = Pedigree::get( $rw_id );
+$pp_born     = Dogs::format_date( (string) get_post_meta( $pp_id, 'date_born', true ) );
+$pp_withers  = (string) get_post_meta( $pp_id, 'withers', true );
+$pp_studbook = (string) get_post_meta( $pp_id, 'studbook_no', true );
+$pp_tests    = (string) get_post_meta( $pp_id, 'tests', true );
+$pp_license  = absint( get_post_meta( $pp_id, 'license', true ) );
+$pp_approval = absint( get_post_meta( $pp_id, 'approval', true ) );
+$pp_pedigree = Pedigree::get( $pp_id );
 
 /*
  * Summary line: kennel | breeder | owner | date born.
  */
-$rw_summary = array();
+$pp_summary = array();
 
-foreach ( $rw_kennels as $rw_kennel ) {
-	$rw_summary[] = array(
+foreach ( $pp_kennels as $pp_kennel ) {
+	$pp_summary[] = array(
 		/* translators: %s: kennel name */
-		'text' => sprintf( __( 'Kennel: %s', 'rudelwerk' ), $rw_kennel->name ),
-		'url'  => (string) get_term_meta( $rw_kennel->term_id, 'kennel_website', true ),
+		'text' => sprintf( __( 'Kennel: %s', 'puppypress' ), $pp_kennel->name ),
+		'url'  => (string) get_term_meta( $pp_kennel->term_id, 'kennel_website', true ),
 	);
 }
 
-foreach ( $rw_breeders as $rw_contact ) {
-	$rw_summary[] = array(
+foreach ( $pp_breeders as $pp_contact ) {
+	$pp_summary[] = array(
 		/* translators: %s: breeder name */
-		'text' => sprintf( __( 'Breeder: %s', 'rudelwerk' ), $rw_contact['name'] ),
-		'url'  => Contact::link( $rw_contact ),
+		'text' => sprintf( __( 'Breeder: %s', 'puppypress' ), $pp_contact['name'] ),
+		'url'  => Contact::link( $pp_contact ),
 	);
 }
 
-foreach ( $rw_owners as $rw_contact ) {
-	$rw_summary[] = array(
+foreach ( $pp_owners as $pp_contact ) {
+	$pp_summary[] = array(
 		/* translators: %s: owner name */
-		'text' => sprintf( __( 'Owner: %s', 'rudelwerk' ), $rw_contact['name'] ),
-		'url'  => Contact::link( $rw_contact, true ),
+		'text' => sprintf( __( 'Owner: %s', 'puppypress' ), $pp_contact['name'] ),
+		'url'  => Contact::link( $pp_contact, true ),
 	);
 }
 
-if ( '' !== $rw_born ) {
-	$rw_summary[] = array(
+if ( '' !== $pp_born ) {
+	$pp_summary[] = array(
 		/* translators: %s: date of birth */
-		'text' => sprintf( __( 'Date born: %s', 'rudelwerk' ), $rw_born ),
+		'text' => sprintf( __( 'Date born: %s', 'puppypress' ), $pp_born ),
 		'url'  => '',
 	);
 }
@@ -81,85 +81,85 @@ if ( '' !== $rw_born ) {
 /*
  * Stud dog data.
  */
-$rw_data = array();
+$pp_data = array();
 
-if ( '' !== $rw_studbook ) {
-	$rw_data[] = array( __( 'Stud book no.', 'rudelwerk' ), esc_html( $rw_studbook ) );
+if ( '' !== $pp_studbook ) {
+	$pp_data[] = array( __( 'Stud book no.', 'puppypress' ), esc_html( $pp_studbook ) );
 }
-if ( '' !== $rw_born ) {
-	$rw_data[] = array( __( 'Date born', 'rudelwerk' ), esc_html( $rw_born ) );
+if ( '' !== $pp_born ) {
+	$pp_data[] = array( __( 'Date born', 'puppypress' ), esc_html( $pp_born ) );
 }
-if ( '' !== $rw_withers ) {
+if ( '' !== $pp_withers ) {
 	/* translators: %s: withers height */
-	$rw_data[] = array( __( 'Withers', 'rudelwerk' ), esc_html( sprintf( __( '%s cm', 'rudelwerk' ), Dogs::format_withers( $rw_withers ) ) ) );
+	$pp_data[] = array( __( 'Withers', 'puppypress' ), esc_html( sprintf( __( '%s cm', 'puppypress' ), Dogs::format_withers( $pp_withers ) ) ) );
 }
-if ( $rw_license && 'publish' === get_post_status( $rw_license ) ) {
-	$rw_data[] = array( __( 'Breeding license', 'rudelwerk' ), sprintf( '<a href="%1$s">%2$s</a>', esc_url( get_permalink( $rw_license ) ), esc_html( get_post_field( 'post_title', $rw_license ) ) ) );
+if ( $pp_license && 'publish' === get_post_status( $pp_license ) ) {
+	$pp_data[] = array( __( 'Breeding license', 'puppypress' ), sprintf( '<a href="%1$s">%2$s</a>', esc_url( get_permalink( $pp_license ) ), esc_html( get_post_field( 'post_title', $pp_license ) ) ) );
 }
-if ( $rw_approval && 'publish' === get_post_status( $rw_approval ) ) {
-	$rw_data[] = array( __( 'Approval', 'rudelwerk' ), sprintf( '<a href="%1$s">%2$s</a>', esc_url( get_permalink( $rw_approval ) ), esc_html( get_post_field( 'post_title', $rw_approval ) ) ) );
+if ( $pp_approval && 'publish' === get_post_status( $pp_approval ) ) {
+	$pp_data[] = array( __( 'Approval', 'puppypress' ), sprintf( '<a href="%1$s">%2$s</a>', esc_url( get_permalink( $pp_approval ) ), esc_html( get_post_field( 'post_title', $pp_approval ) ) ) );
 }
-if ( '' !== $rw_tests ) {
-	$rw_data[] = array( __( 'Tests and titles', 'rudelwerk' ), esc_html( $rw_tests ) );
+if ( '' !== $pp_tests ) {
+	$pp_data[] = array( __( 'Tests and titles', 'puppypress' ), esc_html( $pp_tests ) );
 }
 
-$rw_kennel_websites = array_filter(
+$pp_kennel_websites = array_filter(
 	array_map(
 		static function ( $kennel ) {
 			return (string) get_term_meta( $kennel->term_id, 'kennel_website', true );
 		},
-		$rw_kennels
+		$pp_kennels
 	)
 );
 ?>
-<div class="rudelwerk rudelwerk-single rudelwerk-single--stud-dog">
+<div class="puppypress puppypress-single puppypress-single--stud-dog">
 
-	<?php if ( $rw_summary ) : ?>
-		<p class="rudelwerk-summary">
-			<?php foreach ( $rw_summary as $rw_index => $rw_item ) : ?>
-				<?php echo $rw_index ? '<span class="rudelwerk-summary__sep" aria-hidden="true"> | </span>' : ''; ?>
-				<?php if ( $rw_item['url'] ) : ?>
-					<?php $rw_external = 0 !== strpos( $rw_item['url'], 'mailto:' ); ?>
-					<a href="<?php echo esc_url( $rw_item['url'] ); ?>"<?php echo $rw_external ? ' target="_blank" rel="nofollow noopener"' : ''; ?>><?php echo esc_html( $rw_item['text'] ); ?></a>
+	<?php if ( $pp_summary ) : ?>
+		<p class="puppypress-summary">
+			<?php foreach ( $pp_summary as $pp_index => $pp_item ) : ?>
+				<?php echo $pp_index ? '<span class="puppypress-summary__sep" aria-hidden="true"> | </span>' : ''; ?>
+				<?php if ( $pp_item['url'] ) : ?>
+					<?php $pp_external = 0 !== strpos( $pp_item['url'], 'mailto:' ); ?>
+					<a href="<?php echo esc_url( $pp_item['url'] ); ?>"<?php echo $pp_external ? ' target="_blank" rel="nofollow noopener"' : ''; ?>><?php echo esc_html( $pp_item['text'] ); ?></a>
 				<?php else : ?>
-					<span><?php echo esc_html( $rw_item['text'] ); ?></span>
+					<span><?php echo esc_html( $pp_item['text'] ); ?></span>
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</p>
 	<?php endif; ?>
 
-	<?php if ( $rw_data ) : ?>
-		<h2><?php esc_html_e( 'Stud dog data', 'rudelwerk' ); ?></h2>
-		<dl class="rudelwerk-data">
-			<?php foreach ( $rw_data as $rw_row ) : ?>
-				<dt><?php echo esc_html( $rw_row[0] ); ?></dt>
-				<dd><?php echo wp_kses_post( $rw_row[1] ); ?></dd>
+	<?php if ( $pp_data ) : ?>
+		<h2><?php esc_html_e( 'Stud dog data', 'puppypress' ); ?></h2>
+		<dl class="puppypress-data">
+			<?php foreach ( $pp_data as $pp_row ) : ?>
+				<dt><?php echo esc_html( $pp_row[0] ); ?></dt>
+				<dd><?php echo wp_kses_post( $pp_row[1] ); ?></dd>
 			<?php endforeach; ?>
 		</dl>
 	<?php endif; ?>
 
-	<?php if ( $rw_breeders ) : ?>
-		<h2><?php echo esc_html( _n( 'Breeder', 'Breeders', count( $rw_breeders ), 'rudelwerk' ) ); ?></h2>
-		<?php foreach ( $rw_breeders as $rw_contact ) : ?>
-			<?php rudelwerk_template( 'parts/contact.php', array( 'contact' => $rw_contact ) ); ?>
+	<?php if ( $pp_breeders ) : ?>
+		<h2><?php echo esc_html( _n( 'Breeder', 'Breeders', count( $pp_breeders ), 'puppypress' ) ); ?></h2>
+		<?php foreach ( $pp_breeders as $pp_contact ) : ?>
+			<?php puppypress_template( 'parts/contact.php', array( 'contact' => $pp_contact ) ); ?>
 		<?php endforeach; ?>
 	<?php endif; ?>
 
-	<?php if ( $rw_kennel_websites ) : ?>
-		<h2><?php echo esc_html( _n( 'Kennel', 'Kennels', count( $rw_kennels ), 'rudelwerk' ) ); ?></h2>
-		<?php foreach ( $rw_kennels as $rw_kennel ) : ?>
+	<?php if ( $pp_kennel_websites ) : ?>
+		<h2><?php echo esc_html( _n( 'Kennel', 'Kennels', count( $pp_kennels ), 'puppypress' ) ); ?></h2>
+		<?php foreach ( $pp_kennels as $pp_kennel ) : ?>
 			<?php
-			rudelwerk_template(
+			puppypress_template(
 				'parts/contact.php',
 				array(
 					'contact' => array(
-						'name'    => $rw_kennel->name,
+						'name'    => $pp_kennel->name,
 						'address' => '',
 						'phone'   => '',
 						'mobile'  => '',
 						'fax'     => '',
 						'email'   => '',
-						'website' => (string) get_term_meta( $rw_kennel->term_id, 'kennel_website', true ),
+						'website' => (string) get_term_meta( $pp_kennel->term_id, 'kennel_website', true ),
 					),
 				)
 			);
@@ -167,26 +167,26 @@ $rw_kennel_websites = array_filter(
 		<?php endforeach; ?>
 	<?php endif; ?>
 
-	<?php if ( $rw_owners ) : ?>
-		<h2><?php echo esc_html( _n( 'Owner', 'Owners', count( $rw_owners ), 'rudelwerk' ) ); ?></h2>
-		<?php foreach ( $rw_owners as $rw_contact ) : ?>
-			<?php rudelwerk_template( 'parts/contact.php', array( 'contact' => $rw_contact ) ); ?>
+	<?php if ( $pp_owners ) : ?>
+		<h2><?php echo esc_html( _n( 'Owner', 'Owners', count( $pp_owners ), 'puppypress' ) ); ?></h2>
+		<?php foreach ( $pp_owners as $pp_contact ) : ?>
+			<?php puppypress_template( 'parts/contact.php', array( 'contact' => $pp_contact ) ); ?>
 		<?php endforeach; ?>
 	<?php endif; ?>
 
-	<?php if ( ! Pedigree::is_empty( $rw_pedigree ) ) : ?>
-		<h2><?php esc_html_e( 'Pedigree', 'rudelwerk' ); ?></h2>
-		<?php rudelwerk_template( 'parts/pedigree.php', array( 'pedigree' => $rw_pedigree ) ); ?>
+	<?php if ( ! Pedigree::is_empty( $pp_pedigree ) ) : ?>
+		<h2><?php esc_html_e( 'Pedigree', 'puppypress' ); ?></h2>
+		<?php puppypress_template( 'parts/pedigree.php', array( 'pedigree' => $pp_pedigree ) ); ?>
 	<?php endif; ?>
 
 	<?php if ( '' !== trim( $args['content'] ) ) : ?>
 		<h2>
 			<?php
 			/* translators: %s: name of the stud dog */
-			echo esc_html( sprintf( __( 'About %s', 'rudelwerk' ), $rw_post->post_title ) );
+			echo esc_html( sprintf( __( 'About %s', 'puppypress' ), $pp_post->post_title ) );
 			?>
 		</h2>
-		<div class="rudelwerk-content">
+		<div class="puppypress-content">
 			<?php echo $args['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtered post content. ?>
 		</div>
 	<?php endif; ?>

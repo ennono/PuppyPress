@@ -2,10 +2,10 @@
 /**
  * Template loader.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
  * Loads templates from the plugin, overridable by themes.
  *
  * A theme overrides `templates/single/stud-dog.php` by placing a copy in
- * `{theme}/rudelwerk/single/stud-dog.php`.
+ * `{theme}/puppypress/single/stud-dog.php`.
  */
 final class Templates {
 
@@ -25,8 +25,8 @@ final class Templates {
 	 */
 	public static function locate( $name ) {
 		$name  = ltrim( $name, '/' );
-		$theme = locate_template( array( 'rudelwerk/' . $name ) );
-		$path  = $theme ? $theme : RUDELWERK_DIR . 'templates/' . $name;
+		$theme = locate_template( array( 'puppypress/' . $name ) );
+		$path  = $theme ? $theme : PUPPYPRESS_DIR . 'templates/' . $name;
 
 		/**
 		 * Filters the resolved template path.
@@ -34,7 +34,7 @@ final class Templates {
 		 * @param string $path Absolute path.
 		 * @param string $name Template name.
 		 */
-		return apply_filters( 'rudelwerk_template', $path, $name );
+		return apply_filters( 'puppypress_template', $path, $name );
 	}
 
 	/**
@@ -50,8 +50,8 @@ final class Templates {
 			return;
 		}
 
-		( static function ( $rudelwerk_template_path, $args ) {
-			include $rudelwerk_template_path;
+		( static function ( $puppypress_template_path, $args ) {
+			include $puppypress_template_path;
 		} )( $path, $args );
 	}
 

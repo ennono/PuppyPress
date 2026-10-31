@@ -2,16 +2,16 @@
 /**
  * Minimal WordPress stubs for the dependency free test runner.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'RUDELWERK_DIR', dirname( __DIR__ ) . '/' );
-define( 'RUDELWERK_URL', 'https://example.org/wp-content/plugins/rudelwerk/' );
-define( 'RUDELWERK_VERSION', 'test' );
-define( 'RUDELWERK_FILE', RUDELWERK_DIR . 'rudelwerk.php' );
+define( 'PUPPYPRESS_DIR', dirname( __DIR__ ) . '/' );
+define( 'PUPPYPRESS_URL', 'https://example.org/wp-content/plugins/puppypress/' );
+define( 'PUPPYPRESS_VERSION', 'test' );
+define( 'PUPPYPRESS_FILE', PUPPYPRESS_DIR . 'puppypress.php' );
 
-$GLOBALS['rw_test'] = array(
+$GLOBALS['pp_test'] = array(
 	'filters'    => array(),
 	'terms'      => array(),
 	'post_types' => array(),
@@ -49,14 +49,14 @@ function is_wp_error( $thing ) { return false; }
 function add_action() {}
 function add_filter() {}
 function apply_filters( $hook, $value ) { return $value; }
-function register_post_type( $type, $args ) { $GLOBALS['rw_test']['post_types'][ $type ] = $args; }
-function register_taxonomy( $taxonomy, $types, $args ) { $GLOBALS['rw_test']['taxonomies'][ $taxonomy ] = array( 'types' => $types, 'args' => $args ); }
-function get_terms( $args ) { return $GLOBALS['rw_test']['terms']; }
+function register_post_type( $type, $args ) { $GLOBALS['pp_test']['post_types'][ $type ] = $args; }
+function register_taxonomy( $taxonomy, $types, $args ) { $GLOBALS['pp_test']['taxonomies'][ $taxonomy ] = array( 'types' => $types, 'args' => $args ); }
+function get_terms( $args ) { return $GLOBALS['pp_test']['terms']; }
 
 spl_autoload_register(
 	static function ( $class ) {
-		if ( 0 === strpos( $class, 'Rudelwerk\\' ) ) {
-			require RUDELWERK_DIR . 'includes/' . str_replace( '\\', '/', substr( $class, 10 ) ) . '.php';
+		if ( 0 === strpos( $class, 'PuppyPress\\' ) ) {
+			require PUPPYPRESS_DIR . 'includes/' . str_replace( '\\', '/', substr( $class, strlen( 'PuppyPress\\' ) ) ) . '.php';
 		}
 	}
 );

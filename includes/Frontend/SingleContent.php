@@ -2,12 +2,12 @@
 /**
  * Detail views of stud dogs, litters and dogs to place.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
-use Rudelwerk\Content\PostTypes;
+use PuppyPress\Content\PostTypes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
  * Wraps the post content of single views with the dog's data.
  *
  * This works with any theme: the theme renders its normal single layout and
- * Rudelwerk adds data, contacts, pedigree and photos to the content. The
+ * PuppyPress adds data, contacts, pedigree and photos to the content. The
  * markup comes from overridable templates in templates/single/.
  */
 final class SingleContent {
@@ -63,12 +63,12 @@ final class SingleContent {
 		}
 
 		/**
-		 * Filters whether Rudelwerk adds its data to the single view.
+		 * Filters whether PuppyPress adds its data to the single view.
 		 *
 		 * @param bool     $enabled Default true.
 		 * @param \WP_Post $post    Post.
 		 */
-		if ( ! apply_filters( 'rudelwerk_single_content', true, $post ) ) {
+		if ( ! apply_filters( 'puppypress_single_content', true, $post ) ) {
 			return $content;
 		}
 

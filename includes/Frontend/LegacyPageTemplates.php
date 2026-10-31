@@ -2,10 +2,10 @@
 /**
  * Compatibility with the page templates of the former theme.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
  * Keeps pages that were assigned to an "All …" template of the old theme working.
  *
  * Once the template files are removed from the theme, WordPress falls back to
- * page.php. Rudelwerk recognizes the stored template name and appends the
+ * page.php. PuppyPress recognizes the stored template name and appends the
  * matching shortcode output to the page content, so no page has to be edited.
  * The templates also stay selectable in the page attributes box.
  */
@@ -35,133 +35,133 @@ final class LegacyPageTemplates {
 	public static function map() {
 		$map = array(
 			'template-all-stud-dogs.php'               => array(
-				'label'      => __( 'Rudelwerk: Kennels with stud dogs', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: Kennels with stud dogs', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_terms',
+						'puppypress_terms',
 						array(
 							'taxonomy' => 'kennel',
-							'title'    => __( 'Registered kennels with stud dogs', 'rudelwerk' ),
-							'intro'    => __( 'An overview of all registered kennels. Click on a kennel to see its dogs.', 'rudelwerk' ),
+							'title'    => __( 'Registered kennels with stud dogs', 'puppypress' ),
+							'intro'    => __( 'An overview of all registered kennels. Click on a kennel to see its dogs.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-stud-dogs-complete-list.php' => array(
-				'label'      => __( 'Rudelwerk: All stud dogs (complete list)', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: All stud dogs (complete list)', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_stud_dogs',
+						'puppypress_stud_dogs',
 						array(
 							'group' => 'none',
-							'title' => __( 'All stud dogs', 'rudelwerk' ),
-							'intro' => __( 'A complete list of all stud dogs we know. Click on a dog to have a closer look.', 'rudelwerk' ),
+							'title' => __( 'All stud dogs', 'puppypress' ),
+							'intro' => __( 'A complete list of all stud dogs we know. Click on a dog to have a closer look.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-approvals.php'               => array(
-				'label'      => __( 'Rudelwerk: Approvals', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: Approvals', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_posts',
+						'puppypress_posts',
 						array(
 							'post_type' => 'approvals',
-							'title'     => __( 'Registered approved dogs', 'rudelwerk' ),
-							'intro'     => __( 'An overview of all registered approvals. Click on an entry to read the approval.', 'rudelwerk' ),
+							'title'     => __( 'Registered approved dogs', 'puppypress' ),
+							'intro'     => __( 'An overview of all registered approvals. Click on an entry to read the approval.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-breeding-licenses.php'       => array(
-				'label'      => __( 'Rudelwerk: Breeding licenses', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: Breeding licenses', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_posts',
+						'puppypress_posts',
 						array(
 							'post_type' => 'breeding-license',
-							'title'     => __( 'Registered breeding licenses', 'rudelwerk' ),
-							'intro'     => __( 'An overview of all registered breeding licenses. Click on an entry to read the license.', 'rudelwerk' ),
+							'title'     => __( 'Registered breeding licenses', 'puppypress' ),
+							'intro'     => __( 'An overview of all registered breeding licenses. Click on an entry to read the license.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-puppies.php'                 => array(
-				'label'      => __( 'Rudelwerk: Puppies by city', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: Puppies by city', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_terms',
+						'puppypress_terms',
 						array(
 							'taxonomy'   => 'puppies-city',
 							'count'      => 'yes',
 							'hide_empty' => 'no',
-							'title'      => __( 'Registered puppies', 'rudelwerk' ),
-							'intro'      => __( 'An overview of all registered puppies by city. Click on a city to learn more.', 'rudelwerk' ),
+							'title'      => __( 'Registered puppies', 'puppypress' ),
+							'intro'      => __( 'An overview of all registered puppies by city. Click on a city to learn more.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-dogs-to-place.php'           => array(
-				'label'      => __( 'Rudelwerk: Dogs to place', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: Dogs to place', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_placement_overview',
+						'puppypress_placement_overview',
 						array(
-							'title' => __( 'Registered dogs to place', 'rudelwerk' ),
-							'intro' => __( 'An overview of all dogs looking for a new home. Click on a category to learn more.', 'rudelwerk' ),
+							'title' => __( 'Registered dogs to place', 'puppypress' ),
+							'intro' => __( 'An overview of all dogs looking for a new home. Click on a category to learn more.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-shows.php'                   => array(
-				'label'      => __( 'Rudelwerk: Shows', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: Shows', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_terms',
+						'puppypress_terms',
 						array(
 							'taxonomy' => 'period',
-							'title'    => __( 'Periods', 'rudelwerk' ),
-							'intro'    => __( 'Click on a period to see its shows.', 'rudelwerk' ),
+							'title'    => __( 'Periods', 'puppypress' ),
+							'intro'    => __( 'Click on a period to see its shows.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-results.php'                 => array(
-				'label'      => __( 'Rudelwerk: Results and shows', 'rudelwerk' ),
+				'label'      => __( 'PuppyPress: Results and shows', 'puppypress' ),
 				'shortcodes' => array(
 					array(
-						'rudelwerk_terms',
+						'puppypress_terms',
 						array(
 							'taxonomy' => 'event',
-							'title'    => __( 'Events', 'rudelwerk' ),
-							'intro'    => __( 'An overview of all registered events. Click on an event to see the results.', 'rudelwerk' ),
+							'title'    => __( 'Events', 'puppypress' ),
+							'intro'    => __( 'An overview of all registered events. Click on an event to see the results.', 'puppypress' ),
 						),
 					),
 					array(
-						'rudelwerk_terms',
+						'puppypress_terms',
 						array(
 							'taxonomy' => 'period',
-							'title'    => __( 'Shows', 'rudelwerk' ),
-							'intro'    => __( 'Click on a period to see its shows.', 'rudelwerk' ),
+							'title'    => __( 'Shows', 'puppypress' ),
+							'intro'    => __( 'Click on a period to see its shows.', 'puppypress' ),
 						),
 					),
 				),
 			),
 			'template-all-trimming-proofs.php'         => array(
-				'label'      => __( 'Rudelwerk: Trimming proofs', 'rudelwerk' ),
-				'shortcodes' => array( array( 'rudelwerk_directory', array( 'post_type' => 'trimming-proofs' ) ) ),
+				'label'      => __( 'PuppyPress: Trimming proofs', 'puppypress' ),
+				'shortcodes' => array( array( 'puppypress_directory', array( 'post_type' => 'trimming-proofs' ) ) ),
 			),
 			'template-all-dog-sitters.php'             => array(
-				'label'      => __( 'Rudelwerk: Dog sitters', 'rudelwerk' ),
-				'shortcodes' => array( array( 'rudelwerk_directory', array( 'post_type' => 'dog-sitters' ) ) ),
+				'label'      => __( 'PuppyPress: Dog sitters', 'puppypress' ),
+				'shortcodes' => array( array( 'puppypress_directory', array( 'post_type' => 'dog-sitters' ) ) ),
 			),
 			'template-all-literature.php'              => array(
-				'label'      => __( 'Rudelwerk: Literature', 'rudelwerk' ),
-				'shortcodes' => array( array( 'rudelwerk_literature', array() ) ),
+				'label'      => __( 'PuppyPress: Literature', 'puppypress' ),
+				'shortcodes' => array( array( 'puppypress_literature', array() ) ),
 			),
 			'template-breeders-board.php'              => array(
-				'label'      => __( 'Rudelwerk: Breeders\' board', 'rudelwerk' ),
-				'shortcodes' => array( array( 'rudelwerk_breeders_board', array() ) ),
+				'label'      => __( 'PuppyPress: Breeders\' board', 'puppypress' ),
+				'shortcodes' => array( array( 'puppypress_breeders_board', array() ) ),
 			),
 		);
 
@@ -170,7 +170,7 @@ final class LegacyPageTemplates {
 		 *
 		 * @param array $map Template file => label and shortcodes.
 		 */
-		return apply_filters( 'rudelwerk_legacy_page_templates', $map );
+		return apply_filters( 'puppypress_legacy_page_templates', $map );
 	}
 
 	/**

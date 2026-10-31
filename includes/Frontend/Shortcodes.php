@@ -2,14 +2,14 @@
 /**
  * Shortcodes for overview pages.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
-use Rudelwerk\Content\PostTypes;
-use Rudelwerk\Content\Taxonomies;
-use Rudelwerk\Data\Contact;
+use PuppyPress\Content\PostTypes;
+use PuppyPress\Content\Taxonomies;
+use PuppyPress\Data\Contact;
 use WP_Term;
 
 defined( 'ABSPATH' ) || exit;
@@ -33,15 +33,15 @@ final class Shortcodes {
 	 */
 	public function register() {
 		$shortcodes = array(
-			'rudelwerk_stud_dogs'          => 'stud_dogs',
-			'rudelwerk_stud_dog_filter'    => 'stud_dog_filter',
-			'rudelwerk_terms'              => 'terms',
-			'rudelwerk_placement_overview' => 'placement_overview',
-			'rudelwerk_posts'              => 'posts',
-			'rudelwerk_litters'            => 'litters',
-			'rudelwerk_breeders_board'     => 'breeders_board',
-			'rudelwerk_directory'          => 'directory',
-			'rudelwerk_literature'         => 'literature',
+			'puppypress_stud_dogs'          => 'stud_dogs',
+			'puppypress_stud_dog_filter'    => 'stud_dog_filter',
+			'puppypress_terms'              => 'terms',
+			'puppypress_placement_overview' => 'placement_overview',
+			'puppypress_posts'              => 'posts',
+			'puppypress_litters'            => 'litters',
+			'puppypress_breeders_board'     => 'breeders_board',
+			'puppypress_directory'          => 'directory',
+			'puppypress_literature'         => 'literature',
 		);
 
 		foreach ( $shortcodes as $tag => $method ) {
@@ -52,7 +52,7 @@ final class Shortcodes {
 	/**
 	 * Stud dogs, grouped by kennel, optionally with filter form.
 	 *
-	 * [rudelwerk_stud_dogs filter="yes" group="kennel|none"]
+	 * [puppypress_stud_dogs filter="yes" group="kennel|none"]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
@@ -64,7 +64,7 @@ final class Shortcodes {
 				'group'  => 'kennel',
 			),
 			$atts,
-			'rudelwerk_stud_dogs'
+			'puppypress_stud_dogs'
 		);
 
 		$with_filter = wp_validate_boolean( $atts['filter'] );
@@ -124,13 +124,13 @@ final class Shortcodes {
 	/**
 	 * Filter form only. Submits to the stud dog archive by default.
 	 *
-	 * [rudelwerk_stud_dog_filter action="current"]
+	 * [puppypress_stud_dog_filter action="current"]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
 	 */
 	public function stud_dog_filter( $atts ) {
-		$atts = $this->atts( array( 'action' => 'archive' ), $atts, 'rudelwerk_stud_dog_filter' );
+		$atts = $this->atts( array( 'action' => 'archive' ), $atts, 'puppypress_stud_dog_filter' );
 
 		$action = 'current' === $atts['action'] ? '' : get_post_type_archive_link( PostTypes::STUD_DOG );
 		$html   = Templates::html( 'parts/stud-dog-filter.php', StudDogFilter::from_request()->form_data() + array( 'action' => $action ) );
@@ -141,7 +141,7 @@ final class Shortcodes {
 	/**
 	 * Hierarchical list of terms (kennels, events, periods, cities, …).
 	 *
-	 * [rudelwerk_terms taxonomy="kennel" count="no" hide_empty="yes" depth="2"]
+	 * [puppypress_terms taxonomy="kennel" count="no" hide_empty="yes" depth="2"]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
@@ -158,7 +158,7 @@ final class Shortcodes {
 				'depth'      => 2,
 			),
 			$atts,
-			'rudelwerk_terms'
+			'puppypress_terms'
 		);
 
 		if ( ! taxonomy_exists( $atts['taxonomy'] ) ) {
@@ -174,23 +174,23 @@ final class Shortcodes {
 			)
 		);
 
-		return $this->wrap( 'terms rudelwerk-terms--' . sanitize_html_class( $atts['taxonomy'] ), $html, $atts );
+		return $this->wrap( 'terms puppypress-terms--' . sanitize_html_class( $atts['taxonomy'] ), $html, $atts );
 	}
 
 	/**
 	 * Overview of dogs to place: puppies plus placement categories with counts.
 	 *
-	 * [rudelwerk_placement_overview]
+	 * [puppypress_placement_overview]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
 	 */
 	public function placement_overview( $atts ) {
-		$atts = $this->atts( array(), $atts, 'rudelwerk_placement_overview' );
+		$atts = $this->atts( array(), $atts, 'puppypress_placement_overview' );
 
 		$counts  = wp_count_posts( PostTypes::PUPPIES );
 		$puppies = array(
-			'name'     => __( 'Puppy placement', 'rudelwerk' ),
+			'name'     => __( 'Puppy placement', 'puppypress' ),
 			'url'      => (string) get_post_type_archive_link( PostTypes::PUPPIES ),
 			'count'    => isset( $counts->publish ) ? (int) $counts->publish : 0,
 			'children' => array(),
@@ -222,13 +222,13 @@ final class Shortcodes {
 	/**
 	 * Alphabetical list of posts with kennel, e.g. approvals or breeding licenses.
 	 *
-	 * [rudelwerk_posts post_type="approvals"]
+	 * [puppypress_posts post_type="approvals"]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
 	 */
 	public function posts( $atts ) {
-		$atts = $this->atts( array( 'post_type' => PostTypes::APPROVAL ), $atts, 'rudelwerk_posts' );
+		$atts = $this->atts( array( 'post_type' => PostTypes::APPROVAL ), $atts, 'puppypress_posts' );
 
 		if ( ! post_type_exists( $atts['post_type'] ) || ! is_post_type_viewable( $atts['post_type'] ) ) {
 			return '';
@@ -250,26 +250,26 @@ final class Shortcodes {
 	/**
 	 * Litters: born and/or expected, ordered by ZIP code.
 	 *
-	 * [rudelwerk_litters status="all|born|expected"]
+	 * [puppypress_litters status="all|born|expected"]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
 	 */
 	public function litters( $atts ) {
-		$atts = $this->atts( array( 'status' => 'all' ), $atts, 'rudelwerk_litters' );
+		$atts = $this->atts( array( 'status' => 'all' ), $atts, 'puppypress_litters' );
 
 		$sections = array();
 
 		if ( in_array( $atts['status'], array( 'all', 'born' ), true ) ) {
 			$sections['born'] = array(
-				'title' => __( 'Born litters', 'rudelwerk' ),
+				'title' => __( 'Born litters', 'puppypress' ),
 				'posts' => $this->litter_posts( false ),
 			);
 		}
 
 		if ( in_array( $atts['status'], array( 'all', 'expected' ), true ) ) {
 			$sections['expected'] = array(
-				'title' => __( 'Expected litters', 'rudelwerk' ),
+				'title' => __( 'Expected litters', 'puppypress' ),
 				'posts' => $this->litter_posts( true ),
 			);
 		}
@@ -290,13 +290,13 @@ final class Shortcodes {
 	/**
 	 * Visible kennels ordered by ZIP code with their breeders' contact details.
 	 *
-	 * [rudelwerk_breeders_board]
+	 * [puppypress_breeders_board]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
 	 */
 	public function breeders_board( $atts ) {
-		$atts = $this->atts( array(), $atts, 'rudelwerk_breeders_board' );
+		$atts = $this->atts( array(), $atts, 'puppypress_breeders_board' );
 
 		$kennels = get_terms(
 			array(
@@ -359,24 +359,24 @@ final class Shortcodes {
 	/**
 	 * Contact directory grouped by ZIP regions (trimming proofs or dog sitters).
 	 *
-	 * [rudelwerk_directory post_type="trimming-proofs|dog-sitters"]
+	 * [puppypress_directory post_type="trimming-proofs|dog-sitters"]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
 	 */
 	public function directory( $atts ) {
-		$atts = $this->atts( array( 'post_type' => PostTypes::TRIMMING_PROOF ), $atts, 'rudelwerk_directory' );
+		$atts = $this->atts( array( 'post_type' => PostTypes::TRIMMING_PROOF ), $atts, 'puppypress_directory' );
 
 		$config = array(
 			PostTypes::TRIMMING_PROOF => array(
 				'zip'   => Taxonomies::TRIMMING_ZIP,
 				'city'  => Taxonomies::TRIMMING_CITY,
-				'empty' => __( 'No groomers found.', 'rudelwerk' ),
+				'empty' => __( 'No groomers found.', 'puppypress' ),
 			),
 			PostTypes::DOG_SITTER     => array(
 				'zip'   => Taxonomies::DOG_SITTER_ZIP,
 				'city'  => Taxonomies::DOG_SITTER_CITY,
-				'empty' => __( 'No dog sitters found.', 'rudelwerk' ),
+				'empty' => __( 'No dog sitters found.', 'puppypress' ),
 			),
 		);
 
@@ -437,19 +437,19 @@ final class Shortcodes {
 			)
 		);
 
-		return $this->wrap( 'directory rudelwerk-directory--' . sanitize_html_class( $atts['post_type'] ), $html, $atts );
+		return $this->wrap( 'directory puppypress-directory--' . sanitize_html_class( $atts['post_type'] ), $html, $atts );
 	}
 
 	/**
 	 * Literature grouped by category.
 	 *
-	 * [rudelwerk_literature]
+	 * [puppypress_literature]
 	 *
 	 * @param array|string $atts Attributes.
 	 * @return string
 	 */
 	public function literature( $atts ) {
-		$atts = $this->atts( array(), $atts, 'rudelwerk_literature' );
+		$atts = $this->atts( array(), $atts, 'puppypress_literature' );
 
 		$categories = array();
 
@@ -648,15 +648,15 @@ final class Shortcodes {
 		$header = '';
 
 		if ( '' !== $atts['title'] ) {
-			$header .= '<h2 class="rudelwerk__title">' . esc_html( $atts['title'] ) . '</h2>';
+			$header .= '<h2 class="puppypress__title">' . esc_html( $atts['title'] ) . '</h2>';
 		}
 
 		if ( '' !== $atts['intro'] ) {
-			$header .= '<p class="rudelwerk__intro">' . esc_html( $atts['intro'] ) . '</p>';
+			$header .= '<p class="puppypress__intro">' . esc_html( $atts['intro'] ) . '</p>';
 		}
 
-		$classes = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', 'rudelwerk-' . $name ) ) );
+		$classes = implode( ' ', array_map( 'sanitize_html_class', explode( ' ', 'puppypress-' . $name ) ) );
 
-		return '<div class="rudelwerk ' . esc_attr( $classes ) . '">' . $header . $html . '</div>';
+		return '<div class="puppypress ' . esc_attr( $classes ) . '">' . $header . $html . '</div>';
 	}
 }

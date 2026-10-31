@@ -2,13 +2,13 @@
 /**
  * Meta boxes for all post types.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Admin;
+namespace PuppyPress\Admin;
 
-use Rudelwerk\Content\Fields;
-use Rudelwerk\Content\Pedigree;
+use PuppyPress\Content\Fields;
+use PuppyPress\Content\Pedigree;
 use WP_Post;
 
 defined( 'ABSPATH' ) || exit;
@@ -18,8 +18,8 @@ defined( 'ABSPATH' ) || exit;
  */
 final class MetaBoxes {
 
-	const NONCE_ACTION = 'rudelwerk_save_meta';
-	const NONCE_NAME   = 'rudelwerk_meta_nonce';
+	const NONCE_ACTION = 'puppypress_save_meta';
+	const NONCE_NAME   = 'puppypress_meta_nonce';
 
 	/**
 	 * Whether the nonce field has been printed on this screen.
@@ -50,7 +50,7 @@ final class MetaBoxes {
 
 		foreach ( $groups[ $post_type ] as $group_id => $group ) {
 			add_meta_box(
-				'rudelwerk-' . str_replace( '_', '-', $group_id ),
+				'puppypress-' . str_replace( '_', '-', $group_id ),
 				$group['title'],
 				array( $this, 'render' ),
 				$post_type,
@@ -80,12 +80,12 @@ final class MetaBoxes {
 			return;
 		}
 
-		echo '<div class="rudelwerk-fields">';
+		echo '<div class="puppypress-fields">';
 
 		foreach ( $group['fields'] as $key => $field ) {
 			$value = (string) get_post_meta( $post->ID, $key, true );
 
-			echo '<div class="rudelwerk-field rudelwerk-field--' . esc_attr( $field['type'] ) . '">';
+			echo '<div class="puppypress-field puppypress-field--' . esc_attr( $field['type'] ) . '">';
 
 			if ( 'checkbox' === $field['type'] ) {
 				echo '<label>';
@@ -109,7 +109,7 @@ final class MetaBoxes {
 	 * @param array   $fields Pedigree fields.
 	 */
 	private function render_pedigree( WP_Post $post, array $fields ) {
-		echo '<div class="rudelwerk-pedigree-scroll"><table class="rudelwerk-pedigree-admin"><tbody>';
+		echo '<div class="puppypress-pedigree-scroll"><table class="puppypress-pedigree-admin"><tbody>';
 
 		foreach ( Pedigree::rows() as $row ) {
 			echo '<tr>';
@@ -120,15 +120,15 @@ final class MetaBoxes {
 
 				printf( '<td rowspan="%1$d" class="generation-%2$d">', (int) $cell['rowspan'], (int) $cell['generation'] );
 				printf(
-					'<label class="rudelwerk-pedigree-admin__name" for="%1$s">%2$s</label>',
+					'<label class="puppypress-pedigree-admin__name" for="%1$s">%2$s</label>',
 					esc_attr( FieldRenderer::id( $position ) ),
 					esc_html( Pedigree::label( $position ) )
 				);
 				FieldRenderer::control( $position, $fields[ $position ], (string) get_post_meta( $post->ID, $position, true ) );
 				printf(
-					'<label class="rudelwerk-pedigree-admin__approval" for="%1$s">%2$s</label>',
+					'<label class="puppypress-pedigree-admin__approval" for="%1$s">%2$s</label>',
 					esc_attr( FieldRenderer::id( $approval_key ) ),
-					esc_html__( 'Approval', 'rudelwerk' )
+					esc_html__( 'Approval', 'puppypress' )
 				);
 				FieldRenderer::control( $approval_key, $fields[ $approval_key ], (string) get_post_meta( $post->ID, $approval_key, true ) );
 				echo '</td>';

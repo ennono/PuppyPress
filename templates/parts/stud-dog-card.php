@@ -2,9 +2,9 @@
 /**
  * A stud dog in a list.
  *
- * Override: {theme}/rudelwerk/parts/stud-dog-card.php
+ * Override: {theme}/puppypress/parts/stud-dog-card.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  * @version 1.0.0
  *
  * @var array $args {
@@ -13,39 +13,39 @@
  * }
  */
 
-use Rudelwerk\Data\Dogs;
+use PuppyPress\Data\Dogs;
 
 defined( 'ABSPATH' ) || exit;
 
-$rw_post    = $args['post'];
-$rw_name    = Dogs::stud_dog_name( $rw_post->ID, $rw_post->post_title, isset( $args['kennel'] ) ? $args['kennel'] : null );
-$rw_born    = Dogs::format_date( (string) get_post_meta( $rw_post->ID, 'date_born', true ) );
-$rw_withers = (string) get_post_meta( $rw_post->ID, 'withers', true );
+$pp_post    = $args['post'];
+$pp_name    = Dogs::stud_dog_name( $pp_post->ID, $pp_post->post_title, isset( $args['kennel'] ) ? $args['kennel'] : null );
+$pp_born    = Dogs::format_date( (string) get_post_meta( $pp_post->ID, 'date_born', true ) );
+$pp_withers = (string) get_post_meta( $pp_post->ID, 'withers', true );
 
-$rw_meta = array();
-if ( '' !== $rw_born ) {
+$pp_meta = array();
+if ( '' !== $pp_born ) {
 	/* translators: %s: date of birth */
-	$rw_meta[] = sprintf( __( 'Date born: %s', 'rudelwerk' ), $rw_born );
+	$pp_meta[] = sprintf( __( 'Date born: %s', 'puppypress' ), $pp_born );
 }
-if ( '' !== $rw_withers ) {
+if ( '' !== $pp_withers ) {
 	/* translators: %s: withers height in cm */
-	$rw_meta[] = sprintf( __( 'Withers: %s cm', 'rudelwerk' ), Dogs::format_withers( $rw_withers ) );
+	$pp_meta[] = sprintf( __( 'Withers: %s cm', 'puppypress' ), Dogs::format_withers( $pp_withers ) );
 }
 ?>
-<article class="rudelwerk-card rudelwerk-card--stud-dog">
-	<?php if ( has_post_thumbnail( $rw_post ) ) : ?>
-		<a class="rudelwerk-card__image" href="<?php echo esc_url( get_permalink( $rw_post ) ); ?>" tabindex="-1" aria-hidden="true">
-			<?php echo get_the_post_thumbnail( $rw_post, 'medium_large' ); ?>
+<article class="puppypress-card puppypress-card--stud-dog">
+	<?php if ( has_post_thumbnail( $pp_post ) ) : ?>
+		<a class="puppypress-card__image" href="<?php echo esc_url( get_permalink( $pp_post ) ); ?>" tabindex="-1" aria-hidden="true">
+			<?php echo get_the_post_thumbnail( $pp_post, 'medium_large' ); ?>
 		</a>
 	<?php endif; ?>
 
-	<div class="rudelwerk-card__body">
-		<h3 class="rudelwerk-card__title"><a href="<?php echo esc_url( get_permalink( $rw_post ) ); ?>"><?php echo esc_html( $rw_name ); ?></a></h3>
+	<div class="puppypress-card__body">
+		<h3 class="puppypress-card__title"><a href="<?php echo esc_url( get_permalink( $pp_post ) ); ?>"><?php echo esc_html( $pp_name ); ?></a></h3>
 
-		<?php if ( $rw_meta ) : ?>
-			<p class="rudelwerk-card__meta"><?php echo esc_html( implode( ', ', $rw_meta ) ); ?></p>
+		<?php if ( $pp_meta ) : ?>
+			<p class="puppypress-card__meta"><?php echo esc_html( implode( ', ', $pp_meta ) ); ?></p>
 		<?php endif; ?>
 
-		<a class="rudelwerk-card__more" href="<?php echo esc_url( get_permalink( $rw_post ) ); ?>"><?php esc_html_e( 'Show dog', 'rudelwerk' ); ?></a>
+		<a class="puppypress-card__more" href="<?php echo esc_url( get_permalink( $pp_post ) ); ?>"><?php esc_html_e( 'Show dog', 'puppypress' ); ?></a>
 	</div>
 </article>

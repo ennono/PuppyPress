@@ -2,19 +2,19 @@
 /**
  * Front end assets.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the stylesheet; it is only enqueued when Rudelwerk output is rendered.
+ * Registers the stylesheet; it is only enqueued when PuppyPress output is rendered.
  */
 final class Assets {
 
-	const HANDLE = 'rudelwerk';
+	const HANDLE = 'puppypress';
 
 	/**
 	 * Hooks.
@@ -24,10 +24,10 @@ final class Assets {
 	}
 
 	/**
-	 * Registers the stylesheet and enqueues it on Rudelwerk views.
+	 * Registers the stylesheet and enqueues it on PuppyPress views.
 	 */
 	public function register() {
-		wp_register_style( self::HANDLE, RUDELWERK_URL . 'assets/css/rudelwerk.css', array(), RUDELWERK_VERSION );
+		wp_register_style( self::HANDLE, PUPPYPRESS_URL . 'assets/css/puppypress.css', array(), PUPPYPRESS_VERSION );
 
 		if ( is_singular( array( 'stud-dogs', 'puppies', 'dogs-to-place' ) ) || is_post_type_archive( 'stud-dogs' ) ) {
 			self::enqueue_frontend();
@@ -39,16 +39,16 @@ final class Assets {
 	 */
 	public static function enqueue_frontend() {
 		/**
-		 * Filters whether Rudelwerk loads its stylesheet.
+		 * Filters whether PuppyPress loads its stylesheet.
 		 *
 		 * @param bool $load Default true.
 		 */
-		if ( ! apply_filters( 'rudelwerk_load_styles', true ) ) {
+		if ( ! apply_filters( 'puppypress_load_styles', true ) ) {
 			return;
 		}
 
 		if ( ! wp_style_is( self::HANDLE, 'registered' ) ) {
-			wp_register_style( self::HANDLE, RUDELWERK_URL . 'assets/css/rudelwerk.css', array(), RUDELWERK_VERSION );
+			wp_register_style( self::HANDLE, PUPPYPRESS_URL . 'assets/css/puppypress.css', array(), PUPPYPRESS_VERSION );
 		}
 
 		wp_enqueue_style( self::HANDLE );

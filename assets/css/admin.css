@@ -1,82 +1,82 @@
-/* Rudelwerk – admin styles */
+/* PuppyPress – admin styles */
 
-.rudelwerk-fields .rudelwerk-field {
+.puppypress-fields .puppypress-field {
 	margin: 0 0 1em;
 }
 
-.rudelwerk-fields .rudelwerk-field > label {
+.puppypress-fields .puppypress-field > label {
 	display: block;
 	margin-bottom: 0.3em;
 	font-weight: 600;
 }
 
-.rudelwerk-fields .rudelwerk-field--checkbox > label {
+.puppypress-fields .puppypress-field--checkbox > label {
 	font-weight: normal;
 }
 
-.rudelwerk-add-new {
+.puppypress-add-new {
 	display: inline-block;
 	margin-top: 0.4em;
 }
 
 /* Pedigree grid */
-.rudelwerk-pedigree-scroll {
+.puppypress-pedigree-scroll {
 	overflow-x: auto;
 }
 
-.rudelwerk-pedigree-admin {
+.puppypress-pedigree-admin {
 	width: 100%;
 	min-width: 720px;
 	border-collapse: collapse;
 }
 
-.rudelwerk-pedigree-admin td {
+.puppypress-pedigree-admin td {
 	width: 33.33%;
 	padding: 10px;
 	vertical-align: top;
 	border: 1px solid #c3c4c7;
 }
 
-.rudelwerk-pedigree-admin td.generation-1 {
+.puppypress-pedigree-admin td.generation-1 {
 	background: #f6f7f7;
 }
 
-.rudelwerk-pedigree-admin label {
+.puppypress-pedigree-admin label {
 	display: block;
 	margin: 0 0 0.3em;
 }
 
-.rudelwerk-pedigree-admin__name {
+.puppypress-pedigree-admin__name {
 	font-weight: 600;
 }
 
-.rudelwerk-pedigree-admin__approval {
+.puppypress-pedigree-admin__approval {
 	margin-top: 0.6em !important;
 	color: #50575e;
 }
 
-.rudelwerk-pedigree-admin textarea {
+.puppypress-pedigree-admin textarea {
 	min-height: 4.5em;
 }
 
 /* Media picker */
-.rudelwerk-media__preview {
+.puppypress-media__preview {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
 	margin: 0 0 8px;
 }
 
-.rudelwerk-media__preview:empty {
+.puppypress-media__preview:empty {
 	display: none;
 }
 
-.rudelwerk-media__preview li {
+.puppypress-media__preview li {
 	position: relative;
 	margin: 0;
 }
 
-.rudelwerk-media__preview img {
+.puppypress-media__preview img {
 	display: block;
 	width: 80px;
 	height: 80px;
@@ -84,7 +84,7 @@
 	border: 1px solid #c3c4c7;
 }
 
-.rudelwerk-media__remove {
+.puppypress-media__remove {
 	position: absolute;
 	top: -8px;
 	right: -8px;

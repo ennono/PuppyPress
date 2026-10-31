@@ -1,4 +1,4 @@
-=== Rudelwerk ===
+=== PuppyPress ===
 Contributors: timofricke
 Tags: dogs, breeding, club, pedigree, kennel
 Requires at least: 6.0
@@ -12,7 +12,7 @@ Club management for dog breeding clubs: stud dogs with pedigree, litters, dogs t
 
 == Description ==
 
-Rudelwerk provides everything a dog breeding club needs on its website:
+PuppyPress provides everything a dog breeding club needs on its website:
 
 * Stud dogs with a three-generation pedigree, breeding license and approval
 * Litters (born and expected) with parents, photos and availability
@@ -25,7 +25,7 @@ Rudelwerk provides everything a dog breeding club needs on its website:
 
 == Installation ==
 
-1. Upload the `rudelwerk` folder to `/wp-content/plugins/`.
+1. Upload the `puppypress` folder to `/wp-content/plugins/`.
 2. Activate the plugin through the "Plugins" screen.
 3. Migrating from the "Extra Child" theme? See `docs/MIGRATION.md`.
 

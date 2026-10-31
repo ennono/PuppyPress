@@ -2,20 +2,20 @@
 /**
  * Display titles of stud dogs and litters.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
-use Rudelwerk\Content\PostTypes;
-use Rudelwerk\Data\Dogs;
+use PuppyPress\Content\PostTypes;
+use PuppyPress\Data\Dogs;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Adds the kennel to stud dog names and a prefix to litter titles on the front end.
  *
- * Disable with `add_filter( 'rudelwerk_display_titles', '__return_false' );`.
+ * Disable with `add_filter( 'puppypress_display_titles', '__return_false' );`.
  */
 final class Titles {
 
@@ -38,11 +38,11 @@ final class Titles {
 		}
 
 		/**
-		 * Filters whether Rudelwerk changes front end titles of stud dogs and litters.
+		 * Filters whether PuppyPress changes front end titles of stud dogs and litters.
 		 *
 		 * @param bool $enabled Default true.
 		 */
-		return (bool) apply_filters( 'rudelwerk_display_titles', true );
+		return (bool) apply_filters( 'puppypress_display_titles', true );
 	}
 
 	/**

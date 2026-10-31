@@ -2,9 +2,9 @@
 /**
  * Contact directory (trimming proofs, dog sitters) grouped by ZIP region.
  *
- * Override: {theme}/rudelwerk/lists/directory.php
+ * Override: {theme}/puppypress/lists/directory.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  * @version 1.0.0
  *
  * @var array $args {
@@ -13,66 +13,66 @@
  * }
  */
 
-use Rudelwerk\Frontend\Icons;
+use PuppyPress\Frontend\Icons;
 
 defined( 'ABSPATH' ) || exit;
 ?>
 <?php if ( ! $args['regions'] ) : ?>
-	<p class="rudelwerk-empty"><?php echo esc_html( $args['empty'] ); ?></p>
+	<p class="puppypress-empty"><?php echo esc_html( $args['empty'] ); ?></p>
 <?php endif; ?>
 
-<?php foreach ( $args['regions'] as $rw_region ) : ?>
-	<h2><?php echo esc_html( $rw_region['region']->name ); ?></h2>
-	<div class="rudelwerk-table-scroll">
-		<table class="rudelwerk-table">
+<?php foreach ( $args['regions'] as $pp_region ) : ?>
+	<h2><?php echo esc_html( $pp_region['region']->name ); ?></h2>
+	<div class="puppypress-table-scroll">
+		<table class="puppypress-table">
 			<thead>
 				<tr>
-					<th scope="col"><?php esc_html_e( 'ZIP code', 'rudelwerk' ); ?></th>
-					<th scope="col"><?php esc_html_e( 'Location', 'rudelwerk' ); ?></th>
-					<th scope="col"><?php esc_html_e( 'Name', 'rudelwerk' ); ?></th>
-					<th scope="col"><?php esc_html_e( 'Phone', 'rudelwerk' ); ?></th>
-					<th scope="col" class="rudelwerk-table__wide"><?php esc_html_e( 'Details', 'rudelwerk' ); ?></th>
+					<th scope="col"><?php esc_html_e( 'ZIP code', 'puppypress' ); ?></th>
+					<th scope="col"><?php esc_html_e( 'Location', 'puppypress' ); ?></th>
+					<th scope="col"><?php esc_html_e( 'Name', 'puppypress' ); ?></th>
+					<th scope="col"><?php esc_html_e( 'Phone', 'puppypress' ); ?></th>
+					<th scope="col" class="puppypress-table__wide"><?php esc_html_e( 'Details', 'puppypress' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ( $rw_region['rows'] as $rw_row ) : ?>
+				<?php foreach ( $pp_region['rows'] as $pp_row ) : ?>
 					<?php
-					$rw_contact = $rw_row['contact'];
-					$rw_email   = is_email( $rw_contact['email'] ) ? antispambot( $rw_contact['email'] ) : '';
+					$pp_contact = $pp_row['contact'];
+					$pp_email   = is_email( $pp_contact['email'] ) ? antispambot( $pp_contact['email'] ) : '';
 					?>
 					<tr>
-						<td><?php echo esc_html( $rw_row['zip'] ); ?></td>
-						<td><?php echo esc_html( $rw_row['city'] ); ?></td>
+						<td><?php echo esc_html( $pp_row['zip'] ); ?></td>
+						<td><?php echo esc_html( $pp_row['city'] ); ?></td>
 						<td>
-							<?php if ( $rw_email ) : ?>
-								<a href="<?php echo esc_url( 'mailto:' . $rw_email ); ?>"><?php echo esc_html( $rw_contact['name'] ); ?></a>
+							<?php if ( $pp_email ) : ?>
+								<a href="<?php echo esc_url( 'mailto:' . $pp_email ); ?>"><?php echo esc_html( $pp_contact['name'] ); ?></a>
 							<?php else : ?>
-								<?php echo esc_html( $rw_contact['name'] ); ?>
+								<?php echo esc_html( $pp_contact['name'] ); ?>
 							<?php endif; ?>
 						</td>
 						<td>
-							<?php foreach ( array( 'phone', 'mobile' ) as $rw_key ) : ?>
-								<?php if ( '' !== $rw_contact[ $rw_key ] ) : ?>
-									<a class="rudelwerk-nowrap" href="<?php echo esc_url( 'tel:' . preg_replace( '/[^\d+]/', '', $rw_contact[ $rw_key ] ) ); ?>"><?php echo esc_html( $rw_contact[ $rw_key ] ); ?></a><br>
+							<?php foreach ( array( 'phone', 'mobile' ) as $pp_key ) : ?>
+								<?php if ( '' !== $pp_contact[ $pp_key ] ) : ?>
+									<a class="puppypress-nowrap" href="<?php echo esc_url( 'tel:' . preg_replace( '/[^\d+]/', '', $pp_contact[ $pp_key ] ) ); ?>"><?php echo esc_html( $pp_contact[ $pp_key ] ); ?></a><br>
 								<?php endif; ?>
 							<?php endforeach; ?>
 						</td>
 						<td>
-							<?php if ( '' !== trim( $rw_row['post']->post_content ) ) : ?>
-								<?php echo wp_kses_post( wpautop( $rw_row['post']->post_content ) ); ?>
+							<?php if ( '' !== trim( $pp_row['post']->post_content ) ) : ?>
+								<?php echo wp_kses_post( wpautop( $pp_row['post']->post_content ) ); ?>
 							<?php endif; ?>
 
-							<?php if ( '' !== $rw_contact['address'] ) : ?>
-								<p><?php echo nl2br( esc_html( $rw_contact['address'] ) ); ?></p>
+							<?php if ( '' !== $pp_contact['address'] ) : ?>
+								<p><?php echo nl2br( esc_html( $pp_contact['address'] ) ); ?></p>
 							<?php endif; ?>
 
-							<?php if ( $rw_email || '' !== $rw_contact['website'] ) : ?>
-								<p class="rudelwerk-icons">
-									<?php if ( $rw_email ) : ?>
-										<a href="<?php echo esc_url( 'mailto:' . $rw_email ); ?>" aria-label="<?php esc_attr_e( 'Email', 'rudelwerk' ); ?>"><?php echo Icons::svg( 'email' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+							<?php if ( $pp_email || '' !== $pp_contact['website'] ) : ?>
+								<p class="puppypress-icons">
+									<?php if ( $pp_email ) : ?>
+										<a href="<?php echo esc_url( 'mailto:' . $pp_email ); ?>" aria-label="<?php esc_attr_e( 'Email', 'puppypress' ); ?>"><?php echo Icons::svg( 'email' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 									<?php endif; ?>
-									<?php if ( '' !== $rw_contact['website'] ) : ?>
-										<a href="<?php echo esc_url( $rw_contact['website'] ); ?>" target="_blank" rel="nofollow noopener" aria-label="<?php esc_attr_e( 'Website', 'rudelwerk' ); ?>"><?php echo Icons::svg( 'website' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+									<?php if ( '' !== $pp_contact['website'] ) : ?>
+										<a href="<?php echo esc_url( $pp_contact['website'] ); ?>" target="_blank" rel="nofollow noopener" aria-label="<?php esc_attr_e( 'Website', 'puppypress' ); ?>"><?php echo Icons::svg( 'website' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 									<?php endif; ?>
 								</p>
 							<?php endif; ?>

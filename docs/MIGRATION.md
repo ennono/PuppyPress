@@ -1,21 +1,21 @@
-# Migration vom Theme „Extra Child“ zu Rudelwerk
+# Migration vom Theme „Extra Child“ zu PuppyPress
 
 Diese Anleitung beschreibt den Umstieg einer bestehenden Website, die bisher das Child-Theme *Extra Child* verwendet. Daten müssen dabei **nicht** migriert werden: Post Types, Taxonomien, Meta-Keys, Term-Meta, Widget-IDs und die Sidebar-ID sind identisch.
 
 ## Kurzfassung
 
 1. Backup von Datenbank und `wp-content` anlegen.
-2. Rudelwerk installieren, **noch nicht aktivieren**.
+2. PuppyPress installieren, **noch nicht aktivieren**.
 3. Im Child-Theme die Fachlogik entfernen (siehe unten) und die neue, schlanke `functions.php` einsetzen.
-4. Rudelwerk aktivieren.
-5. Einmal *Einstellungen → Permalinks* öffnen und speichern (Rudelwerk spült die Regeln zwar selbst, sicher ist sicher).
+4. PuppyPress aktivieren.
+5. Einmal *Einstellungen → Permalinks* öffnen und speichern (PuppyPress spült die Regeln zwar selbst, sicher ist sicher).
 6. Die Prüfliste am Ende durchgehen.
 
-Schritte 3 und 4 sollten direkt nacheinander passieren. Solange beide aktiv sind, registrieren Theme und Plugin dieselben Inhalte doppelt. Rudelwerk zeigt in diesem Fall einen Hinweis im Backend an.
+Schritte 3 und 4 sollten direkt nacheinander passieren. Solange beide aktiv sind, registrieren Theme und Plugin dieselben Inhalte doppelt. PuppyPress zeigt in diesem Fall einen Hinweis im Backend an.
 
 ## Was ins Plugin gewandert ist
 
-| Bisher im Theme | Jetzt in Rudelwerk |
+| Bisher im Theme | Jetzt in PuppyPress |
 | --- | --- |
 | `includes/custom_post_types.php` | `includes/Content/PostTypes.php` |
 | `includes/custom_taxonomies.php` (Registrierung) | `includes/Content/Taxonomies.php` |
@@ -28,7 +28,7 @@ Schritte 3 und 4 sollten direkt nacheinander passieren. Solange beide aktiv sind
 | Fachliche Ausgabe der `single-*`-Templates | `templates/single/*.php` (über `the_content`, theme-unabhängig) |
 | Seitentemplates `template-all-*.php`, `template-breeders-board.php` | Shortcodes, siehe unten |
 | Sortierung nach „Category Custom Fields“ in `functions.php` | `includes/Compat/TermCustomFieldOrder.php` |
-| `extrachild.pot`, `de_DE.po/.mo` | `languages/rudelwerk*.{pot,po,mo,l10n.php}` |
+| `extrachild.pot`, `de_DE.po/.mo` | `languages/puppypress*.{pot,po,mo,l10n.php}` |
 
 ## Aufräumen im Theme
 
@@ -62,7 +62,7 @@ Diese Teile betreffen nur das Aussehen und gehören deshalb ins Theme:
 - `footer.php` (Footer-Markup)
 - Laden des Parent-Stylesheets
 - Entfernen der Präfixe in Archivtiteln („Kategorie:“, „Archiv:“ …)
-- Font Awesome, falls das Theme oder Inhalte es noch nutzen. Rudelwerk braucht es nicht mehr, weil es eigene SVG-Icons mitbringt.
+- Font Awesome, falls das Theme oder Inhalte es noch nutzen. PuppyPress braucht es nicht mehr, weil es eigene SVG-Icons mitbringt.
 - `page-template-blog-feed.php` samt `extrachild_get_blog_feed_page_options()`. Das ist eine Variante des Extra-Templates „Blog Feed“. **Achtung:** Die Abfrage nutzte `post_type => 'dogs'`, einen Post Type, den es nie gab. Das Template hat also nie Inhalte angezeigt und kann vermutlich weg.
 - Optional das Abschalten des Divi-Post-Types „Projekte“ (`unregister_post_type( 'project' )`). Das ist eine Einstellung der Website und hat mit den Vereinsinhalten nichts zu tun.
 
@@ -71,7 +71,7 @@ Diese Teile betreffen nur das Aussehen und gehören deshalb ins Theme:
 ```php
 <?php
 /**
- * Extra Child – nur noch Präsentation. Die Vereinsinhalte liefert das Plugin Rudelwerk.
+ * Extra Child – nur noch Präsentation. Die Vereinsinhalte liefert das Plugin PuppyPress.
  */
 
 add_action( 'wp_enqueue_scripts', function () {
@@ -106,33 +106,33 @@ add_filter( 'get_the_archive_title', function ( $title ) {
 
 ## Seitentemplates → Shortcodes
 
-Seiten, denen noch ein altes Template zugewiesen ist, funktionieren ohne Änderung weiter. Sobald die Template-Datei im Theme fehlt, nutzt WordPress `page.php`, und Rudelwerk hängt die passende Übersicht an den Seiteninhalt an. Die Templates bleiben im Feld *Seiten-Attribute → Template* auswählbar.
+Seiten, denen noch ein altes Template zugewiesen ist, funktionieren ohne Änderung weiter. Sobald die Template-Datei im Theme fehlt, nutzt WordPress `page.php`, und PuppyPress hängt die passende Übersicht an den Seiteninhalt an. Die Templates bleiben im Feld *Seiten-Attribute → Template* auswählbar.
 
 Wer die Seiten umstellen möchte, setzt das Template auf „Standard“ und fügt den Shortcode in den Inhalt ein:
 
 | Altes Template | Shortcode |
 | --- | --- |
-| All Stud Dogs | `[rudelwerk_terms taxonomy="kennel" title="Registrierte Zwinger mit Deckrüden"]` |
-| All Stud Dogs (Complete list) | `[rudelwerk_stud_dogs group="none"]` |
-| All approvals | `[rudelwerk_posts post_type="approvals"]` |
-| All breeding licenses | `[rudelwerk_posts post_type="breeding-license"]` |
-| All puppies | `[rudelwerk_terms taxonomy="puppies-city" count="yes" hide_empty="no"]` |
-| All dogs to place | `[rudelwerk_placement_overview]` |
-| All shows | `[rudelwerk_terms taxonomy="period"]` |
-| All results | `[rudelwerk_terms taxonomy="event" title="Veranstaltungen"][rudelwerk_terms taxonomy="period" title="Ausstellungen"]` |
-| All trimming proofs | `[rudelwerk_directory post_type="trimming-proofs"]` |
-| All dog sitters | `[rudelwerk_directory post_type="dog-sitters"]` |
-| All literature | `[rudelwerk_literature]` |
-| Breeder's board | `[rudelwerk_breeders_board]` |
+| All Stud Dogs | `[puppypress_terms taxonomy="kennel" title="Registrierte Zwinger mit Deckrüden"]` |
+| All Stud Dogs (Complete list) | `[puppypress_stud_dogs group="none"]` |
+| All approvals | `[puppypress_posts post_type="approvals"]` |
+| All breeding licenses | `[puppypress_posts post_type="breeding-license"]` |
+| All puppies | `[puppypress_terms taxonomy="puppies-city" count="yes" hide_empty="no"]` |
+| All dogs to place | `[puppypress_placement_overview]` |
+| All shows | `[puppypress_terms taxonomy="period"]` |
+| All results | `[puppypress_terms taxonomy="event" title="Veranstaltungen"][puppypress_terms taxonomy="period" title="Ausstellungen"]` |
+| All trimming proofs | `[puppypress_directory post_type="trimming-proofs"]` |
+| All dog sitters | `[puppypress_directory post_type="dog-sitters"]` |
+| All literature | `[puppypress_literature]` |
+| Breeder's board | `[puppypress_breeders_board]` |
 
-Neu hinzugekommen: `[rudelwerk_stud_dogs filter="yes"]` (Deckrüden mit Filter auf einer beliebigen Seite) und `[rudelwerk_litters]` (gefallene und erwartete Würfe, wie bisher im Welpen-Archiv).
+Neu hinzugekommen: `[puppypress_stud_dogs filter="yes"]` (Deckrüden mit Filter auf einer beliebigen Seite) und `[puppypress_litters]` (gefallene und erwartete Würfe, wie bisher im Welpen-Archiv).
 
 ## Verhalten, das sich bewusst geändert hat
 
-Rudelwerk übernimmt die Funktionen 1:1, behebt aber Fehler, die im Theme steckten:
+PuppyPress übernimmt die Funktionen 1:1, behebt aber Fehler, die im Theme steckten:
 
 **Daten und Backend**
-- Beim Speichern eines Deckrüden wurden die Meta-Felder `hd` und `ed` immer geleert (die Felder gab es im Formular nicht). Beim Speichern eines Wurfs passierte dasselbe mit `address`, `phone`, `mobile` und `fax`. Rudelwerk schreibt nur noch Felder, die im Formular vorkommen. Bereits gelöschte Werte lassen sich damit nicht zurückholen.
+- Beim Speichern eines Deckrüden wurden die Meta-Felder `hd` und `ed` immer geleert (die Felder gab es im Formular nicht). Beim Speichern eines Wurfs passierte dasselbe mit `address`, `phone`, `mobile` und `fax`. PuppyPress schreibt nur noch Felder, die im Formular vorkommen. Bereits gelöschte Werte lassen sich damit nicht zurückholen.
 - Beschreibungen in der Abstammung verloren beim Speichern ihre Zeilenumbrüche (`sanitize_text_field`). Jetzt bleiben sie erhalten und werden auch so angezeigt.
 - Alle Ausgaben werden escaped, E-Mail-Adressen werden mit `antispambot()` verschleiert, Term-Felder sind per Nonce und Berechtigungsprüfung geschützt (vorher ungeprüftes `$_POST`).
 - Die Fotoauswahl für Vater und Mutter erlaubt Mehrfachauswahl, zeigt Vorschaubilder und kann einzelne Fotos wieder entfernen.
@@ -140,9 +140,9 @@ Rudelwerk übernimmt die Funktionen 1:1, behebt aber Fehler, die im Theme steckt
 
 **Frontend**
 - Taxonomie „Titel“: Die Archiv-URLs (`/by-title/…`) lieferten nie Ergebnisse, weil die Query-Variable `title` in WordPress für den Beitragstitel reserviert ist. Die Taxonomie nutzt jetzt die Query-Variable `stud_dog_title`. Dasselbe gilt für die Tierbetreuungs-Art (`dog_sitter_type`).
-- Der Deckrüdenfilter nutzt GET-Parameter (`rw_zip`, `rw_hd` …). Gefilterte Ergebnisse lassen sich so als Link teilen und mit „Zurück“ erreichen. Zwinger ohne PLZ fehlten bisher im Archiv; jetzt werden sie nur ausgeblendet, wenn nach PLZ gefiltert wird.
+- Der Deckrüdenfilter nutzt GET-Parameter (`pp_zip`, `pp_hd` …). Gefilterte Ergebnisse lassen sich so als Link teilen und mit „Zurück“ erreichen. Zwinger ohne PLZ fehlten bisher im Archiv; jetzt werden sie nur ausgeblendet, wenn nach PLZ gefiltert wird.
 - Der Zwingername im Titel wurde auf der Detailseite nur angezeigt, wenn einem Deckrüden mehr als ein Zwinger/Züchter/Besitzer zugeordnet war. Jetzt gilt überall: erster nicht versteckter Zwinger.
-- Leere Wurftage erschienen als „01.01.70“. Jetzt werden sie weggelassen, und das Datumsformat folgt den WordPress-Einstellungen (anpassbar über `rudelwerk_date_format`).
+- Leere Wurftage erschienen als „01.01.70“. Jetzt werden sie weggelassen, und das Datumsformat folgt den WordPress-Einstellungen (anpassbar über `puppypress_date_format`).
 - Leere Abschnitte (z. B. „Besitzerdaten“ ohne Besitzer) werden nicht mehr als leere Überschrift angezeigt.
 - Die Züchtertafel blendet jetzt nur Zwinger aus, die als „unsichtbar“ markiert sind. Vorher fehlten auch Zwinger, bei denen das Feld nie gespeichert worden war.
 - Tierbetreuungen zeigten als Ort die Städte der Trimmnachweise (falsche Taxonomie). Jetzt stimmt die Zuordnung.
@@ -154,6 +154,6 @@ Rudelwerk übernimmt die Funktionen 1:1, behebt aber Fehler, die im Theme steckt
 - [ ] Deckrüden-, Welpen- und Vermittlungsseiten öffnen: Daten, Kontakte, Abstammung und Fotos sind sichtbar.
 - [ ] Deckrüden-Archiv: Filter funktioniert, Zwingername steht beim Hund.
 - [ ] Alle Übersichtsseiten (ehemalige Templates) zeigen ihre Listen.
-- [ ] *Design → Widgets*: Die „Rudelwerk: …“-Widgets stehen an ihren bisherigen Positionen, die „Alle …“-Links sind gesetzt.
+- [ ] *Design → Widgets*: Die „PuppyPress: …“-Widgets stehen an ihren bisherigen Positionen, die „Alle …“-Links sind gesetzt.
 - [ ] Alte URLs (z. B. `/deckrueden/`, `/zwinger/…`, `/zucht/koerberichte/…`) funktionieren.
 - [ ] Einen Deckrüden im Backend öffnen und speichern: Abstammung und Körberichte bleiben erhalten.

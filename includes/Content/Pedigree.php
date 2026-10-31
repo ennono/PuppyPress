@@ -2,10 +2,10 @@
 /**
  * Pedigree (three generations of ancestors) of a stud dog.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Content;
+namespace PuppyPress\Content;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -56,20 +56,20 @@ final class Pedigree {
 	 */
 	public static function label( $position ) {
 		$labels = array(
-			'father'             => __( 'Father', 'rudelwerk' ),
-			'mother'             => __( 'Mother', 'rudelwerk' ),
-			'grandfather_1'      => __( 'Paternal grandfather', 'rudelwerk' ),
-			'grandmother_1'      => __( 'Paternal grandmother', 'rudelwerk' ),
-			'grandfather_2'      => __( 'Maternal grandfather', 'rudelwerk' ),
-			'grandmother_2'      => __( 'Maternal grandmother', 'rudelwerk' ),
-			'greatgrandfather_1' => __( 'Great-grandfather 1', 'rudelwerk' ),
-			'greatgrandmother_1' => __( 'Great-grandmother 1', 'rudelwerk' ),
-			'greatgrandfather_2' => __( 'Great-grandfather 2', 'rudelwerk' ),
-			'greatgrandmother_2' => __( 'Great-grandmother 2', 'rudelwerk' ),
-			'greatgrandfather_3' => __( 'Great-grandfather 3', 'rudelwerk' ),
-			'greatgrandmother_3' => __( 'Great-grandmother 3', 'rudelwerk' ),
-			'greatgrandfather_4' => __( 'Great-grandfather 4', 'rudelwerk' ),
-			'greatgrandmother_4' => __( 'Great-grandmother 4', 'rudelwerk' ),
+			'father'             => __( 'Father', 'puppypress' ),
+			'mother'             => __( 'Mother', 'puppypress' ),
+			'grandfather_1'      => __( 'Paternal grandfather', 'puppypress' ),
+			'grandmother_1'      => __( 'Paternal grandmother', 'puppypress' ),
+			'grandfather_2'      => __( 'Maternal grandfather', 'puppypress' ),
+			'grandmother_2'      => __( 'Maternal grandmother', 'puppypress' ),
+			'greatgrandfather_1' => __( 'Great-grandfather 1', 'puppypress' ),
+			'greatgrandmother_1' => __( 'Great-grandmother 1', 'puppypress' ),
+			'greatgrandfather_2' => __( 'Great-grandfather 2', 'puppypress' ),
+			'greatgrandmother_2' => __( 'Great-grandmother 2', 'puppypress' ),
+			'greatgrandfather_3' => __( 'Great-grandfather 3', 'puppypress' ),
+			'greatgrandmother_3' => __( 'Great-grandmother 3', 'puppypress' ),
+			'greatgrandfather_4' => __( 'Great-grandfather 4', 'puppypress' ),
+			'greatgrandmother_4' => __( 'Great-grandmother 4', 'puppypress' ),
 		);
 
 		return isset( $labels[ $position ] ) ? $labels[ $position ] : $position;

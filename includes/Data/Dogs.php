@@ -2,13 +2,13 @@
 /**
  * Read helpers for stud dogs, litters and dogs to place.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Data;
+namespace PuppyPress\Data;
 
-use Rudelwerk\Content\PostTypes;
-use Rudelwerk\Content\Taxonomies;
+use PuppyPress\Content\PostTypes;
+use PuppyPress\Content\Taxonomies;
 use WP_Term;
 
 defined( 'ABSPATH' ) || exit;
@@ -78,7 +78,7 @@ final class Dogs {
 		 * @param WP_Term $kennel  Kennel.
 		 * @param int     $post_id Post ID.
 		 */
-		return apply_filters( 'rudelwerk_stud_dog_name', $name, $title, $kennel, $post_id );
+		return apply_filters( 'puppypress_stud_dog_name', $name, $title, $kennel, $post_id );
 	}
 
 	/**
@@ -88,7 +88,7 @@ final class Dogs {
 	 * @return bool
 	 */
 	public static function is_expected_litter( $post_id ) {
-		// The theme stored "on" for checked boxes, Rudelwerk stores "1".
+		// The theme stored "on" for checked boxes, PuppyPress stores "1".
 		return '' !== (string) get_post_meta( $post_id, 'expected_puppies', true );
 	}
 
@@ -104,9 +104,9 @@ final class Dogs {
 
 		$name = self::is_expected_litter( $post_id )
 			/* translators: %s: litter title */
-			? sprintf( __( 'Expected puppies %s', 'rudelwerk' ), $title )
+			? sprintf( __( 'Expected puppies %s', 'puppypress' ), $title )
 			/* translators: %s: litter title */
-			: sprintf( __( 'Puppies %s', 'rudelwerk' ), $title );
+			: sprintf( __( 'Puppies %s', 'puppypress' ), $title );
 
 		/**
 		 * Filters the display title of a litter.
@@ -115,7 +115,7 @@ final class Dogs {
 		 * @param string $title   Post title.
 		 * @param int    $post_id Post ID.
 		 */
-		return apply_filters( 'rudelwerk_litter_title', $name, $title, $post_id );
+		return apply_filters( 'puppypress_litter_title', $name, $title, $post_id );
 	}
 
 	/**
@@ -151,12 +151,12 @@ final class Dogs {
 
 		if ( null !== $male ) {
 			/* translators: %d: number of male puppies */
-			$parts[] = sprintf( _n( '%d male', '%d males', $male, 'rudelwerk' ), $male );
+			$parts[] = sprintf( _n( '%d male', '%d males', $male, 'puppypress' ), $male );
 		}
 
 		if ( null !== $female ) {
 			/* translators: %d: number of female puppies */
-			$parts[] = sprintf( _n( '%d female', '%d females', $female, 'rudelwerk' ), $female );
+			$parts[] = sprintf( _n( '%d female', '%d females', $female, 'puppypress' ), $female );
 		}
 
 		return implode( ', ', $parts );
@@ -191,7 +191,7 @@ final class Dogs {
 		 *
 		 * @param string $format PHP date format.
 		 */
-		$format = apply_filters( 'rudelwerk_date_format', get_option( 'date_format' ) );
+		$format = apply_filters( 'puppypress_date_format', get_option( 'date_format' ) );
 
 		return wp_date( $format, $timestamp, wp_timezone() );
 	}
@@ -219,7 +219,7 @@ final class Dogs {
 	 * @return string
 	 */
 	public static function gender_label( $gender ) {
-		$options = \Rudelwerk\Content\Fields::gender_options();
+		$options = \PuppyPress\Content\Fields::gender_options();
 
 		return ( '' !== $gender && isset( $options[ $gender ] ) ) ? $options[ $gender ] : $gender;
 	}
@@ -232,7 +232,7 @@ final class Dogs {
 	 */
 	public static function post_type_label( $post_type ) {
 		if ( PostTypes::PUPPIES === $post_type ) {
-			return __( 'Puppies', 'rudelwerk' );
+			return __( 'Puppies', 'puppypress' );
 		}
 
 		$object = get_post_type_object( $post_type );

@@ -2,12 +2,12 @@
 /**
  * Widget registration.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Widgets;
+namespace PuppyPress\Widgets;
 
-use Rudelwerk\Content\PostTypes;
+use PuppyPress\Content\PostTypes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -41,59 +41,59 @@ final class Widgets {
 		$configs = array(
 			array(
 				'id_base'     => 'widget_all_recent_posts',
-				'name'        => __( 'Rudelwerk: Recent entries', 'rudelwerk' ),
-				'description' => __( 'Most recent posts, litters, stud dogs, dogs to place and results.', 'rudelwerk' ),
+				'name'        => __( 'PuppyPress: Recent entries', 'puppypress' ),
+				'description' => __( 'Most recent posts, litters, stud dogs, dogs to place and results.', 'puppypress' ),
 				'post_types'  => array( PostTypes::PUPPIES, PostTypes::STUD_DOG, PostTypes::DOG_TO_PLACE, PostTypes::RESULT, 'post' ),
 				'show_type'   => true,
 			),
 			array(
 				'id_base'     => 'widget_recent_puppies',
-				'name'        => __( 'Rudelwerk: Recent litters', 'rudelwerk' ),
-				'description' => __( 'Most recent litters.', 'rudelwerk' ),
+				'name'        => __( 'PuppyPress: Recent litters', 'puppypress' ),
+				'description' => __( 'Most recent litters.', 'puppypress' ),
 				'post_types'  => array( PostTypes::PUPPIES ),
 			),
 			array(
 				'id_base'     => 'widget_recent_stud_dogs',
-				'name'        => __( 'Rudelwerk: Recent stud dogs', 'rudelwerk' ),
-				'description' => __( 'Most recent stud dogs.', 'rudelwerk' ),
+				'name'        => __( 'PuppyPress: Recent stud dogs', 'puppypress' ),
+				'description' => __( 'Most recent stud dogs.', 'puppypress' ),
 				'post_types'  => array( PostTypes::STUD_DOG ),
 			),
 			array(
 				'id_base'     => 'widget_recent_results',
-				'name'        => __( 'Rudelwerk: Recent results', 'rudelwerk' ),
-				'description' => __( 'Most recent results, breeding licenses and shows.', 'rudelwerk' ),
+				'name'        => __( 'PuppyPress: Recent results', 'puppypress' ),
+				'description' => __( 'Most recent results, breeding licenses and shows.', 'puppypress' ),
 				'post_types'  => array( PostTypes::RESULT, PostTypes::BREEDING_LICENSE, PostTypes::SHOW ),
 				'show_type'   => true,
 				'link_option' => 'all_results_url',
-				'link_label'  => __( 'All results', 'rudelwerk' ),
+				'link_label'  => __( 'All results', 'puppypress' ),
 			),
 			array(
 				'id_base'     => 'widget_recent_dogs_to_place',
-				'name'        => __( 'Rudelwerk: Recent dogs to place', 'rudelwerk' ),
-				'description' => __( 'Most recent dogs to place.', 'rudelwerk' ),
+				'name'        => __( 'PuppyPress: Recent dogs to place', 'puppypress' ),
+				'description' => __( 'Most recent dogs to place.', 'puppypress' ),
 				'post_types'  => array( PostTypes::DOG_TO_PLACE ),
 				'link_option' => 'all_dogs_to_place_url',
-				'link_label'  => __( 'All dogs to place', 'rudelwerk' ),
+				'link_label'  => __( 'All dogs to place', 'puppypress' ),
 			),
 			array(
 				'id_base'     => 'widget_recent_dogs_to_place_and_puppies',
-				'name'        => __( 'Rudelwerk: Recent dogs to place and litters', 'rudelwerk' ),
-				'description' => __( 'Most recent dogs to place including litters.', 'rudelwerk' ),
+				'name'        => __( 'PuppyPress: Recent dogs to place and litters', 'puppypress' ),
+				'description' => __( 'Most recent dogs to place including litters.', 'puppypress' ),
 				'post_types'  => array( PostTypes::DOG_TO_PLACE, PostTypes::PUPPIES ),
 				'show_type'   => true,
 				'link_option' => 'all_dogs_to_place_url',
-				'link_label'  => __( 'All dogs to place', 'rudelwerk' ),
+				'link_label'  => __( 'All dogs to place', 'puppypress' ),
 			),
 			array(
 				'id_base'       => 'widget_recent_news',
-				'name'          => __( 'Rudelwerk: News', 'rudelwerk' ),
-				'description'   => __( 'Most recent posts, stud dogs, breeding licenses and approvals.', 'rudelwerk' ),
+				'name'          => __( 'PuppyPress: News', 'puppypress' ),
+				'description'   => __( 'Most recent posts, stud dogs, breeding licenses and approvals.', 'puppypress' ),
 				'post_types'    => array( 'post', PostTypes::STUD_DOG, PostTypes::BREEDING_LICENSE, PostTypes::APPROVAL ),
 				'show_type'     => true,
 				/* translators: %s: type of entry, e.g. "Stud dog" */
-				'type_format'   => __( 'New: %s', 'rudelwerk' ),
+				'type_format'   => __( 'New: %s', 'puppypress' ),
 				'link_option'   => 'all_news_url',
-				'link_label'    => __( 'All news', 'rudelwerk' ),
+				'link_label'    => __( 'All news', 'puppypress' ),
 				'ignore_sticky' => false,
 			),
 		);
@@ -103,6 +103,6 @@ final class Widgets {
 		 *
 		 * @param array[] $configs Configurations.
 		 */
-		return apply_filters( 'rudelwerk_widgets', $configs );
+		return apply_filters( 'puppypress_widgets', $configs );
 	}
 }

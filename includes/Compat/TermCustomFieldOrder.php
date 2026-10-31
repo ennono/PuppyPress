@@ -2,10 +2,10 @@
 /**
  * Ordering terms by a value of the "Category Custom Fields" plugin.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Compat;
+namespace PuppyPress\Compat;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -33,11 +33,11 @@ final class TermCustomFieldOrder {
 		global $wpdb;
 
 		$table = $wpdb->prefix . 'ccf_Value';
-		$found = wp_cache_get( 'rudelwerk_ccf_table', 'rudelwerk' );
+		$found = wp_cache_get( 'puppypress_ccf_table', 'puppypress' );
 
 		if ( false === $found ) {
 			$found = $table === $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) ) ) ? 'yes' : 'no'; // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			wp_cache_set( 'rudelwerk_ccf_table', $found, 'rudelwerk', HOUR_IN_SECONDS );
+			wp_cache_set( 'puppypress_ccf_table', $found, 'puppypress', HOUR_IN_SECONDS );
 		}
 
 		if ( 'yes' !== $found ) {

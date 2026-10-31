@@ -7,8 +7,8 @@ Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog]
 ### Hinzugefügt
 - Erste Version. Die Fachlogik des Child-Themes *Extra Child* ist vollständig als Plugin umgesetzt: 11 Post Types, 19 Taxonomien, Meta-Boxen, Term-Felder, Abstammungsraster, 7 Widgets, Sidebar für Ergebnisseiten.
 - Feld-Schema als einzige Quelle für Meta-Registrierung, Formulare und Sanitizing.
-- Theme-unabhängige Detailansichten über überschreibbare Templates (`{theme}/rudelwerk/…`).
-- Shortcodes für alle Übersichtsseiten sowie `[rudelwerk_stud_dogs filter="yes"]` und `[rudelwerk_litters]`.
+- Theme-unabhängige Detailansichten über überschreibbare Templates (`{theme}/puppypress/…`).
+- Shortcodes für alle Übersichtsseiten sowie `[puppypress_stud_dogs filter="yes"]` und `[puppypress_litters]`.
 - Kompatibilität mit den alten Seitentemplates: Seiten funktionieren ohne Änderung weiter.
 - Deckrüdenfilter über GET-Parameter, auch im Deckrüden-Archiv.
 - Mehrfach-Fotoauswahl mit Vorschau für Vater- und Mutterfotos.

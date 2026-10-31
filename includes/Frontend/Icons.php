@@ -2,10 +2,10 @@
 /**
  * Inline SVG icons (based on Feather icons, MIT license).
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Frontend;
+namespace PuppyPress\Frontend;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -39,7 +39,7 @@ final class Icons {
 			return '';
 		}
 
-		$svg = '<svg class="rudelwerk-icon rudelwerk-icon--' . esc_attr( $name ) . '" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' . self::$paths[ $name ] . '</svg>';
+		$svg = '<svg class="puppypress-icon puppypress-icon--' . esc_attr( $name ) . '" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' . self::$paths[ $name ] . '</svg>';
 
 		/**
 		 * Filters an icon, e.g. to replace it with an icon font.
@@ -47,6 +47,6 @@ final class Icons {
 		 * @param string $svg  SVG markup.
 		 * @param string $name Icon name.
 		 */
-		return apply_filters( 'rudelwerk_icon', $svg, $name );
+		return apply_filters( 'puppypress_icon', $svg, $name );
 	}
 }

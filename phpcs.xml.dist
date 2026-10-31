@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Rudelwerk">
-	<description>Coding standard for Rudelwerk.</description>
+<ruleset name="PuppyPress">
+	<description>Coding standard for PuppyPress.</description>
 
 	<file>.</file>
 	<exclude-pattern>/vendor/*</exclude-pattern>
@@ -22,7 +22,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="rudelwerk"/>
+				<element value="puppypress"/>
 			</property>
 		</properties>
 	</rule>
@@ -30,9 +30,9 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="rudelwerk"/>
-				<element value="rw"/>
-				<element value="Rudelwerk"/>
+				<element value="puppypress"/>
+				<element value="pp"/>
+				<element value="PuppyPress"/>
 			</property>
 		</properties>
 	</rule>

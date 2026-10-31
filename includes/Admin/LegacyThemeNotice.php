@@ -2,10 +2,10 @@
 /**
  * Warns if the former theme still registers the content types.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Admin;
+namespace PuppyPress\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 final class LegacyThemeNotice {
 
 	/**
-	 * Functions of the former theme that Rudelwerk replaces.
+	 * Functions of the former theme that PuppyPress replaces.
 	 */
 	const LEGACY_FUNCTIONS = array(
 		'extrachild_custom_post_types',
@@ -48,8 +48,8 @@ final class LegacyThemeNotice {
 
 		printf(
 			'<div class="notice notice-warning"><p><strong>%1$s</strong> %2$s</p><p><code>%3$s</code></p></div>',
-			esc_html__( 'Rudelwerk:', 'rudelwerk' ),
-			esc_html__( 'The active theme still registers post types, fields or widgets that are now provided by Rudelwerk. Please remove the files in the theme\'s "includes" folder and their require_once lines from functions.php (see docs/MIGRATION.md).', 'rudelwerk' ),
+			esc_html__( 'PuppyPress:', 'puppypress' ),
+			esc_html__( 'The active theme still registers post types, fields or widgets that are now provided by PuppyPress. Please remove the files in the theme\'s "includes" folder and their require_once lines from functions.php (see docs/MIGRATION.md).', 'puppypress' ),
 			esc_html( implode( '(), ', $found ) . '()' )
 		);
 	}

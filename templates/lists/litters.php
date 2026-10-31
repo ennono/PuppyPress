@@ -2,9 +2,9 @@
 /**
  * Litters, grouped into born and expected litters.
  *
- * Override: {theme}/rudelwerk/lists/litters.php
+ * Override: {theme}/puppypress/lists/litters.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  * @version 1.0.0
  *
  * @var array $args {
@@ -15,20 +15,20 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<?php foreach ( $args['sections'] as $rw_key => $rw_section ) : ?>
-	<section class="rudelwerk-litters__section rudelwerk-litters__section--<?php echo esc_attr( $rw_key ); ?>" id="rudelwerk-litters-<?php echo esc_attr( $rw_key ); ?>">
+<?php foreach ( $args['sections'] as $pp_key => $pp_section ) : ?>
+	<section class="puppypress-litters__section puppypress-litters__section--<?php echo esc_attr( $pp_key ); ?>" id="puppypress-litters-<?php echo esc_attr( $pp_key ); ?>">
 		<?php if ( $args['show_headings'] ) : ?>
-			<h2><?php echo esc_html( $rw_section['title'] ); ?></h2>
+			<h2><?php echo esc_html( $pp_section['title'] ); ?></h2>
 		<?php endif; ?>
 
-		<?php if ( $rw_section['posts'] ) : ?>
-			<div class="rudelwerk-cards">
-				<?php foreach ( $rw_section['posts'] as $rw_post ) : ?>
-					<?php rudelwerk_template( 'parts/litter-card.php', array( 'post' => $rw_post ) ); ?>
+		<?php if ( $pp_section['posts'] ) : ?>
+			<div class="puppypress-cards">
+				<?php foreach ( $pp_section['posts'] as $pp_post ) : ?>
+					<?php puppypress_template( 'parts/litter-card.php', array( 'post' => $pp_post ) ); ?>
 				<?php endforeach; ?>
 			</div>
 		<?php else : ?>
-			<p class="rudelwerk-empty"><?php esc_html_e( 'There are no litters at the moment.', 'rudelwerk' ); ?></p>
+			<p class="puppypress-empty"><?php esc_html_e( 'There are no litters at the moment.', 'puppypress' ); ?></p>
 		<?php endif; ?>
 	</section>
 <?php endforeach; ?>

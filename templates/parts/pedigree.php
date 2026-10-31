@@ -2,40 +2,40 @@
 /**
  * Pedigree table (three generations).
  *
- * Override: {theme}/rudelwerk/parts/pedigree.php
+ * Override: {theme}/puppypress/parts/pedigree.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  * @version 1.0.0
  *
  * @var array $args {
- *     @type array $pedigree Result of Rudelwerk\Content\Pedigree::get().
+ *     @type array $pedigree Result of PuppyPress\Content\Pedigree::get().
  * }
  */
 
-use Rudelwerk\Content\Pedigree;
+use PuppyPress\Content\Pedigree;
 
 defined( 'ABSPATH' ) || exit;
 
-$rw_pedigree = $args['pedigree'];
+$pp_pedigree = $args['pedigree'];
 ?>
-<div class="rudelwerk-pedigree">
-	<table class="rudelwerk-pedigree__table" aria-label="<?php esc_attr_e( 'Pedigree', 'rudelwerk' ); ?>">
+<div class="puppypress-pedigree">
+	<table class="puppypress-pedigree__table" aria-label="<?php esc_attr_e( 'Pedigree', 'puppypress' ); ?>">
 		<tbody>
-			<?php foreach ( Pedigree::rows() as $rw_row ) : ?>
+			<?php foreach ( Pedigree::rows() as $pp_row ) : ?>
 				<tr>
-					<?php foreach ( $rw_row as $rw_cell ) : ?>
-						<?php $rw_ancestor = $rw_pedigree[ $rw_cell['position'] ]; ?>
-						<td rowspan="<?php echo (int) $rw_cell['rowspan']; ?>" class="rudelwerk-pedigree__generation-<?php echo (int) $rw_cell['generation']; ?>">
-							<?php if ( 1 === $rw_cell['generation'] ) : ?>
-								<span class="rudelwerk-pedigree__role"><?php echo esc_html( Pedigree::label( $rw_cell['position'] ) ); ?></span>
+					<?php foreach ( $pp_row as $pp_cell ) : ?>
+						<?php $pp_ancestor = $pp_pedigree[ $pp_cell['position'] ]; ?>
+						<td rowspan="<?php echo (int) $pp_cell['rowspan']; ?>" class="puppypress-pedigree__generation-<?php echo (int) $pp_cell['generation']; ?>">
+							<?php if ( 1 === $pp_cell['generation'] ) : ?>
+								<span class="puppypress-pedigree__role"><?php echo esc_html( Pedigree::label( $pp_cell['position'] ) ); ?></span>
 							<?php endif; ?>
 
-							<?php if ( '' !== trim( $rw_ancestor['description'] ) ) : ?>
-								<div class="rudelwerk-pedigree__description"><?php echo nl2br( esc_html( $rw_ancestor['description'] ) ); ?></div>
+							<?php if ( '' !== trim( $pp_ancestor['description'] ) ) : ?>
+								<div class="puppypress-pedigree__description"><?php echo nl2br( esc_html( $pp_ancestor['description'] ) ); ?></div>
 							<?php endif; ?>
 
-							<?php if ( $rw_ancestor['approval'] && 'publish' === get_post_status( $rw_ancestor['approval'] ) ) : ?>
-								<a class="rudelwerk-pedigree__approval" href="<?php echo esc_url( get_permalink( $rw_ancestor['approval'] ) ); ?>"><?php esc_html_e( 'Approval', 'rudelwerk' ); ?></a>
+							<?php if ( $pp_ancestor['approval'] && 'publish' === get_post_status( $pp_ancestor['approval'] ) ) : ?>
+								<a class="puppypress-pedigree__approval" href="<?php echo esc_url( get_permalink( $pp_ancestor['approval'] ) ); ?>"><?php esc_html_e( 'Approval', 'puppypress' ); ?></a>
 							<?php endif; ?>
 						</td>
 					<?php endforeach; ?>

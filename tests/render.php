@@ -3,16 +3,16 @@
  * Renders every template with sample data to catch runtime errors.
  * Included by tests/run.php after the unit checks.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-use Rudelwerk\Frontend\StudDogFilter;
-use Rudelwerk\Frontend\Templates;
+use PuppyPress\Frontend\StudDogFilter;
+use PuppyPress\Frontend\Templates;
 
 /*
  * Fake storage.
  */
-$GLOBALS['rw_meta'] = array(
+$GLOBALS['pp_meta'] = array(
 	10 => array(
 		'date_born'          => '2019-04-12',
 		'withers'            => '61.5',
@@ -57,13 +57,13 @@ $GLOBALS['rw_meta'] = array(
 	),
 );
 
-$GLOBALS['rw_term_meta'] = array(
+$GLOBALS['pp_term_meta'] = array(
 	1 => array( 'kennel_website' => 'https://kennel.example.org', 'kennel_hidden' => '0', 'kennel_zip' => '28195' ),
 	2 => array( 'breeder_email' => 'breeder@example.org', 'breeder_phone' => '+49 421 1', 'breeder_address' => "Line 1\nLine 2" ),
 	3 => array( 'owner_website' => 'https://owner.example.org' ),
 );
 
-$GLOBALS['rw_terms_of'] = array(
+$GLOBALS['pp_terms_of'] = array(
 	10 => array(
 		'kennel'  => array( (object) array( 'term_id' => 1, 'name' => 'vom Waldrand', 'taxonomy' => 'kennel' ) ),
 		'breeder' => array( (object) array( 'term_id' => 2, 'name' => 'Erika Muster', 'taxonomy' => 'breeder' ) ),
@@ -101,9 +101,9 @@ class WP_Post {
 	}
 }
 
-foreach ( $GLOBALS['rw_terms_of'] as $post_id => $taxonomies ) {
+foreach ( $GLOBALS['pp_terms_of'] as $post_id => $taxonomies ) {
 	foreach ( $taxonomies as $taxonomy => $terms ) {
-		$GLOBALS['rw_terms_of'][ $post_id ][ $taxonomy ] = array_map(
+		$GLOBALS['pp_terms_of'][ $post_id ][ $taxonomy ] = array_map(
 			static function ( $term ) {
 				return new WP_Term( $term );
 			},
@@ -112,11 +112,11 @@ foreach ( $GLOBALS['rw_terms_of'] as $post_id => $taxonomies ) {
 	}
 }
 
-function get_post_meta( $id, $key ) { return isset( $GLOBALS['rw_meta'][ $id ][ $key ] ) ? $GLOBALS['rw_meta'][ $id ][ $key ] : ''; }
-function get_term_meta( $id, $key ) { return isset( $GLOBALS['rw_term_meta'][ $id ][ $key ] ) ? $GLOBALS['rw_term_meta'][ $id ][ $key ] : ''; }
+function get_post_meta( $id, $key ) { return isset( $GLOBALS['pp_meta'][ $id ][ $key ] ) ? $GLOBALS['pp_meta'][ $id ][ $key ] : ''; }
+function get_term_meta( $id, $key ) { return isset( $GLOBALS['pp_term_meta'][ $id ][ $key ] ) ? $GLOBALS['pp_term_meta'][ $id ][ $key ] : ''; }
 function get_the_terms( $post, $taxonomy ) {
 	$id = is_object( $post ) ? $post->ID : (int) $post;
-	return isset( $GLOBALS['rw_terms_of'][ $id ][ $taxonomy ] ) ? $GLOBALS['rw_terms_of'][ $id ][ $taxonomy ] : false;
+	return isset( $GLOBALS['pp_terms_of'][ $id ][ $taxonomy ] ) ? $GLOBALS['pp_terms_of'][ $id ][ $taxonomy ] : false;
 }
 function get_post_field( $field, $id ) { return 42 === (int) $id ? 'Approval Arko' : 'Arko'; }
 function get_the_title( $post ) { return is_object( $post ) ? $post->post_title : 'Title'; }
@@ -139,9 +139,9 @@ function wp_enqueue_style() {}
 function wp_style_is() { return true; }
 function wp_strip_all_tags( $text ) { return strip_tags( $text ); }
 
-require RUDELWERK_DIR . 'includes/template-functions.php';
+require PUPPYPRESS_DIR . 'includes/template-functions.php';
 
-$rw_render = static function ( $name, array $args ) {
+$pp_render = static function ( $name, array $args ) {
 	set_error_handler(
 		static function ( $severity, $message, $file, $line ) {
 			throw new ErrorException( $message, 0, $severity, $file, $line );
@@ -169,17 +169,17 @@ $litter   = new WP_Post( array( 'ID' => 20, 'post_title' => 'vom Waldrand', 'pos
 $dog      = new WP_Post( array( 'ID' => 30, 'post_title' => 'Lucky', 'post_type' => 'dogs-to-place' ) );
 $book     = new WP_Post( array( 'ID' => 40, 'post_title' => 'Terrier Book', 'post_content' => 'Text', 'post_type' => 'literature' ) );
 
-$html = $rw_render( 'single/stud-dog.php', array( 'post' => $stud_dog, 'content' => '<p>Story</p>' ) );
+$html = $pp_render( 'single/stud-dog.php', array( 'post' => $stud_dog, 'content' => '<p>Story</p>' ) );
 check( 'stud dog: summary with kennel link', false !== strpos( $html, 'href="https://kennel.example.org"' ) && false !== strpos( $html, 'Kennel: vom Waldrand' ) );
 check( 'stud dog: breeder links to email', false !== strpos( $html, 'mailto:breeder@example.org' ) );
 check( 'stud dog: owner links to website', false !== strpos( $html, 'Owner: Otto Owner' ) );
 check( 'stud dog: formatted date', false !== strpos( $html, '12.04.2019' ) );
 check( 'stud dog: withers', false !== strpos( $html, '61.5 cm' ) );
 check( 'stud dog: license link', false !== strpos( $html, '?p=42' ) );
-check( 'stud dog: pedigree', false !== strpos( $html, 'rudelwerk-pedigree' ) );
+check( 'stud dog: pedigree', false !== strpos( $html, 'puppypress-pedigree' ) );
 check( 'stud dog: content', false !== strpos( $html, '<p>Story</p>' ) && false !== strpos( $html, 'About Arko' ) );
 
-$html = $rw_render( 'single/litter.php', array( 'post' => $litter, 'content' => '' ) );
+$html = $pp_render( 'single/litter.php', array( 'post' => $litter, 'content' => '' ) );
 check( 'litter: born sentence', false !== strpos( $html, 'were born on' ) );
 check( 'litter: litter size', false !== strpos( $html, '3 males, 1 female' ) );
 check( 'litter: still available', false !== strpos( $html, '1 male, 0 females' ) );
@@ -187,19 +187,19 @@ check( 'litter: father photos (legacy leading comma)', 2 === substr_count( $html
 check( 'litter: stud dog link with kennel', false !== strpos( $html, 'More about the stud dog Arko vom Waldrand' ) );
 check( 'litter: no empty content heading', false === strpos( $html, 'About the puppies' ) );
 
-$html = $rw_render( 'single/dog-to-place.php', array( 'post' => $dog, 'content' => '<p>x</p>' ) );
+$html = $pp_render( 'single/dog-to-place.php', array( 'post' => $dog, 'content' => '<p>x</p>' ) );
 check( 'dog to place: gender label', false !== strpos( $html, 'female, born 2021' ) );
 
-$html = $rw_render( 'parts/stud-dog-card.php', array( 'post' => $stud_dog, 'kennel' => null ) );
+$html = $pp_render( 'parts/stud-dog-card.php', array( 'post' => $stud_dog, 'kennel' => null ) );
 check( 'card: name with kennel', false !== strpos( $html, 'Arko vom Waldrand' ) );
 
-$html = $rw_render( 'parts/litter-card.php', array( 'post' => $litter ) );
+$html = $pp_render( 'parts/litter-card.php', array( 'post' => $litter ) );
 check( 'litter card: title prefix', false !== strpos( $html, 'Puppies vom Waldrand' ) );
 check( 'litter card: location', false !== strpos( $html, '28195 Bremen' ) );
 
 $filter      = new StudDogFilter();
 $filter->hd  = 'a1';
-$html = $rw_render(
+$html = $pp_render(
 	'parts/stud-dog-filter.php',
 	array(
 		'filter' => $filter,
@@ -211,16 +211,16 @@ $html = $rw_render(
 		'titles' => array(),
 	)
 );
-check( 'filter: open when active', false !== strpos( $html, '<details class="rudelwerk-filter" open' ) );
+check( 'filter: open when active', false !== strpos( $html, '<details class="puppypress-filter" open' ) );
 check( 'filter: selected value', false !== strpos( $html, 'value="a1"  selected="selected"' ) );
-check( 'filter: empty taxonomies skipped', false === strpos( $html, 'rw_ed' ) );
+check( 'filter: empty taxonomies skipped', false === strpos( $html, 'pp_ed' ) );
 
-$rw_render( 'lists/stud-dogs.php', array( 'groups' => array( array( 'kennel' => null, 'posts' => array( $stud_dog ) ) ) ) );
-$html = $rw_render( 'lists/stud-dogs.php', array( 'groups' => array() ) );
+$pp_render( 'lists/stud-dogs.php', array( 'groups' => array( array( 'kennel' => null, 'posts' => array( $stud_dog ) ) ) ) );
+$html = $pp_render( 'lists/stud-dogs.php', array( 'groups' => array() ) );
 check( 'stud dogs: empty message', false !== strpos( $html, 'No stud dogs found.' ) );
-$rw_render( 'lists/posts.php', array( 'posts' => array( $stud_dog ) ) );
-$rw_render( 'lists/litters.php', array( 'sections' => array( 'born' => array( 'title' => 'Born', 'posts' => array( $litter ) ), 'expected' => array( 'title' => 'Expected', 'posts' => array() ) ), 'show_headings' => true ) );
-$html = $rw_render(
+$pp_render( 'lists/posts.php', array( 'posts' => array( $stud_dog ) ) );
+$pp_render( 'lists/litters.php', array( 'sections' => array( 'born' => array( 'title' => 'Born', 'posts' => array( $litter ) ), 'expected' => array( 'title' => 'Expected', 'posts' => array() ) ), 'show_headings' => true ) );
+$html = $pp_render(
 	'lists/breeders-board.php',
 	array(
 		'rows' => array(
@@ -233,9 +233,9 @@ $html = $rw_render(
 	)
 );
 check( 'breeders board: unknown zip', false !== strpos( $html, 'Unknown' ) );
-check( 'breeders board: fax icon', false !== strpos( $html, 'rudelwerk-icon--fax' ) );
+check( 'breeders board: fax icon', false !== strpos( $html, 'puppypress-icon--fax' ) );
 
-$html = $rw_render(
+$html = $pp_render(
 	'lists/directory.php',
 	array(
 		'regions' => array(
@@ -257,7 +257,7 @@ $html = $rw_render(
 check( 'directory: tel link', false !== strpos( $html, 'tel:0421123' ) );
 check( 'directory: mailto name', false !== strpos( $html, 'mailto:groomer@example.org">Groomer' ) );
 
-$html = $rw_render( 'lists/literature.php', array( 'categories' => array( array( 'category' => new WP_Term( array( 'name' => 'Breed' ) ), 'books' => array( $book ) ) ) ) );
+$html = $pp_render( 'lists/literature.php', array( 'categories' => array( array( 'category' => new WP_Term( array( 'name' => 'Breed' ) ), 'books' => array( $book ) ) ) ) );
 check( 'literature: author and isbn', false !== strpos( $html, 'A. Author' ) && false !== strpos( $html, 'ISBN 978-3-00-000000-0' ) );
 
 /*
@@ -269,16 +269,16 @@ function get_post_type_object() { return (object) array( 'cap' => (object) array
 function current_user_can() { return true; }
 function admin_url( $path ) { return 'https://example.org/wp-admin/' . $path; }
 
-foreach ( Rudelwerk\Content\Fields::post_groups() as $post_type => $groups ) {
+foreach ( PuppyPress\Content\Fields::post_groups() as $post_type => $groups ) {
 	foreach ( $groups as $group ) {
 		foreach ( $group['fields'] as $key => $field ) {
 			$value = 'media' === $field['type'] ? '5,6' : ( 'post' === $field['type'] ? '42' : 'x' );
 
 			ob_start();
 			try {
-				Rudelwerk\Admin\FieldRenderer::control( $key, $field, $value );
+				PuppyPress\Admin\FieldRenderer::control( $key, $field, $value );
 				$html = ob_get_clean();
-				$ok   = '' !== $html && false !== strpos( $html, 'rudelwerk_fields[' . $key . ']' );
+				$ok   = '' !== $html && false !== strpos( $html, 'puppypress_fields[' . $key . ']' );
 			} catch ( Throwable $e ) {
 				ob_end_clean();
 				$ok = false;
@@ -289,12 +289,12 @@ foreach ( Rudelwerk\Content\Fields::post_groups() as $post_type => $groups ) {
 }
 
 ob_start();
-Rudelwerk\Admin\FieldRenderer::control( 'approval', array( 'type' => 'post', 'post_type' => 'approvals', 'add_new' => true ), '42' );
+PuppyPress\Admin\FieldRenderer::control( 'approval', array( 'type' => 'post', 'post_type' => 'approvals', 'add_new' => true ), '42' );
 $html = ob_get_clean();
 check( 'admin post select marks current value', false !== strpos( $html, 'value="42"  selected="selected"' ) );
 check( 'admin post select offers "add new"', false !== strpos( $html, 'post-new.php?post_type=approvals' ) );
 
 ob_start();
-Rudelwerk\Admin\FieldRenderer::control( 'gender', array( 'type' => 'select', 'options' => Rudelwerk\Content\Fields::gender_options() ), 'weiblich' );
+PuppyPress\Admin\FieldRenderer::control( 'gender', array( 'type' => 'select', 'options' => PuppyPress\Content\Fields::gender_options() ), 'weiblich' );
 $html = ob_get_clean();
 check( 'admin select keeps unknown legacy value', false !== strpos( $html, 'value="weiblich"  selected="selected"' ) );

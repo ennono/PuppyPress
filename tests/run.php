@@ -2,16 +2,16 @@
 /**
  * Dependency free test runner: php tests/run.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
 require __DIR__ . '/bootstrap.php';
 
-use Rudelwerk\Content\Fields;
-use Rudelwerk\Content\Pedigree;
-use Rudelwerk\Content\PostTypes;
-use Rudelwerk\Content\Taxonomies;
-use Rudelwerk\Frontend\StudDogFilter;
+use PuppyPress\Content\Fields;
+use PuppyPress\Content\Pedigree;
+use PuppyPress\Content\PostTypes;
+use PuppyPress\Content\Taxonomies;
+use PuppyPress\Frontend\StudDogFilter;
 
 $failures = 0;
 $checks   = 0;
@@ -32,7 +32,7 @@ function check( $label, $condition ) {
 ( new Taxonomies() )->register();
 
 $expected_post_types = array( 'puppies', 'dogs-to-place', 'stud-dogs', 'approvals', 'breeding-license', 'results', 'shows', 'trimming-proofs', 'dog-sitters', 'literature', 'vacation-deals' );
-check( 'post type keys', array() === array_diff( $expected_post_types, array_keys( $GLOBALS['rw_test']['post_types'] ) ) );
+check( 'post type keys', array() === array_diff( $expected_post_types, array_keys( $GLOBALS['pp_test']['post_types'] ) ) );
 
 $expected_taxonomies = array(
 	'placement-category'  => array( 'dogs-to-place' ),
@@ -56,13 +56,13 @@ $expected_taxonomies = array(
 	'title'               => array( 'stud-dogs' ),
 );
 foreach ( $expected_taxonomies as $taxonomy => $types ) {
-	check( "taxonomy $taxonomy registered", isset( $GLOBALS['rw_test']['taxonomies'][ $taxonomy ] ) );
-	check( "taxonomy $taxonomy object types", isset( $GLOBALS['rw_test']['taxonomies'][ $taxonomy ] ) && $types === $GLOBALS['rw_test']['taxonomies'][ $taxonomy ]['types'] );
+	check( "taxonomy $taxonomy registered", isset( $GLOBALS['pp_test']['taxonomies'][ $taxonomy ] ) );
+	check( "taxonomy $taxonomy object types", isset( $GLOBALS['pp_test']['taxonomies'][ $taxonomy ] ) && $types === $GLOBALS['pp_test']['taxonomies'][ $taxonomy ]['types'] );
 }
 
-check( 'approvals live in the stud dog menu', 'edit.php?post_type=stud-dogs' === $GLOBALS['rw_test']['post_types']['approvals']['show_in_menu'] );
-check( 'trimming proofs are not publicly queryable', false === $GLOBALS['rw_test']['post_types']['trimming-proofs']['publicly_queryable'] );
-check( 'title taxonomy uses a safe query var', 'stud_dog_title' === $GLOBALS['rw_test']['taxonomies']['title']['args']['query_var'] );
+check( 'approvals live in the stud dog menu', 'edit.php?post_type=stud-dogs' === $GLOBALS['pp_test']['post_types']['approvals']['show_in_menu'] );
+check( 'trimming proofs are not publicly queryable', false === $GLOBALS['pp_test']['post_types']['trimming-proofs']['publicly_queryable'] );
+check( 'title taxonomy uses a safe query var', 'stud_dog_title' === $GLOBALS['pp_test']['taxonomies']['title']['args']['query_var'] );
 
 /*
  * 2. All meta keys of the former theme are still handled.
@@ -144,20 +144,20 @@ check( 'filter hd clause', array( 'taxonomy' => 'hd', 'field' => 'slug', 'terms'
 check( 'filter exams need all', 'AND' === $args['tax_query'][1]['operator'] && array( 'ztp', 'bh' ) === $args['tax_query'][1]['terms'] );
 check( 'filter approval meta', 'approval' === $args['meta_query'][0]['key'] && 'NOT IN' === $args['meta_query'][0]['compare'] );
 
-$GLOBALS['rw_test']['terms'] = array();
+$GLOBALS['pp_test']['terms'] = array();
 $filter                      = new StudDogFilter();
 $filter->zip                 = '28';
 $args                        = $filter->apply( array() );
 check( 'zip without kennels matches nothing', array( 0 ) === $args['tax_query'][0]['terms'] );
 
-$GLOBALS['rw_test']['terms'] = array( (object) array( 'term_id' => 5 ), (object) array( 'term_id' => 9 ) );
+$GLOBALS['pp_test']['terms'] = array( (object) array( 'term_id' => 5 ), (object) array( 'term_id' => 9 ) );
 $args                        = $filter->apply( array() );
 check( 'zip limits kennels', array( 5, 9 ) === $args['tax_query'][0]['terms'] );
 
 /*
  * 6. German translation keeps the URLs of the former theme.
  */
-function rw_read_mo( $file ) {
+function pp_read_mo( $file ) {
 	$data = file_get_contents( $file );
 	$head = unpack( 'Vmagic/Vrevision/Vcount/Vorig/Vtrans', substr( $data, 0, 20 ) );
 	$out  = array();
@@ -169,7 +169,7 @@ function rw_read_mo( $file ) {
 	return array( $head['magic'], $out );
 }
 
-list( $magic, $mo ) = rw_read_mo( RUDELWERK_DIR . 'languages/rudelwerk-de_DE.mo' );
+list( $magic, $mo ) = pp_read_mo( PUPPYPRESS_DIR . 'languages/puppypress-de_DE.mo' );
 check( 'mo magic', 0x950412de === $magic );
 
 $legacy_slugs = array(
@@ -199,7 +199,7 @@ foreach ( $legacy_slugs as $slug => $german ) {
 }
 check( 'plural forms', isset( $mo[ "%d male\0%d males" ] ) && "%d Rüde\0%d Rüden" === $mo[ "%d male\0%d males" ] );
 
-$php = include RUDELWERK_DIR . 'languages/rudelwerk-de_DE.l10n.php';
+$php = include PUPPYPRESS_DIR . 'languages/puppypress-de_DE.l10n.php';
 check( 'l10n.php plural forms header', 'nplurals=2; plural=n != 1;' === $php['plural-forms'] );
 check( 'l10n.php slug', 'deckrueden' === $php['messages'][ "URL slug\x04stud-dogs" ] );
 check( 'l10n.php plural', "%d Rüde\0%d Rüden" === $php['messages']['%d male'] );
@@ -222,14 +222,14 @@ foreach ( Pedigree::positions() as $position ) {
 $pedigree['father'] = array( 'description' => "Arko <script>\nZTP", 'approval' => 42 );
 $pedigree['greatgrandmother_4'] = array( 'description' => 'Bella', 'approval' => 7 );
 
-$html = Rudelwerk\Frontend\Templates::html( 'parts/pedigree.php', array( 'pedigree' => $pedigree ) );
+$html = PuppyPress\Frontend\Templates::html( 'parts/pedigree.php', array( 'pedigree' => $pedigree ) );
 check( 'pedigree escapes descriptions', false !== strpos( $html, 'Arko &lt;script&gt;<br />' ) );
 check( 'pedigree links published approvals', false !== strpos( $html, '?p=42' ) );
 check( 'pedigree skips unpublished approvals', false === strpos( $html, '?p=7' ) );
 check( 'pedigree has 8 rows', 8 === substr_count( $html, '<tr>' ) );
 check( 'pedigree has 14 cells', 14 === substr_count( $html, '<td ' ) );
 
-$html = Rudelwerk\Frontend\Templates::html(
+$html = PuppyPress\Frontend\Templates::html(
 	'lists/terms.php',
 	array(
 		'items'      => array(

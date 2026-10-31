@@ -2,9 +2,9 @@
 /**
  * Detail view of a litter (wraps the post content).
  *
- * Override: {theme}/rudelwerk/single/litter.php
+ * Override: {theme}/puppypress/single/litter.php
  *
- * @package Rudelwerk
+ * @package PuppyPress
  * @version 1.0.0
  *
  * @var array $args {
@@ -13,72 +13,72 @@
  * }
  */
 
-use Rudelwerk\Data\Contact;
-use Rudelwerk\Data\Dogs;
+use PuppyPress\Data\Contact;
+use PuppyPress\Data\Dogs;
 
 defined( 'ABSPATH' ) || exit;
 
-$rw_post     = $args['post'];
-$rw_id       = $rw_post->ID;
-$rw_expected = Dogs::is_expected_litter( $rw_id );
-$rw_counts   = Dogs::litter_counts( $rw_id );
-$rw_kennel   = Dogs::display_kennel( $rw_id );
-$rw_born     = (string) get_post_meta( $rw_id, 'date_of_birth', true );
-$rw_breeders = get_the_terms( $rw_id, 'breeder' );
-$rw_breeders = ( $rw_breeders && ! is_wp_error( $rw_breeders ) ) ? array_map( array( Contact::class, 'for_term' ), $rw_breeders ) : array();
+$pp_post     = $args['post'];
+$pp_id       = $pp_post->ID;
+$pp_expected = Dogs::is_expected_litter( $pp_id );
+$pp_counts   = Dogs::litter_counts( $pp_id );
+$pp_kennel   = Dogs::display_kennel( $pp_id );
+$pp_born     = (string) get_post_meta( $pp_id, 'date_of_birth', true );
+$pp_breeders = get_the_terms( $pp_id, 'breeder' );
+$pp_breeders = ( $pp_breeders && ! is_wp_error( $pp_breeders ) ) ? array_map( array( Contact::class, 'for_term' ), $pp_breeders ) : array();
 
-$rw_litter_size = Dogs::format_sexes( $rw_counts['male'], $rw_counts['female'] );
-$rw_to_give     = Dogs::format_sexes( $rw_counts['available_male'], $rw_counts['available_female'] );
+$pp_litter_size = Dogs::format_sexes( $pp_counts['male'], $pp_counts['female'] );
+$pp_to_give     = Dogs::format_sexes( $pp_counts['available_male'], $pp_counts['available_female'] );
 
-$rw_parents = array(
+$pp_parents = array(
 	'father' => array(
-		'label'    => __( 'Father', 'rudelwerk' ),
-		'name'     => (string) get_post_meta( $rw_id, 'father_name', true ),
-		'desc'     => (string) get_post_meta( $rw_id, 'father_desc', true ),
-		'photos'   => Dogs::attachment_ids( $rw_id, 'father_photo' ),
-		'stud_dog' => absint( get_post_meta( $rw_id, 'father_stud_dog_id', true ) ),
+		'label'    => __( 'Father', 'puppypress' ),
+		'name'     => (string) get_post_meta( $pp_id, 'father_name', true ),
+		'desc'     => (string) get_post_meta( $pp_id, 'father_desc', true ),
+		'photos'   => Dogs::attachment_ids( $pp_id, 'father_photo' ),
+		'stud_dog' => absint( get_post_meta( $pp_id, 'father_stud_dog_id', true ) ),
 	),
 	'mother' => array(
-		'label'    => __( 'Mother', 'rudelwerk' ),
-		'name'     => (string) get_post_meta( $rw_id, 'mother_name', true ),
-		'desc'     => (string) get_post_meta( $rw_id, 'mother_desc', true ),
-		'photos'   => Dogs::attachment_ids( $rw_id, 'mother_photo' ),
+		'label'    => __( 'Mother', 'puppypress' ),
+		'name'     => (string) get_post_meta( $pp_id, 'mother_name', true ),
+		'desc'     => (string) get_post_meta( $pp_id, 'mother_desc', true ),
+		'photos'   => Dogs::attachment_ids( $pp_id, 'mother_photo' ),
 		'stud_dog' => 0,
 	),
 );
 ?>
-<div class="rudelwerk rudelwerk-single rudelwerk-single--litter<?php echo $rw_expected ? ' is-expected' : ''; ?>">
+<div class="puppypress puppypress-single puppypress-single--litter<?php echo $pp_expected ? ' is-expected' : ''; ?>">
 
-	<div class="rudelwerk-summary">
-		<?php if ( $rw_kennel && '' !== $rw_born ) : ?>
+	<div class="puppypress-summary">
+		<?php if ( $pp_kennel && '' !== $pp_born ) : ?>
 			<p>
 				<?php
-				if ( $rw_expected ) {
+				if ( $pp_expected ) {
 					/* translators: 1: kennel name, 2: expected date of birth */
-					$rw_sentence = __( 'The kennel %1$s expects these puppies to be born %2$s.', 'rudelwerk' );
-					printf( esc_html( $rw_sentence ), '<strong>' . esc_html( $rw_kennel->name ) . '</strong>', '<strong>' . esc_html( $rw_born ) . '</strong>' );
+					$pp_sentence = __( 'The kennel %1$s expects these puppies to be born %2$s.', 'puppypress' );
+					printf( esc_html( $pp_sentence ), '<strong>' . esc_html( $pp_kennel->name ) . '</strong>', '<strong>' . esc_html( $pp_born ) . '</strong>' );
 				} else {
 					/* translators: 1: kennel name, 2: date of birth */
-					$rw_sentence = __( 'The puppies of the kennel %1$s were born on %2$s.', 'rudelwerk' );
-					printf( esc_html( $rw_sentence ), '<strong>' . esc_html( $rw_kennel->name ) . '</strong>', '<strong>' . esc_html( $rw_born ) . '</strong>' );
+					$pp_sentence = __( 'The puppies of the kennel %1$s were born on %2$s.', 'puppypress' );
+					printf( esc_html( $pp_sentence ), '<strong>' . esc_html( $pp_kennel->name ) . '</strong>', '<strong>' . esc_html( $pp_born ) . '</strong>' );
 				}
 				?>
 			</p>
 		<?php endif; ?>
 
-		<?php if ( ! $rw_expected && ( '' !== $rw_litter_size || '' !== $rw_to_give ) ) : ?>
-			<p class="rudelwerk-litter-numbers">
-				<?php if ( '' !== $rw_litter_size ) : ?>
-					<strong><?php esc_html_e( 'Litter size', 'rudelwerk' ); ?>:</strong> <?php echo esc_html( $rw_litter_size ); ?><br>
+		<?php if ( ! $pp_expected && ( '' !== $pp_litter_size || '' !== $pp_to_give ) ) : ?>
+			<p class="puppypress-litter-numbers">
+				<?php if ( '' !== $pp_litter_size ) : ?>
+					<strong><?php esc_html_e( 'Litter size', 'puppypress' ); ?>:</strong> <?php echo esc_html( $pp_litter_size ); ?><br>
 				<?php endif; ?>
-				<?php if ( '' !== $rw_to_give ) : ?>
-					<strong><?php esc_html_e( 'Still available', 'rudelwerk' ); ?>:</strong> <?php echo esc_html( $rw_to_give ); ?><br>
+				<?php if ( '' !== $pp_to_give ) : ?>
+					<strong><?php esc_html_e( 'Still available', 'puppypress' ); ?>:</strong> <?php echo esc_html( $pp_to_give ); ?><br>
 				<?php endif; ?>
-				<?php if ( '' !== $rw_counts['last_update'] ) : ?>
+				<?php if ( '' !== $pp_counts['last_update'] ) : ?>
 					<small>
 						<?php
 						/* translators: %s: date of the last update */
-						echo esc_html( sprintf( __( 'Last update: %s', 'rudelwerk' ), $rw_counts['last_update'] ) );
+						echo esc_html( sprintf( __( 'Last update: %s', 'puppypress' ), $pp_counts['last_update'] ) );
 						?>
 					</small>
 				<?php endif; ?>
@@ -86,23 +86,23 @@ $rw_parents = array(
 		<?php endif; ?>
 	</div>
 
-	<?php if ( $rw_kennel || $rw_breeders ) : ?>
-		<div class="rudelwerk-columns">
-			<?php if ( $rw_kennel ) : ?>
+	<?php if ( $pp_kennel || $pp_breeders ) : ?>
+		<div class="puppypress-columns">
+			<?php if ( $pp_kennel ) : ?>
 				<div>
-					<h2><?php esc_html_e( 'Kennel', 'rudelwerk' ); ?></h2>
+					<h2><?php esc_html_e( 'Kennel', 'puppypress' ); ?></h2>
 					<?php
-					rudelwerk_template(
+					puppypress_template(
 						'parts/contact.php',
 						array(
 							'contact' => array(
-								'name'    => $rw_kennel->name,
+								'name'    => $pp_kennel->name,
 								'address' => '',
 								'phone'   => '',
 								'mobile'  => '',
 								'fax'     => '',
 								'email'   => '',
-								'website' => (string) get_term_meta( $rw_kennel->term_id, 'kennel_website', true ),
+								'website' => (string) get_term_meta( $pp_kennel->term_id, 'kennel_website', true ),
 							),
 						)
 					);
@@ -110,11 +110,11 @@ $rw_parents = array(
 				</div>
 			<?php endif; ?>
 
-			<?php if ( $rw_breeders ) : ?>
+			<?php if ( $pp_breeders ) : ?>
 				<div>
-					<h2><?php echo esc_html( _n( 'Breeder', 'Breeders', count( $rw_breeders ), 'rudelwerk' ) ); ?></h2>
-					<?php foreach ( $rw_breeders as $rw_contact ) : ?>
-						<?php rudelwerk_template( 'parts/contact.php', array( 'contact' => $rw_contact ) ); ?>
+					<h2><?php echo esc_html( _n( 'Breeder', 'Breeders', count( $pp_breeders ), 'puppypress' ) ); ?></h2>
+					<?php foreach ( $pp_breeders as $pp_contact ) : ?>
+						<?php puppypress_template( 'parts/contact.php', array( 'contact' => $pp_contact ) ); ?>
 					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
@@ -122,40 +122,40 @@ $rw_parents = array(
 	<?php endif; ?>
 
 	<?php if ( '' !== trim( $args['content'] ) ) : ?>
-		<h2><?php esc_html_e( 'About the puppies', 'rudelwerk' ); ?></h2>
-		<div class="rudelwerk-content">
+		<h2><?php esc_html_e( 'About the puppies', 'puppypress' ); ?></h2>
+		<div class="puppypress-content">
 			<?php echo $args['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtered post content. ?>
 		</div>
 	<?php endif; ?>
 
-	<?php foreach ( $rw_parents as $rw_key => $rw_parent ) : ?>
-		<?php if ( '' === $rw_parent['name'] && '' === $rw_parent['desc'] && ! $rw_parent['photos'] ) : ?>
+	<?php foreach ( $pp_parents as $pp_key => $pp_parent ) : ?>
+		<?php if ( '' === $pp_parent['name'] && '' === $pp_parent['desc'] && ! $pp_parent['photos'] ) : ?>
 			<?php continue; ?>
 		<?php endif; ?>
-		<section class="rudelwerk-parent rudelwerk-parent--<?php echo esc_attr( $rw_key ); ?>">
-			<h3><?php echo esc_html( trim( $rw_parent['label'] . ': ' . $rw_parent['name'], ': ' ) ); ?></h3>
+		<section class="puppypress-parent puppypress-parent--<?php echo esc_attr( $pp_key ); ?>">
+			<h3><?php echo esc_html( trim( $pp_parent['label'] . ': ' . $pp_parent['name'], ': ' ) ); ?></h3>
 
-			<?php if ( $rw_parent['stud_dog'] && 'publish' === get_post_status( $rw_parent['stud_dog'] ) ) : ?>
+			<?php if ( $pp_parent['stud_dog'] && 'publish' === get_post_status( $pp_parent['stud_dog'] ) ) : ?>
 				<p>
-					<a href="<?php echo esc_url( get_permalink( $rw_parent['stud_dog'] ) ); ?>">
+					<a href="<?php echo esc_url( get_permalink( $pp_parent['stud_dog'] ) ); ?>">
 						<?php
 						/* translators: %s: name of the stud dog */
-						echo esc_html( sprintf( __( 'More about the stud dog %s', 'rudelwerk' ), Dogs::stud_dog_name( $rw_parent['stud_dog'] ) ) );
+						echo esc_html( sprintf( __( 'More about the stud dog %s', 'puppypress' ), Dogs::stud_dog_name( $pp_parent['stud_dog'] ) ) );
 						?>
 					</a>
 				</p>
 			<?php endif; ?>
 
-			<?php if ( '' !== $rw_parent['desc'] ) : ?>
-				<?php echo wp_kses_post( wpautop( esc_html( $rw_parent['desc'] ) ) ); ?>
+			<?php if ( '' !== $pp_parent['desc'] ) : ?>
+				<?php echo wp_kses_post( wpautop( esc_html( $pp_parent['desc'] ) ) ); ?>
 			<?php endif; ?>
 
-			<?php if ( $rw_parent['photos'] ) : ?>
-				<div class="rudelwerk-gallery">
-					<?php foreach ( $rw_parent['photos'] as $rw_photo ) : ?>
-						<?php $rw_full = wp_get_attachment_image_url( $rw_photo, 'large' ); ?>
-						<?php if ( $rw_full ) : ?>
-							<a href="<?php echo esc_url( $rw_full ); ?>"><?php echo wp_get_attachment_image( $rw_photo, 'medium' ); ?></a>
+			<?php if ( $pp_parent['photos'] ) : ?>
+				<div class="puppypress-gallery">
+					<?php foreach ( $pp_parent['photos'] as $pp_photo ) : ?>
+						<?php $pp_full = wp_get_attachment_image_url( $pp_photo, 'large' ); ?>
+						<?php if ( $pp_full ) : ?>
+							<a href="<?php echo esc_url( $pp_full ); ?>"><?php echo wp_get_attachment_image( $pp_photo, 'medium' ); ?></a>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</div>

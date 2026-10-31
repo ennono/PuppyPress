@@ -2,10 +2,10 @@
 /**
  * Renders form controls for schema fields.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Admin;
+namespace PuppyPress\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class FieldRenderer {
 
-	const INPUT_NAME = 'rudelwerk_fields';
+	const INPUT_NAME = 'puppypress_fields';
 
 	/**
 	 * Cached choice lists for post and term selects.
@@ -30,7 +30,7 @@ final class FieldRenderer {
 	 * @return string
 	 */
 	public static function id( $key ) {
-		return 'rudelwerk-field-' . str_replace( '_', '-', $key );
+		return 'puppypress-field-' . str_replace( '_', '-', $key );
 	}
 
 	/**
@@ -75,14 +75,14 @@ final class FieldRenderer {
 				break;
 
 			case 'post':
-				self::select( $id, $name, array( '' => __( '— None —', 'rudelwerk' ) ) + self::post_choices( $field['post_type'] ), $value );
+				self::select( $id, $name, array( '' => __( '— None —', 'puppypress' ) ) + self::post_choices( $field['post_type'] ), $value );
 
 				if ( ! empty( $field['add_new'] ) ) {
 					$object = get_post_type_object( $field['post_type'] );
 
 					if ( $object && current_user_can( $object->cap->create_posts ) ) {
 						printf(
-							'<a class="rudelwerk-add-new" href="%1$s" target="_blank" rel="noopener">%2$s</a>',
+							'<a class="puppypress-add-new" href="%1$s" target="_blank" rel="noopener">%2$s</a>',
 							esc_url( admin_url( 'post-new.php?post_type=' . $field['post_type'] ) ),
 							esc_html( $object->labels->add_new_item )
 						);
@@ -91,7 +91,7 @@ final class FieldRenderer {
 				break;
 
 			case 'term':
-				self::select( $id, $name, array( '' => __( '— None —', 'rudelwerk' ) ) + self::term_choices( $field['taxonomy'] ), $value );
+				self::select( $id, $name, array( '' => __( '— None —', 'puppypress' ) ) + self::term_choices( $field['taxonomy'] ), $value );
 				break;
 
 			case 'media':
@@ -154,28 +154,28 @@ final class FieldRenderer {
 	private static function media( $id, $name, $value ) {
 		$ids = array_filter( array_map( 'absint', explode( ',', (string) $value ) ) );
 
-		echo '<div class="rudelwerk-media" data-rudelwerk-media>';
+		echo '<div class="puppypress-media" data-puppypress-media>';
 		printf(
-			'<input type="hidden" id="%1$s" name="%2$s" value="%3$s" data-rudelwerk-media-input />',
+			'<input type="hidden" id="%1$s" name="%2$s" value="%3$s" data-puppypress-media-input />',
 			esc_attr( $id ),
 			esc_attr( $name ),
 			esc_attr( implode( ',', $ids ) )
 		);
 
-		echo '<ul class="rudelwerk-media__preview" data-rudelwerk-media-preview>';
+		echo '<ul class="puppypress-media__preview" data-puppypress-media-preview>';
 		foreach ( $ids as $attachment_id ) {
 			printf(
-				'<li data-id="%1$d">%2$s<button type="button" class="rudelwerk-media__remove" aria-label="%3$s">&times;</button></li>',
+				'<li data-id="%1$d">%2$s<button type="button" class="puppypress-media__remove" aria-label="%3$s">&times;</button></li>',
 				(int) $attachment_id,
 				wp_get_attachment_image( $attachment_id, 'thumbnail' ),
-				esc_attr__( 'Remove', 'rudelwerk' )
+				esc_attr__( 'Remove', 'puppypress' )
 			);
 		}
 		echo '</ul>';
 
 		printf(
-			'<button type="button" class="button" data-rudelwerk-media-add>%s</button>',
-			esc_html__( 'Add photos', 'rudelwerk' )
+			'<button type="button" class="button" data-puppypress-media-add>%s</button>',
+			esc_html__( 'Add photos', 'puppypress' )
 		);
 		echo '</div>';
 	}

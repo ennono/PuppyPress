@@ -2,10 +2,10 @@
 /**
  * Field schema for post meta and term meta.
  *
- * @package Rudelwerk
+ * @package PuppyPress
  */
 
-namespace Rudelwerk\Content;
+namespace PuppyPress\Content;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -82,46 +82,46 @@ final class Fields {
 		$groups = array(
 			PostTypes::STUD_DOG       => array(
 				'stud_dog_details' => array(
-					'title'    => __( 'Stud dog data', 'rudelwerk' ),
+					'title'    => __( 'Stud dog data', 'puppypress' ),
 					'context'  => 'side',
 					'priority' => 'high',
 					'fields'   => array(
 						'date_born'          => array(
 							'type'  => 'date',
-							'label' => __( 'Date born', 'rudelwerk' ),
+							'label' => __( 'Date born', 'puppypress' ),
 						),
 						'studbook_no'        => array(
 							'type'  => 'text',
-							'label' => __( 'Stud book no.', 'rudelwerk' ),
+							'label' => __( 'Stud book no.', 'puppypress' ),
 						),
 						'tests'              => array(
 							'type'  => 'text',
-							'label' => __( 'Tests and titles', 'rudelwerk' ),
+							'label' => __( 'Tests and titles', 'puppypress' ),
 						),
 						'withers'            => array(
 							'type'  => 'number',
 							'step'  => '0.1',
-							'label' => __( 'Withers in cm', 'rudelwerk' ),
+							'label' => __( 'Withers in cm', 'puppypress' ),
 						),
 						'license'            => array(
 							'type'      => 'post',
 							'post_type' => PostTypes::BREEDING_LICENSE,
-							'label'     => __( 'Breeding license', 'rudelwerk' ),
+							'label'     => __( 'Breeding license', 'puppypress' ),
 						),
 						'approval'           => array(
 							'type'      => 'post',
 							'post_type' => PostTypes::APPROVAL,
 							'add_new'   => true,
-							'label'     => __( 'Approval', 'rudelwerk' ),
+							'label'     => __( 'Approval', 'puppypress' ),
 						),
 						'kennel_before_name' => array(
 							'type'  => 'checkbox',
-							'label' => __( 'Show kennel name before the stud dog name', 'rudelwerk' ),
+							'label' => __( 'Show kennel name before the stud dog name', 'puppypress' ),
 						),
 					),
 				),
 				'stud_dog_pedigree' => array(
-					'title'    => __( 'Pedigree', 'rudelwerk' ),
+					'title'    => __( 'Pedigree', 'puppypress' ),
 					'context'  => 'normal',
 					'priority' => 'high',
 					'renderer' => 'pedigree',
@@ -131,83 +131,83 @@ final class Fields {
 
 			PostTypes::PUPPIES        => array(
 				'litter_details' => array(
-					'title'  => __( 'Litter', 'rudelwerk' ),
+					'title'  => __( 'Litter', 'puppypress' ),
 					'fields' => array(
 						'expected_puppies'            => array(
 							'type'  => 'checkbox',
-							'label' => __( 'Expected litter (puppies are not born yet)', 'rudelwerk' ),
+							'label' => __( 'Expected litter (puppies are not born yet)', 'puppypress' ),
 						),
 						'date_of_birth'               => array(
 							'type'        => 'text',
-							'label'       => __( 'Date of birth', 'rudelwerk' ),
-							'description' => __( 'Free text, e.g. "12.05.2026" or "end of May".', 'rudelwerk' ),
+							'label'       => __( 'Date of birth', 'puppypress' ),
+							'description' => __( 'Free text, e.g. "12.05.2026" or "end of May".', 'puppypress' ),
 						),
 						'male_count'                  => array(
 							'type'  => 'text',
-							'label' => __( 'Number of male puppies', 'rudelwerk' ),
+							'label' => __( 'Number of male puppies', 'puppypress' ),
 						),
 						'female_count'                => array(
 							'type'  => 'text',
-							'label' => __( 'Number of female puppies', 'rudelwerk' ),
+							'label' => __( 'Number of female puppies', 'puppypress' ),
 						),
 						'still_available_male'        => array(
 							'type'  => 'text',
-							'label' => __( 'Male puppies still available', 'rudelwerk' ),
+							'label' => __( 'Male puppies still available', 'puppypress' ),
 						),
 						'still_available_female'      => array(
 							'type'  => 'text',
-							'label' => __( 'Female puppies still available', 'rudelwerk' ),
+							'label' => __( 'Female puppies still available', 'puppypress' ),
 						),
 						'still_available_last_update' => array(
 							'type'  => 'text',
-							'label' => __( 'Last update', 'rudelwerk' ),
+							'label' => __( 'Last update', 'puppypress' ),
 						),
 						'zip'                         => array(
 							'type'  => 'text',
-							'label' => __( 'ZIP code', 'rudelwerk' ),
+							'label' => __( 'ZIP code', 'puppypress' ),
 						),
 						'city'                        => array(
 							'type'  => 'text',
-							'label' => __( 'City', 'rudelwerk' ),
+							'label' => __( 'City', 'puppypress' ),
 						),
 					),
 				),
 				'litter_father'  => array(
-					'title'  => __( 'Father', 'rudelwerk' ),
+					'title'  => __( 'Father', 'puppypress' ),
 					'fields' => array(
 						'father_name'        => array(
 							'type'  => 'text',
-							'label' => __( 'Name', 'rudelwerk' ),
+							'label' => __( 'Name', 'puppypress' ),
 						),
 						'father_desc'        => array(
 							'type'  => 'textarea',
-							'label' => __( 'Description', 'rudelwerk' ),
+							'label' => __( 'Description', 'puppypress' ),
 						),
 						'father_stud_dog_id' => array(
 							'type'      => 'post',
 							'post_type' => PostTypes::STUD_DOG,
-							'label'     => __( 'Matching stud dog entry', 'rudelwerk' ),
+							'label'     => __( 'Matching stud dog entry', 'puppypress' ),
 						),
 						'father_photo'       => array(
 							'type'  => 'media',
-							'label' => __( 'Photos', 'rudelwerk' ),
+							'label' => __( 'Photos', 'puppypress' ),
 						),
 					),
 				),
 				'litter_mother'  => array(
-					'title'  => __( 'Mother', 'rudelwerk' ),
+					'title'  => __( 'Mother', 'puppypress' ),
 					'fields' => array(
 						'mother_name'  => array(
 							'type'  => 'text',
-							'label' => __( 'Name', 'rudelwerk' ),
+							'label' => __( 'Name', 'puppypress' ),
 						),
 						'mother_desc'  => array(
 							'type'  => 'textarea',
-							'label' => __( 'Description', 'rudelwerk' ),
+							'label' => __( 'Description', 'puppypress' ),
 						),
 						'mother_photo' => array(
 							'type'  => 'media',
-							'label' => __( 'Photos', 'rudelwerk' ),
+							'label' => __( 'Photos', 'puppypress' ),
 						),
 					),
 				),
@@ -215,16 +215,16 @@ final class Fields {
 
 			PostTypes::DOG_TO_PLACE   => array(
 				'dog_to_place_details' => array(
-					'title'   => __( 'Details', 'rudelwerk' ),
+					'title'   => __( 'Details', 'puppypress' ),
 					'context' => 'side',
 					'fields'  => array(
 						'date_of_birth' => array(
 							'type'  => 'text',
-							'label' => __( 'Date of birth', 'rudelwerk' ),
+							'label' => __( 'Date of birth', 'puppypress' ),
 						),
 						'gender'        => array(
 							'type'    => 'select',
-							'label'   => __( 'Gender', 'rudelwerk' ),
+							'label'   => __( 'Gender', 'puppypress' ),
 							'options' => self::gender_options(),
 						),
 					),
@@ -233,7 +233,7 @@ final class Fields {
 
 			PostTypes::TRIMMING_PROOF => array(
 				'trimming_proof_details' => array(
-					'title'   => __( 'Contact', 'rudelwerk' ),
+					'title'   => __( 'Contact', 'puppypress' ),
 					'context' => 'side',
 					'fields'  => self::contact_fields( array( 'address', 'email', 'phone', 'website' ) ),
 				),
@@ -241,7 +241,7 @@ final class Fields {
 
 			PostTypes::DOG_SITTER     => array(
 				'dog_sitter_details' => array(
-					'title'   => __( 'Contact', 'rudelwerk' ),
+					'title'   => __( 'Contact', 'puppypress' ),
 					'context' => 'side',
 					'fields'  => self::contact_fields( array( 'address', 'email', 'phone', 'mobile', 'website' ) ),
 				),
@@ -249,20 +249,20 @@ final class Fields {
 
 			PostTypes::LITERATURE     => array(
 				'literature_details' => array(
-					'title'   => __( 'Details', 'rudelwerk' ),
+					'title'   => __( 'Details', 'puppypress' ),
 					'context' => 'side',
 					'fields'  => array(
 						'subtitle' => array(
 							'type'  => 'text',
-							'label' => __( 'Subtitle', 'rudelwerk' ),
+							'label' => __( 'Subtitle', 'puppypress' ),
 						),
 						'isbn'     => array(
 							'type'  => 'text',
-							'label' => __( 'ISBN', 'rudelwerk' ),
+							'label' => __( 'ISBN', 'puppypress' ),
 						),
 						'price'    => array(
 							'type'  => 'text',
-							'label' => __( 'Price', 'rudelwerk' ),
+							'label' => __( 'Price', 'puppypress' ),
 						),
 					),
 				),
@@ -274,7 +274,7 @@ final class Fields {
 		 *
 		 * @param array $groups Groups keyed by post type, then by group ID.
 		 */
-		return apply_filters( 'rudelwerk_post_fields', $groups );
+		return apply_filters( 'puppypress_post_fields', $groups );
 	}
 
 	/**
@@ -287,26 +287,26 @@ final class Fields {
 			Taxonomies::KENNEL  => array(
 				'kennel_zip'     => array(
 					'type'  => 'text',
-					'label' => __( 'ZIP code', 'rudelwerk' ),
+					'label' => __( 'ZIP code', 'puppypress' ),
 				),
 				'kennel_website' => array(
 					'type'  => 'url',
-					'label' => __( 'Website', 'rudelwerk' ),
+					'label' => __( 'Website', 'puppypress' ),
 				),
 				'kennel_hidden'  => array(
 					'type'        => 'checkbox',
 					// The breeders' board historically queries for "0", so store it explicitly.
 					'unchecked'   => '0',
-					'label'       => __( 'Hidden', 'rudelwerk' ),
-					'description' => __( 'Hide this kennel on the website (name, website and breeders\' board).', 'rudelwerk' ),
+					'label'       => __( 'Hidden', 'puppypress' ),
+					'description' => __( 'Hide this kennel on the website (name, website and breeders\' board).', 'puppypress' ),
 				),
 			),
 			Taxonomies::BREEDER => self::person_fields( 'breeder', array( 'address', 'website', 'phone', 'mobile', 'fax', 'email' ) ) + array(
 				'breeder_kennel' => array(
 					'type'        => 'term',
 					'taxonomy'    => Taxonomies::KENNEL,
-					'label'       => __( 'Kennel', 'rudelwerk' ),
-					'description' => __( 'Connects the breeder with a kennel (used by the breeders\' board).', 'rudelwerk' ),
+					'label'       => __( 'Kennel', 'puppypress' ),
+					'description' => __( 'Connects the breeder with a kennel (used by the breeders\' board).', 'puppypress' ),
 				),
 			),
 			Taxonomies::OWNER   => self::person_fields( 'owner', array( 'address', 'website', 'phone', 'email' ) ),
@@ -317,7 +317,7 @@ final class Fields {
 		 *
 		 * @param array $fields Fields keyed by taxonomy, then by meta key.
 		 */
-		return apply_filters( 'rudelwerk_term_fields', $fields );
+		return apply_filters( 'puppypress_term_fields', $fields );
 	}
 
 	/**
@@ -408,7 +408,7 @@ final class Fields {
 				'post_type' => PostTypes::APPROVAL,
 				'add_new'   => true,
 				/* translators: %s: ancestor, e.g. "Father". */
-				'label'     => sprintf( __( 'Approval (%s)', 'rudelwerk' ), Pedigree::label( $position ) ),
+				'label'     => sprintf( __( 'Approval (%s)', 'puppypress' ), Pedigree::label( $position ) ),
 			);
 		}
 
@@ -423,8 +423,8 @@ final class Fields {
 	public static function gender_options() {
 		return array(
 			''       => '—',
-			'female' => __( 'female', 'rudelwerk' ),
-			'male'   => __( 'male', 'rudelwerk' ),
+			'female' => __( 'female', 'puppypress' ),
+			'male'   => __( 'male', 'puppypress' ),
 		);
 	}
 
@@ -471,28 +471,28 @@ final class Fields {
 		$definitions = array(
 			'address' => array(
 				'type'  => 'textarea',
-				'label' => __( 'Address', 'rudelwerk' ),
+				'label' => __( 'Address', 'puppypress' ),
 			),
 			'email'   => array(
 				'type'  => 'email',
-				'label' => __( 'Email', 'rudelwerk' ),
+				'label' => __( 'Email', 'puppypress' ),
 			),
 			'phone'   => array(
 				'type'  => 'text',
-				'label' => __( 'Phone', 'rudelwerk' ),
+				'label' => __( 'Phone', 'puppypress' ),
 			),
 			'mobile'  => array(
 				'type'  => 'text',
-				'label' => __( 'Mobile', 'rudelwerk' ),
+				'label' => __( 'Mobile', 'puppypress' ),
 			),
 			'fax'     => array(
 				'type'  => 'text',
-				'label' => __( 'Fax', 'rudelwerk' ),
+				'label' => __( 'Fax', 'puppypress' ),
 			),
 			'website' => array(
 				'type'        => 'url',
-				'label'       => __( 'Website', 'rudelwerk' ),
-				'description' => __( 'Starting with https://', 'rudelwerk' ),
+				'label'       => __( 'Website', 'puppypress' ),
+				'description' => __( 'Starting with https://', 'puppypress' ),
 			),
 		);
 
