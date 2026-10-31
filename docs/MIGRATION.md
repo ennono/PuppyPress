@@ -5,7 +5,7 @@ Diese Anleitung beschreibt den Umstieg einer Website, die bisher das Child-Theme
 | Weg | Wann | Datenübertragung |
 | --- | --- | --- |
 | **A: Umstellung auf derselben Website** | Die bestehende Installation wird weiter genutzt. | Keine. Post Types, Taxonomien, Meta-Keys, Term-Meta, Widget-IDs und die Sidebar-ID sind identisch. |
-| **B: Umzug auf eine neue Website** | Neue WordPress-Installation, z. B. neuer Server, neue Domain oder ein frischer Neuanfang | Mit dem Plugin [PuppyPress Migrator](../puppypress-migrator/README.md), das alle IDs umschreibt |
+| **B: Umzug auf eine neue Website** | Neue WordPress-Installation, z. B. neuer Server, neue Domain oder ein frischer Neuanfang | Mit dem Plugin [PuppyPress Migrator](https://github.com/ennono/puppypress-migrator), das alle IDs umschreibt |
 
 ## Weg B: Umzug auf eine neue Website
 
@@ -16,7 +16,7 @@ Diese Anleitung beschreibt den Umstieg einer Website, die bisher das Child-Theme
 5. *Einstellungen → Permalinks* einmal speichern und die Prüfliste am Ende durchgehen.
 6. Den Migrator auf beiden Websites löschen. Exporte enthalten personenbezogene Daten.
 
-Der Import überträgt Vereinsdaten, Beiträge, Seiten (inkl. zugewiesener Seitentemplates), Menüs, Kommentare, Widgets und Medien. Links auf die alte Domain werden auf die neue umgeschrieben. Details stehen im [README des Migrators](../puppypress-migrator/README.md).
+Der Import überträgt Vereinsdaten, Beiträge, Seiten (inkl. zugewiesener Seitentemplates), Menüs, Kommentare, Widgets und Medien. Links auf die alte Domain werden auf die neue umgeschrieben. Details stehen im [README des Migrators](https://github.com/ennono/puppypress-migrator#readme).
 
 Der Rest dieser Anleitung beschreibt Weg A. Die Abschnitte zum Theme, zu den Seitentemplates und zu den Verhaltensänderungen gelten für beide Wege.
 

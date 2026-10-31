@@ -5,8 +5,8 @@ Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog]
 ## [Unreleased]
 
 ### Hinzugefügt
-- **PuppyPress Migrator 1.0.0** (`puppypress-migrator/`): eigenständiges Plugin, das alle Daten der alten Website exportiert und auf einer neuen Website mit PuppyPress importiert, inkl. Medien, Menüs, Kommentaren, Widgets und Umschreiben aller IDs. Mit Admin-Oberfläche, WP-CLI-Befehlen und Roundtrip-Tests.
-- `bin/i18n.php` akzeptiert ein Plugin-Verzeichnis als zweites Argument; `bin/build.sh` baut die ZIPs beider Plugins.
+- Verweis auf den [PuppyPress Migrator](https://github.com/ennono/puppypress-migrator) (eigenes Repository) für den Umzug auf eine neue Website.
+- `bin/i18n.php` akzeptiert ein Plugin-Verzeichnis als zweites Argument; `bin/build.sh` baut das installierbare ZIP.
 
 ## [1.0.0] – 2026-10-31
 
